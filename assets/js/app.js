@@ -12,7 +12,8 @@
   } = window.WOW_DATA;
 
   // Estado y utilidades
-  const state = { profession: "desuello", objective: "general" };
+  // La primera profesión del arreglo es la predeterminada.
+  const state = { profession: PROFESSIONS[0].id, objective: PROFESSIONS[0].objectives[0].id };
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
@@ -63,8 +64,8 @@
       <span class="fallback">${fallback}</span>
     </span>`;
   }
-  function wowheadLink(id, name) {
-    return `<a class="gear-link" href="https://www.wowhead.com/mx/item=${id}" target="_blank" rel="noopener" aria-label="Ver ${name} en Wowhead esMX">🔗</a>`;
+  function wowheadUrl(id) {
+    return `https://www.wowhead.com/mx/item=${id}`;
   }
 
   // Render
@@ -155,7 +156,7 @@
       : `<span class="badge">Stats fijos</span>`;
 
     const cards = [
-      `<article class="gear-card tool">
+      `<a class="gear-card tool" href="${wowheadUrl(prof.tool.id)}" target="_blank" rel="noopener">
         ${itemIconHtml(prof.tool, prof.toolIcon)}
         <div class="gear-main">
           <div class="gear-slot">Herramienta ${toolBadge}</div>
@@ -163,13 +164,13 @@
           <div class="gear-en">${prof.tool.en}</div>
           <div class="gear-stats">${toolStats}</div>
         </div>
-        ${wowheadLink(prof.tool.id, prof.tool.es)}
-      </article>`
+        <span class="gear-link" aria-hidden="true">🔗</span>
+      </a>`
     ];
 
     prof.accessories.forEach((acc, index) => {
       cards.push(`
-        <article class="gear-card">
+        <a class="gear-card" href="${wowheadUrl(acc.id)}" target="_blank" rel="noopener">
           ${itemIconHtml(acc, slotIcon(acc.slot))}
           <div class="gear-main">
             <div class="gear-slot">Accesorio ${index + 1} · ${acc.slot} <span class="badge">Stats fijos</span></div>
@@ -177,8 +178,8 @@
             <div class="gear-en">${acc.en}</div>
             <div class="gear-stats">${statChips(acc.stats)}</div>
           </div>
-          ${wowheadLink(acc.id, acc.es)}
-        </article>`);
+          <span class="gear-link" aria-hidden="true">🔗</span>
+        </a>`);
     });
 
     $("#gearList").innerHTML = cards.join("");
@@ -371,7 +372,7 @@
     renderQuickCards();
     renderStatCards();
     renderMasterTable();
-    selectProfession("desuello");
+    selectProfession(state.profession);
 
     $("#objectiveGrid").addEventListener("click", event => {
       const btn = event.target.closest("[data-obj]");
