@@ -232,7 +232,10 @@ h1 {
   color: var(--stat);
   font-size: .72rem;
   font-weight: 700;
+  text-decoration: none;
+  transition: filter .2s, border-color .2s;
 }
+.hero-chip:hover { filter: brightness(1.15); border-color: var(--stat); }
 .hero-note { margin: 14px 0 0; color: var(--muted-2); font-size: .72rem; }
 
 /* Pasos de uso */
@@ -505,9 +508,15 @@ h1 {
   border-radius: 13px;
   background: rgba(255, 255, 255, .022);
   color: var(--text);
-  text-decoration: none;
   transition: border-color .2s, background .2s, transform .2s;
 }
+.gear-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+.gear-card .stat-chip { position: relative; z-index: 2; }
 .gear-card:hover { transform: translateY(-1px); border-color: rgba(212, 175, 55, .28); background: rgba(212, 175, 55, .035); }
 .gear-card.tool {
   border-color: rgba(212, 175, 55, .25);
@@ -603,6 +612,9 @@ h1 {
   color: var(--stat);
   font-size: .7rem;
   font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: filter .2s, border-color .2s;
   line-height: 1.25;
   white-space: nowrap;
 }
@@ -614,6 +626,7 @@ h1 {
   text-align: left;
   box-shadow: 0 0 26px color-mix(in srgb, var(--stat) 16%, transparent);
 }
+a.stat-chip:hover { filter: brightness(1.15); border-color: var(--stat); }
 .muted-chip { color: var(--muted-2); font-size: .68rem; font-style: italic; }
 
 .objective-grid {
@@ -790,6 +803,13 @@ h1 {
   border-top: 2px solid var(--stat);
   border-radius: 15px;
   background: linear-gradient(160deg, rgba(24, 28, 38, .8), rgba(11, 14, 20, .92));
+  scroll-margin-top: 250px; /* Deja visible el encabezado "Qué hace cada stat". */
+  transition: border-color .25s, box-shadow .25s;
+}
+.stat-card:target {
+  border-color: rgba(212, 175, 55, .55);
+  border-top-color: var(--stat);
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, .35), 0 18px 46px rgba(0, 0, 0, .35);
 }
 .stat-icon { font-size: 1.5rem; line-height: 1; }
 .stat-card h3 { margin: 8px 0 0; font-family: var(--font-display); font-size: 1.05rem; color: var(--stat); }

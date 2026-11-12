@@ -28,7 +28,7 @@
   function statChips(stats) {
     return Object.entries(stats).map(([key, value]) => {
       const s = STATS[key];
-      return `<span class="stat-chip" style="--stat:${s.color}">${s.icon} ${s.short || s.name} <b>+${value}</b></span>`;
+      return `<a class="stat-chip" href="#stat-${key}" style="--stat:${s.color}" title="Ver qué hace ${s.name}">${s.icon} ${s.short || s.name} <b>+${value}</b></a>`;
     }).join("");
   }
   function statText(stats) {
@@ -118,7 +118,7 @@
 
   function renderStatCards() {
     $("#statGrid").innerHTML = Object.entries(STATS).map(([key, s]) => `
-      <article class="stat-card" style="--stat:${s.color}">
+      <article class="stat-card" id="stat-${key}" style="--stat:${s.color}">
         <span class="stat-icon" aria-hidden="true">${s.icon}</span>
         <h3>${s.name}</h3>
         <p class="stat-en">${s.en}</p>
@@ -132,7 +132,7 @@
       return `
         <tr>
           <td>${row.goal}</td>
-          <td><span class="stat-chip" style="--stat:${s.color}">${s.icon} ${s.name}</span></td>
+          <td><a class="stat-chip" href="#stat-${row.missive}" style="--stat:${s.color}" title="Ver qué hace ${s.name}">${s.icon} ${s.name}</a></td>
           <td>${row.enchant}</td>
         </tr>`;
     }).join("");
@@ -149,14 +149,15 @@
     $("#profCategory").textContent = categoryLabel(prof.category);
 
     const toolStats = prof.tool.random
-      ? `<span class="stat-chip" style="--stat:${STATS[obj.toolStat].color}">${STATS[obj.toolStat].icon} ${STATS[obj.toolStat].name} <b>+${prof.tool.random}</b></span>`
+      ? `<a class="stat-chip" href="#stat-${obj.toolStat}" style="--stat:${STATS[obj.toolStat].color}" title="Ver qué hace ${STATS[obj.toolStat].name}">${STATS[obj.toolStat].icon} ${STATS[obj.toolStat].name} <b>+${prof.tool.random}</b></a>`
       : statChips(prof.tool.stats);
     const toolBadge = prof.tool.random
       ? `<span class="badge badge-gold">Personalizable</span>`
       : `<span class="badge">Stats fijos</span>`;
 
     const cards = [
-      `<a class="gear-card tool" href="${wowheadUrl(prof.tool.id)}" target="_blank" rel="noopener">
+      `<article class="gear-card tool">
+        <a class="gear-card-link" href="${wowheadUrl(prof.tool.id)}" target="_blank" rel="noopener" aria-label="Ver ${prof.tool.es} en Wowhead esMX"></a>
         ${itemIconHtml(prof.tool, prof.toolIcon)}
         <div class="gear-main">
           <div class="gear-slot">Herramienta ${toolBadge}</div>
@@ -165,12 +166,13 @@
           <div class="gear-stats">${toolStats}</div>
         </div>
         <span class="gear-link" aria-hidden="true">🔗</span>
-      </a>`
+      </article>`
     ];
 
     prof.accessories.forEach((acc, index) => {
       cards.push(`
-        <a class="gear-card" href="${wowheadUrl(acc.id)}" target="_blank" rel="noopener">
+        <article class="gear-card">
+          <a class="gear-card-link" href="${wowheadUrl(acc.id)}" target="_blank" rel="noopener" aria-label="Ver ${acc.es} en Wowhead esMX"></a>
           ${itemIconHtml(acc, slotIcon(acc.slot))}
           <div class="gear-main">
             <div class="gear-slot">Accesorio ${index + 1} · ${acc.slot} <span class="badge">Stats fijos</span></div>
@@ -179,7 +181,7 @@
             <div class="gear-stats">${statChips(acc.stats)}</div>
           </div>
           <span class="gear-link" aria-hidden="true">🔗</span>
-        </a>`);
+        </article>`);
     });
 
     $("#gearList").innerHTML = cards.join("");
@@ -219,7 +221,7 @@
       }).join("");
 
     const toolRow = prof.tool.random
-      ? `<span class="stat-chip" style="--stat:${priority.color}">${priority.icon} Misiva: ${priority.name}</span><span class="badge">+${prof.tool.random} base</span>`
+      ? `<a class="stat-chip" href="#stat-${obj.priority}" style="--stat:${priority.color}" title="Ver qué hace ${priority.name}">${priority.icon} Misiva: ${priority.name}</a><span class="badge">+${prof.tool.random} base</span>`
       : `<span class="badge">Stats fijos</span>${statChips(prof.tool.stats)}<span class="muted-chip">No usa misiva</span>`;
 
     const enchants = obj.enchants.map(enchant => `
@@ -251,7 +253,7 @@
         </div>
         <div class="priority">
           <small>Prioridad</small>
-          <span class="stat-chip big" style="--stat:${priority.color}">${priority.icon} ${priority.name}</span>
+          <a class="stat-chip big" href="#stat-${obj.priority}" style="--stat:${priority.color}" title="Ver qué hace ${priority.name}">${priority.icon} ${priority.name}</a>
           ${obj.priorityNote ? `<small class="priority-note">${obj.priorityNote}</small>` : ""}
         </div>
       </div>
