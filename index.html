@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#07090d">
+  <title>Midnight 12.1.5 BiS · Asesor de profesiones</title>
+  <meta name="description" content="Guía visual de WoW: Midnight 12.1.5. Elige tu profesión y tu objetivo para saber qué atributo poner en la herramienta, qué encantamiento usar y qué aportan tus accesorios.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700;800&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090d;
+      --bg-2: #0b0f16;
+      --panel: rgba(19, 23, 32, .86);
+      --panel-2: rgba(11, 14, 20, .94);
+      --line: rgba(212, 175, 55, .18);
+      --line-strong: rgba(212, 175, 55, .46);
+      --gold: #d4af37;
+      --gold-2: #f4dc8a;
+      --gold-3: #8a6a1f;
+      --text: #ece6d6;
+      --muted: #aaa294;
+      --muted-2: #777165;
+      --green: #8ee06a;
+      --purple: #c9a2ff;
+      --orange: #ffb26b;
+      --teal: #6fe0c0;
+      --violet: #b79bff;
+      --blue: #7cc7ff;
+      --goldstat: #f0c75e;
+      --radius: 18px;
+      --shadow: 0 24px 70px rgba(0, 0, 0, .55);
+      --font-display: "Cinzel", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      --font-body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(212, 175, 55, .10), transparent 60%),
+        radial-gradient(1000px 600px at 110% 4%, rgba(110, 70, 200, .10), transparent 60%),
+        linear-gradient(180deg, #07090d 0%, #0b0f16 46%, #07090d 100%);
+      background-attachment: fixed;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .35;
+      background-image: radial-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px);
+      background-size: 3px 3px;
+      mix-blend-mode: overlay;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 0%, transparent 0 40%, rgba(0, 0, 0, .28) 100%);
+    }
+    ::selection { background: rgba(212, 175, 55, .35); color: #fff; }
+    a { color: var(--gold-2); }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px clamp(18px, 5vw, 64px);
+      background: rgba(7, 9, 13, .78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212, 175, 55, .14);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      text-decoration: none;
+      min-width: 0;
+    }
+    .brand-mark {
+      font-size: 1.55rem;
+      filter: drop-shadow(0 0 12px rgba(212, 175, 55, .5));
+    }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
+    .brand-text strong {
+      font-family: var(--font-display);
+      font-size: .82rem;
+      letter-spacing: .18em;
+      color: var(--gold-2);
+      white-space: nowrap;
+    }
+    .brand-text small {
+      font-size: .62rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      white-space: nowrap;
+    }
+    .topnav { display: flex; gap: 4px; }
+    .topnav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .82rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .topnav a:hover { color: var(--gold-2); border-color: var(--line); background: rgba(212, 175, 55, .06); }
+
+    main { position: relative; z-index: 1; }
+
+    .hero {
+      position: relative;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(46px, 8vw, 96px) clamp(18px, 5vw, 48px) clamp(34px, 5vw, 58px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(0, .82fr);
+      gap: clamp(28px, 5vw, 58px);
+      align-items: center;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: min(560px, 84%);
+      height: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, .38), transparent);
+    }
+    .eyebrow, .section-kicker {
+      margin: 0 0 12px;
+      font-size: .67rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5.1vw, 4.5rem);
+      line-height: 1.02;
+      letter-spacing: -.01em;
+      background: linear-gradient(180deg, #fff6cf 0%, #e7c766 44%, #9a7626 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 0 rgba(0, 0, 0, .2);
+    }
+    .hero-sub {
+      max-width: 58ch;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(.98rem, 1.5vw, 1.08rem);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin: 26px 0 22px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 11px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: .86rem;
+      letter-spacing: .02em;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
+    }
+    .btn-gold {
+      color: #1a1406;
+      background: linear-gradient(180deg, #f7e7a8, #d4af37 56%, #a37e21);
+      border-color: #f0d27a;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, .22), inset 0 1px 0 rgba(255, 255, 255, .5);
+    }
+    .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 14px 38px rgba(212, 175, 55, .32), inset 0 1px 0 rgba(255, 255, 255, .5); }
+    .btn-ghost {
+      color: var(--text);
+      background: rgba(255, 255, 255, .03);
+      border-color: var(--line);
+    }
+    .btn-ghost:hover { border-color: var(--line-strong); background: rgba(212, 175, 55, .06); transform: translateY(-1px); }
+    .btn-small { padding: 8px 12px; font-size: .76rem; border-radius: 9px; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 17px; }
+    .patch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 175, 55, .3);
+      background: rgba(212, 175, 55, .07);
+      color: var(--gold-2);
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .patch-badge.muted { border-color: rgba(255, 255, 255, .1); background: rgba(255, 255, 255, .03); color: var(--muted); }
+    .hero-stats { display: flex; flex-wrap: wrap; gap: 7px; }
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-color: color-mix(in srgb, var(--stat) 45%, transparent);
+      background: rgba(255, 255, 255, .03);
+      background: color-mix(in srgb, var(--stat) 9%, transparent);
+      color: var(--stat);
+      font-size: .72rem;
+      font-weight: 700;
+    }
+    .hero-note { margin: 14px 0 0; color: var(--muted-2); font-size: .72rem; }
+
+    .steps-wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(18px, 5vw, 48px); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, .16);
+      border-radius: 14px;
+      background: rgba(212, 175, 55, .12);
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 15px 17px;
+      background: linear-gradient(160deg, rgba(24, 28, 38, .92), rgba(11, 14, 20, .96));
+    }
+    .step > span {
+      flex: 0 0 auto;
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(212, 175, 55, .4);
+      border-radius: 50%;
+      color: var(--gold-2);
+      font-family: var(--font-display);
+      font-size: .75rem;
+    }
+    .step strong { display: block; color: var(--text); font-size: .82rem; line-height: 1.3; }
+    .step small { display: block; margin-top: 2px; color: var(--muted-2); font-size: .69rem; line-height: 1.4; }
+
+    .hero-art { display: flex; justify-content: center; }
+    .crest {
+      position: relative;
+      width: min(350px, 68vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+    }
+    .crest-orbit {
+      position: absolute;
+      inset: -6%;
+      border-radius: 50%;
+      opacity: .85;
+      background: repeating-conic-gradient(from 0deg,
+        rgba(212, 175, 55, .34) 0deg 2.4deg,
+        transparent 2.4deg 30deg);
+      -webkit-mask: radial-gradient(circle, transparent 64%, #000 65%);
+      mask: radial-gradient(circle, transparent 64%, #000 65%);
+      animation: spin 60s linear infinite;
+    }
+    .crest-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, .26);
+      box-shadow: inset 0 0 90px rgba(212, 175, 55, .06), 0 30px 80px rgba(0, 0, 0, .55);
+    }
+    .crest-ring::before {
+      content: "";
+      position: absolute;
+      inset: 7%;
+      border-radius: 50%;
+      border: 1px dashed rgba(212, 175, 55, .2);
+    }
+    .crest-ring::after {
+      content: "";
+      position: absolute;
+      inset: 18%;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, .3);
+      background:
+        radial-gradient(circle at 50% 32%, rgba(212, 175, 55, .2), transparent 52%),
+        radial-gradient(circle, #141923, #080a0e 72%);
+      box-shadow: inset 0 0 50px rgba(212, 175, 55, .08);
+    }
+    .crest-core {
+      position: relative;
+      z-index: 2;
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 8vw, 5.4rem);
+      letter-spacing: .06em;
+      color: var(--gold-2);
+      text-align: center;
+      text-shadow: 0 0 34px rgba(212, 175, 55, .35), 0 1px 0 rgba(0, 0, 0, .6);
+    }
+    .crest-core span {
+      display: block;
+      margin-top: -7px;
+      font-family: var(--font-body);
+      font-size: .61rem;
+      font-weight: 800;
+      letter-spacing: .34em;
+      color: var(--muted);
+      text-shadow: none;
+    }
+    .crest-rune {
+      position: absolute;
+      z-index: 3;
+      color: var(--gold);
+      opacity: .62;
+      font-size: 1.15rem;
+      text-shadow: 0 0 14px rgba(212, 175, 55, .45);
+    }
+    .rune-1 { top: 1%; left: 50%; transform: translateX(-50%); }
+    .rune-2 { right: 1%; top: 50%; transform: translateY(-50%); }
+    .rune-3 { bottom: 1%; left: 50%; transform: translateX(-50%); }
+    .rune-4 { left: 1%; top: 50%; transform: translateY(-50%); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .section {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: clamp(38px, 6vw, 74px) clamp(18px, 5vw, 48px);
+    }
+    .section-head { max-width: 780px; margin-bottom: 26px; }
+    .section-head h2 {
+      margin: 0 0 9px;
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3.1vw, 2.65rem);
+      line-height: 1.12;
+      color: var(--text);
+    }
+    .section-head p { margin: 0; color: var(--muted); }
+    .section-head .section-kicker { margin-bottom: 9px; }
+
+    .profession-picker { display: flex; flex-direction: column; gap: 13px; margin-bottom: 22px; }
+    .tab-group { display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+    .tab-label {
+      min-width: 104px;
+      padding-top: 9px;
+      font-size: .63rem;
+      font-weight: 700;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+    .tabs { display: flex; flex-wrap: wrap; gap: 7px; }
+    .prof-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .09);
+      background: rgba(255, 255, 255, .025);
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 600;
+      transition: transform .18s, border-color .18s, background .18s, color .18s, box-shadow .18s;
+    }
+    .prof-tab .emoji { font-size: 1.02rem; line-height: 1; }
+    .prof-tab:hover { transform: translateY(-1px); border-color: var(--line-strong); color: var(--text); }
+    .prof-tab[aria-pressed="true"] {
+      border-color: var(--gold);
+      background: linear-gradient(180deg, rgba(212, 175, 55, .2), rgba(212, 175, 55, .07));
+      color: var(--gold-2);
+      box-shadow: 0 0 0 1px rgba(212, 175, 55, .16), 0 8px 24px rgba(0, 0, 0, .25);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin: 0 0 16px;
+      color: var(--muted-2);
+      font-size: .74rem;
+    }
+    .legend > span { display: inline-flex; align-items: center; gap: 7px; }
+
+    .advisor-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-top-color: rgba(212, 175, 55, .35);
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, rgba(24, 28, 38, .92), rgba(11, 14, 20, .97));
+      box-shadow: var(--shadow);
+    }
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(620px 220px at 0% 0%, rgba(212, 175, 55, .08), transparent 70%);
+    }
+    .panel::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      pointer-events: none;
+      border: 1px solid rgba(212, 175, 55, .055);
+      border-radius: 13px;
+    }
+    .panel-head {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+    .prof-title { display: flex; align-items: center; gap: 13px; min-width: 0; }
+    .prof-icon {
+      position: relative;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, .45);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #2a2414, #0b0e14);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, .07), inset 0 0 18px rgba(0, 0, 0, .55);
+    }
+    .prof-icon img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .prof-icon .fallback { font-size: 1.15rem; line-height: 1; }
+    .prof-icon.sm { width: 22px; height: 22px; }
+    .prof-icon.sm .fallback { font-size: .8rem; }
+    .prof-icon.md { width: 42px; height: 42px; }
+    .prof-icon.lg { width: 54px; height: 54px; border-radius: 15px; }
+    .prof-icon.lg .fallback { font-size: 1.55rem; }
+    .prof-icon.lg img { border-radius: 14px; }
+    .prof-title h3 { margin: 0 0 4px; font-family: var(--font-display); font-size: 1.3rem; line-height: 1.15; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .03);
+      color: var(--muted-2);
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .badge-gold { border-color: rgba(212, 175, 55, .38); background: rgba(212, 175, 55, .08); color: var(--gold-2); }
+
+    .gear-list { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 9px; padding: 14px 16px 8px; }
+    .gear-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 11px;
+      padding: 11px 13px;
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, .022);
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+    .gear-card:hover { transform: translateY(-1px); border-color: rgba(212, 175, 55, .28); background: rgba(212, 175, 55, .035); }
+    .gear-card.tool {
+      border-color: rgba(212, 175, 55, .25);
+      background: linear-gradient(180deg, rgba(212, 175, 55, .075), rgba(255, 255, 255, .018));
+    }
+    .gear-icon {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, .22);
+      border-radius: 11px;
+      background: radial-gradient(circle at 30% 20%, rgba(212, 175, 55, .12), rgba(0, 0, 0, .3));
+      font-size: 1.28rem;
+    }
+    .gear-icon img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gear-icon .fallback { line-height: 1; }
+    .gear-main { min-width: 0; padding-right: 16px; }
+    .gear-slot {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px;
+      color: var(--muted-2);
+      font-size: .59rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .gear-slot .badge { padding: 2px 6px; font-size: .52rem; letter-spacing: .06em; }
+    .gear-name { margin: 3px 0 1px; color: var(--text); font-size: .91rem; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
+    .gear-en { color: var(--muted-2); font-size: .69rem; font-style: italic; overflow-wrap: anywhere; }
+    .gear-stats { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+    .gear-link {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      color: var(--muted-2);
+      font-size: .78rem;
+      text-decoration: none;
+      opacity: .7;
+      transition: color .2s, opacity .2s;
+    }
+    .gear-link:hover { color: var(--gold-2); opacity: 1; }
+    .gear-summary {
+      position: relative;
+      z-index: 1;
+      margin: 4px 16px 14px;
+      padding: 11px 13px;
+      border: 1px solid rgba(212, 175, 55, .17);
+      border-radius: 12px;
+      background: rgba(212, 175, 55, .035);
+    }
+    .gear-summary > span {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted-2);
+      font-size: .57rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .gear-summary .gear-stats { margin-top: 0; }
+    .micro-note {
+      position: relative;
+      z-index: 1;
+      margin: 2px 0 0;
+      padding: 0 20px 18px;
+      color: var(--muted-2);
+      font-size: .74rem;
+      line-height: 1.55;
+    }
+
+    .stat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-color: color-mix(in srgb, var(--stat) 45%, transparent);
+      background: rgba(255, 255, 255, .03);
+      background: color-mix(in srgb, var(--stat) 9%, transparent);
+      color: var(--stat);
+      font-size: .7rem;
+      font-weight: 700;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+    .stat-chip b { font-weight: 800; }
+    .stat-chip.big {
+      padding: 7px 12px;
+      font-size: .84rem;
+      white-space: normal;
+      text-align: left;
+      box-shadow: 0 0 26px color-mix(in srgb, var(--stat) 16%, transparent);
+    }
+    .muted-chip { color: var(--muted-2); font-size: .68rem; font-style: italic; }
+
+    .objective-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 7px;
+      padding: 15px 18px 0;
+    }
+    .objective-btn {
+      padding: 10px 12px;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 11px;
+      background: rgba(255, 255, 255, .025);
+      color: var(--text);
+      transition: border-color .18s, background .18s, transform .18s;
+    }
+    .objective-btn:hover { transform: translateY(-1px); border-color: var(--line-strong); background: rgba(212, 175, 55, .045); }
+    .objective-btn strong { display: block; font-size: .82rem; line-height: 1.25; }
+    .objective-btn small { display: block; margin-top: 3px; color: var(--muted-2); font-size: .67rem; line-height: 1.35; }
+    .objective-btn[aria-pressed="true"] {
+      border-color: var(--gold);
+      background: linear-gradient(180deg, rgba(212, 175, 55, .16), rgba(212, 175, 55, .045));
+      box-shadow: inset 0 0 0 1px rgba(212, 175, 55, .13);
+    }
+    .objective-btn[aria-pressed="true"] strong { color: var(--gold-2); }
+
+    .build-content { position: relative; z-index: 1; padding: 16px 18px 0; }
+    .build-hero {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+    }
+    .build-hero .section-kicker { margin-bottom: 5px; }
+    .build-hero h3 { margin: 0 0 2px; font-family: var(--font-display); font-size: 1.38rem; line-height: 1.15; }
+    .build-hero p { margin: 0; color: var(--muted); font-size: .8rem; }
+    .priority { flex: 0 0 auto; text-align: right; max-width: 48%; }
+    .priority > small {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted-2);
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .priority-note { margin-top: 5px; color: var(--muted-2); font-size: .62rem; font-style: italic; letter-spacing: 0; text-transform: none; }
+
+    .build-rows { display: flex; flex-direction: column; gap: 9px; padding: 14px 0 12px; }
+    .build-row { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 10px; align-items: start; }
+    .row-label {
+      padding-top: 5px;
+      color: var(--muted-2);
+      font-size: .59rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .row-content { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-width: 0; }
+    .enchant-option {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 1px;
+      padding: 6px 9px;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, .025);
+    }
+    .enchant-option small { color: var(--muted-2); font-size: .55rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+    .enchant-option strong { color: var(--text); font-size: .74rem; font-weight: 600; line-height: 1.25; }
+    .acc-list { flex-direction: column; align-items: stretch; gap: 7px; width: 100%; }
+    .acc-line { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+    .acc-name { color: var(--muted); font-size: .72rem; }
+
+    .profile { padding: 11px 0 2px; border-top: 1px solid rgba(255, 255, 255, .07); }
+    .profile-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 9px; }
+    .profile-head span { color: var(--muted-2); font-size: .59rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .profile-head small { color: var(--muted-2); font-size: .6rem; }
+    .bars { display: flex; flex-direction: column; gap: 7px; }
+    .bar-row { display: grid; grid-template-columns: 132px minmax(0, 1fr) 42px; gap: 9px; align-items: center; }
+    .bar-name { display: flex; align-items: center; gap: 5px; color: var(--muted); font-size: .71rem; }
+    .bar-track { height: 7px; overflow: hidden; border-radius: 999px; background: rgba(255, 255, 255, .06); }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--stat);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--stat) 55%, #000), var(--stat));
+      box-shadow: 0 0 12px color-mix(in srgb, var(--stat) 30%, transparent);
+      transition: width .4s ease;
+    }
+    .bar-value { color: var(--stat); font-size: .72rem; font-weight: 800; text-align: right; font-variant-numeric: tabular-nums; }
+    .profile-empty { margin: 0; color: var(--muted-2); font-size: .75rem; }
+
+    .tip {
+      margin: 12px 0 0;
+      padding: 10px 12px;
+      border: 1px solid rgba(212, 175, 55, .17);
+      border-radius: 10px;
+      background: rgba(212, 175, 55, .045);
+      color: var(--muted);
+      font-size: .76rem;
+      line-height: 1.55;
+    }
+    .tip strong { color: var(--gold-2); }
+    .quick-answer {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin: 12px 0 0;
+      padding: 10px 12px;
+      border: 1px solid rgba(212, 175, 55, .24);
+      border-radius: 10px;
+      background: linear-gradient(90deg, rgba(212, 175, 55, .1), rgba(212, 175, 55, .025));
+    }
+    .quick-answer > span { font-size: 1.05rem; line-height: 1.35; }
+    .quick-answer p { margin: 0; color: var(--text); font-size: .79rem; line-height: 1.5; }
+    .quick-answer strong { color: var(--gold-2); }
+    .build-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .copy-feedback { color: var(--muted-2); font-size: .7rem; }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+      gap: 11px;
+    }
+    .quick-card {
+      position: relative;
+      overflow: hidden;
+      padding: 15px;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 15px;
+      background: linear-gradient(160deg, rgba(24, 28, 38, .82), rgba(11, 14, 20, .92));
+      color: var(--text);
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .quick-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      background: radial-gradient(300px 130px at 100% 0%, rgba(212, 175, 55, .1), transparent 70%);
+      transition: opacity .2s;
+    }
+    .quick-card:hover { transform: translateY(-2px); border-color: rgba(212, 175, 55, .35); box-shadow: 0 16px 42px rgba(0, 0, 0, .35); }
+    .quick-card:hover::after { opacity: 1; }
+    .quick-top { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
+    .quick-name { font-family: var(--font-display); font-size: 1rem; line-height: 1.2; }
+    .quick-cat {
+      margin-left: auto;
+      color: var(--muted-2);
+      font-size: .55rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .quick-line { display: block; margin-top: 4px; color: var(--muted); font-size: .72rem; line-height: 1.45; }
+    .quick-line strong { color: var(--text); font-weight: 600; }
+    .quick-go { display: inline-block; margin-top: 9px; color: var(--gold-2); font-size: .69rem; font-weight: 700; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 11px; }
+    .stat-card {
+      padding: 17px;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-top: 2px solid var(--stat);
+      border-radius: 15px;
+      background: linear-gradient(160deg, rgba(24, 28, 38, .8), rgba(11, 14, 20, .92));
+    }
+    .stat-icon { font-size: 1.5rem; line-height: 1; }
+    .stat-card h3 { margin: 8px 0 0; font-family: var(--font-display); font-size: 1.05rem; color: var(--stat); }
+    .stat-en { margin: 1px 0 0; color: var(--muted-2); font-size: .67rem; font-style: italic; }
+    .stat-card p:last-child { margin: 9px 0 0; color: var(--muted); font-size: .79rem; }
+
+    .callout {
+      margin-top: 16px;
+      padding: 13px 15px;
+      border: 1px solid rgba(212, 175, 55, .18);
+      border-radius: 11px;
+      background: rgba(212, 175, 55, .045);
+      color: var(--muted);
+      font-size: .81rem;
+      line-height: 1.6;
+    }
+    .callout strong { color: var(--gold-2); }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 15px;
+      background: rgba(11, 14, 20, .7);
+    }
+    table { width: 100%; min-width: 640px; border-collapse: collapse; }
+    th, td { padding: 11px 13px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+    th {
+      background: rgba(255, 255, 255, .03);
+      color: var(--muted-2);
+      font-size: .59rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    td { color: var(--muted); font-size: .79rem; }
+    td:first-child { color: var(--text); font-weight: 600; }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: rgba(212, 175, 55, .025); }
+
+    .footer {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 26px clamp(18px, 5vw, 48px) 46px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255, 255, 255, .06);
+      color: var(--muted-2);
+      font-size: .72rem;
+      position: relative;
+      z-index: 1;
+    }
+    .footer strong { color: var(--gold-2); }
+    .footer p { margin: 0; max-width: 720px; }
+    .footer .fine { color: var(--muted-2); }
+
+    noscript {
+      display: block;
+      max-width: 900px;
+      margin: 24px auto;
+      padding: 14px;
+      border: 1px solid #8a5a2a;
+      border-radius: 10px;
+      background: #241a10;
+      color: #f0d8b0;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-art { order: -1; }
+      .crest { width: min(240px, 55vw); }
+      .advisor-grid { grid-template-columns: 1fr; }
+      .priority { max-width: none; }
+    }
+    @media (max-width: 680px) {
+      .topnav { display: none; }
+      .hero { padding-top: 34px; }
+      .hero-art { display: none; }
+      .steps { grid-template-columns: 1fr; }
+      .tab-group { gap: 7px; }
+      .tab-label { min-width: 100%; padding-top: 0; }
+      .objective-grid { grid-template-columns: 1fr; }
+      .build-hero { flex-direction: column; }
+      .priority { text-align: left; }
+      .build-row { grid-template-columns: 1fr; gap: 4px; }
+      .row-label { padding-top: 0; }
+      .bar-row { grid-template-columns: 106px minmax(0, 1fr) 36px; }
+      .panel-head { padding: 15px 16px; }
+      .gear-list { padding: 12px 13px 6px; }
+      .micro-note { padding: 0 16px 16px; }
+      .build-content { padding: 14px 14px 0; }
+      .objective-grid { padding: 13px 14px 0; }
+      .footer { padding-bottom: 34px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Ir al inicio">
+      <span class="brand-mark" aria-hidden="true">⚔️</span>
+      <span class="brand-text">
+        <strong>MIDNIGHT · 12.1.5</strong>
+        <small>Guía de profesiones · esMX</small>
+      </span>
+    </a>
+    <nav class="topnav" aria-label="Navegación principal">
+      <a href="#advisor">Asesor</a>
+      <a href="#vista-rapida">Profesiones</a>
+      <a href="#atributos">Atributos</a>
+      <a href="#maestra">Tabla maestra</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">World of Warcraft · Midnight</p>
+        <div class="hero-badges" aria-label="Versión de la guía">
+          <span class="patch-badge">🌙 Parche 12.1.5</span>
+          <span class="patch-badge muted">🌎 esMX</span>
+          <span class="patch-badge muted">Solo Midnight</span>
+        </div>
+        <h1>La build correcta para tu profesión</h1>
+        <p class="hero-sub">Elige tu profesión y lo que quieres hacer. Te decimos qué atributo poner en la herramienta, qué encantamiento usar y qué aportan tus accesorios. Sin adivinar y sin gastar oro de más.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#advisor">Crear mi build</a>
+          <a class="btn btn-ghost" href="#maestra">Ver tabla maestra</a>
+        </div>
+        <div class="hero-stats" aria-label="Atributos de recolección">
+          <span class="hero-chip" style="--stat:#8ee06a">🌾 Delicadeza</span>
+          <span class="hero-chip" style="--stat:#c9a2ff">👁️ Percepción</span>
+          <span class="hero-chip" style="--stat:#ffb26b">🏃 Destreza</span>
+        </div>
+        <p class="hero-note">🌙 Esta página no mezcla expansiones: objetos, encantamientos y misivas son de Midnight 12.1.5.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="crest">
+          <div class="crest-orbit"></div>
+          <div class="crest-ring"></div>
+          <div class="crest-core">BiS<span>12.1.5</span></div>
+          <span class="crest-rune rune-1">✦</span>
+          <span class="crest-rune rune-2">✧</span>
+          <span class="crest-rune rune-3">⟡</span>
+          <span class="crest-rune rune-4">✶</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps-wrap" aria-label="Cómo usar la guía">
+      <div class="steps">
+        <div class="step"><span>1</span><div><strong>Elige tu profesión</strong><small>13 profesiones, solo de Midnight 12.1.5.</small></div></div>
+        <div class="step"><span>2</span><div><strong>Elige tu objetivo</strong><small>Farmear, fabricar o subir calidad.</small></div></div>
+        <div class="step"><span>3</span><div><strong>Copia la build</strong><small>Herramienta, encantamiento y accesorios.</small></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="advisor">
+      <div class="section-head">
+        <p class="section-kicker">01 · Asesor de build</p>
+        <h2>Elige profesión y objetivo</h2>
+        <p>La herramienta se personaliza con misiva y encantamiento. Los accesorios traen sus stats fijos: elige el par recomendado y no pierdas oro intentando cambiarlos.</p>
+      </div>
+
+      <div id="professionPicker" class="profession-picker" role="group" aria-label="Elegir profesión"></div>
+
+      <div class="legend">
+        <span><span class="badge badge-gold">Personalizable</span> La herramienta acepta misiva.</span>
+        <span><span class="badge">Stats fijos</span> El accesorio no cambia sus atributos.</span>
+        <span><span class="badge">🔗</span> Abre el objeto en Wowhead esMX.</span>
+      </div>
+
+      <div class="advisor-grid">
+        <aside class="panel gear-panel" aria-live="polite">
+          <div class="panel-head">
+            <div class="prof-title">
+              <span class="prof-icon lg" id="profEmoji" aria-hidden="true">🔪</span>
+              <div>
+                <h3 id="profName">Desuello</h3>
+                <span class="badge badge-gold" id="profCategory">Recolección</span>
+              </div>
+            </div>
+            <span class="badge">Equipo BiS</span>
+          </div>
+          <div id="gearList" class="gear-list"></div>
+          <div class="gear-summary">
+            <span>Stats fijos del par de accesorios</span>
+            <div id="gearSummaryStats" class="gear-stats"></div>
+          </div>
+          <p class="micro-note">🛠️ Solo la herramienta se personaliza con misiva. Los accesorios no cambian sus stats: si quieres otro atributo, cambia de accesorio, no de misiva.</p>
+        </aside>
+
+        <div class="panel build-panel" aria-live="polite">
+          <div class="panel-head">
+            <div>
+              <p class="section-kicker">Tu objetivo</p>
+              <h3 style="margin:0;font-family:var(--font-display);font-size:1.3rem;">¿Qué quieres optimizar?</h3>
+            </div>
+            <span class="badge badge-gold">Build</span>
+          </div>
+          <div id="objectiveGrid" class="objective-grid" role="group" aria-label="Elegir objetivo"></div>
+          <div id="buildContent" class="build-content"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="vista-rapida">
+      <div class="section-head">
+        <p class="section-kicker">02 · Profesiones de Midnight 12.1.5</p>
+        <h2>Las 13 profesiones de un vistazo</h2>
+        <p>Solo Midnight 12.1.5: sin expansiones anteriores ni recetas viejas. Mira qué stat va en la herramienta y qué suma el par de accesorios recomendado.</p>
+      </div>
+      <div id="quickGrid" class="quick-grid"></div>
+    </section>
+
+    <section class="section" id="atributos">
+      <div class="section-head">
+        <p class="section-kicker">03 · Los siete atributos</p>
+        <h2>Qué hace cada stat</h2>
+        <p>Los nombres están en español de México (esMX), con su equivalente en inglés para que los encuentres en Wowhead o en cualquier guía.</p>
+      </div>
+      <div id="statGrid" class="stat-grid"></div>
+      <div class="callout">
+        ⚠️ <strong>Ojo con la localización:</strong> en esMX, <strong>Inventiva</strong> es <em>Resourcefulness</em> (ahorra materiales) e <strong>Ingenio</strong> es <em>Ingenuity</em> (recupera Concentración). En español de España estos dos nombres aparecen invertidos.
+      </div>
+    </section>
+
+    <section class="section" id="maestra">
+      <div class="section-head">
+        <p class="section-kicker">04 · Tabla maestra</p>
+        <h2>Objetivo → misiva → encantamiento</h2>
+        <p>La combinación rápida para cuando ya sabes qué vas a fabricar o recolectar y solo necesitas confirmar los dos stats clave.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Objetivo</th>
+              <th>Misiva de herramienta</th>
+              <th>Encantamiento sugerido</th>
+            </tr>
+          </thead>
+          <tbody id="masterBody"></tbody>
+        </table>
+      </div>
+      <div class="callout">
+        💡 <strong>Ejemplo en esMX:</strong> las misivas se llaman <strong>Misiva thalassiana de inventiva</strong> (<em>Resourcefulness</em>) y <strong>Misiva thalassiana de ingenio</strong> (<em>Ingenuity</em>). Son componentes opcionales que reemplazan la estadística aleatoria de la herramienta por la que elijas. Los encantamientos llevan el prefijo <strong>Encantar herramienta:</strong>.
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>⚔️ <strong>Midnight 12.1.5 BiS</strong> · Hecho para la hermandad. Elige profesión, elige objetivo y comparte la build.</p>
+    <p class="fine">Nombres verificados en Wowhead esMX. Los valores pueden variar según calidad y nivel de objeto. Verifica siempre en el juego antes de comprar o fabricar.</p>
+  </footer>
+
+  <noscript>Activa JavaScript para usar el asesor interactivo de profesiones.</noscript>
+
+  <script>
+    const STATS = {
+      inventiva: { name: "Inventiva", en: "Resourcefulness", short: "Inventiva", icon: "🧺", color: "#6fe0c0", desc: "Ahorra materiales al fabricar." },
+      ingenio: { name: "Ingenio", en: "Ingenuity", short: "Ingenio", icon: "🔄", color: "#b79bff", desc: "Recupera parte de la Concentración gastada." },
+      multicraft: { name: "Fabricación múltiple", en: "Multicraft", short: "Fab. múltiple", icon: "📦", color: "#f0c75e", desc: "Posibilidad de fabricar unidades adicionales." },
+      speed: { name: "Velocidad de fabricación", en: "Crafting Speed", short: "Velocidad", icon: "⏱️", color: "#7cc7ff", desc: "Reduce el tiempo de fabricación." },
+      delicadeza: { name: "Delicadeza", en: "Finesse", short: "Delicadeza", icon: "🌾", color: "#8ee06a", desc: "Obtén más materiales al recolectar." },
+      percepcion: { name: "Percepción", en: "Perception", short: "Percepción", icon: "👁️", color: "#c9a2ff", desc: "Más probabilidad de encontrar materiales especiales." },
+      destreza: { name: "Destreza", en: "Deftness", short: "Destreza", icon: "🏃", color: "#ffb26b", desc: "Aumenta la velocidad de recolección." }
+    };
+
+    const CATEGORIES = {
+      crafting: { label: "Fabricación", emoji: "⚒️" },
+      gathering: { label: "Recolección", emoji: "🌿" },
+      secondary: { label: "Secundarias", emoji: "🍳" }
+    };
+
+    const PROFESSION_ICONS = {
+      alquimia: "trade_alchemy",
+      herreria: "trade_blacksmithing",
+      encantamiento: "trade_enchanting",
+      ingenieria: "trade_engineering",
+      inscripcion: "trade_inscription",
+      joyeria: "trade_jewelcrafting",
+      peleteria: "trade_leatherworking",
+      sastreria: "trade_tailoring",
+      herboristeria: "trade_herbalism",
+      mineria: "trade_mining",
+      desuello: "inv_misc_pelt_wolf_01",
+      cocina: "inv_misc_food_15",
+      pesca: "trade_fishing"
+    };
+
+    const ITEM_ICONS = {
+      259205: "inv_wand_1h_alchemybloodelf_b_01",
+      267052: "inv_armor_alchemy_b_01",
+      244812: "inv_armor_helm_alchemy_b_01",
+      246537: "inv_mace_1h_blacksmithbloodelf_b_01",
+      244813: "inv_tabard_blacksmithing_b_01_black",
+      259230: "inv_12_profession_blacksmithing_blacksmithstoolkit_purple",
+      244177: "inv_misc_1h_enchantingbloodelf_b_01",
+      267056: "inv_helm_armor_enchantinghat_b_01",
+      246527: "inv_offhand_1h_questbloodelf_b_01",
+      259183: "inv_mace_1h_engineeringbloodelf_b_01",
+      259171: "inv_helm_armor_engineering_b_01_orange",
+      244810: "inv_armor_engineering_b_01_orange",
+      259209: "inv_misc_1h_scribesquill_b_01_silver",
+      246525: "inv_12_profession_jewelcrafting_inscription_magnifyingglass_red",
+      246524: "inv_helm_armor_scribesspecs_b_01_silver",
+      259181: "inv_misc_1h_jewelclampbloodelf_b_01",
+      246526: "inv_helm_armor_jewelersspecs_b_01",
+      244814: "inv_tabard_jewelcrafting_b_01",
+      246536: "inv_knife_1h_leatherbloodelf_b_01",
+      244811: "inv_armor_leatherworking_b_01",
+      259232: "inv_12_profession_blacksmithing_leatherworkerstoolkit_purple",
+      259177: "inv_misc_1h_tailoringbloodelf_b_01",
+      267062: "inv_chest_armor_tailoringrobe_b_01",
+      259234: "inv_12_profession_blacksmithing_tailorstoolkit_purple",
+      246533: "inv_knife_1h_herbalismbloodelf_b_01",
+      267060: "inv_helm_armor_herbalism_b_01",
+      244807: "inv_cape_special_herbalism_b_01",
+      246534: "inv_axe_1h_miningbloodelf_b_01",
+      259175: "inv_cape_special_mining_c_01",
+      259173: "inv_helm_armor_mining_a_01",
+      246535: "inv_knife_1h_skinningbloodelf_b_01",
+      244808: "inv_cape_special_skinning_c_01",
+      244809: "inv_helm_armor_skinning_a_01",
+      259207: "inv_misc_1h_rollingpin_b_01",
+      267054: "inv_helm_armor_chefhat_b_01",
+      259179: "inv_misc_2h_fishingpolebloodelf_b_01",
+      239638: "inv_helm_armor_fishing_b_01"
+    };
+
+    const PROFESSIONS = [
+      {
+        id: "alquimia", name: "Alquimia", emoji: "⚗️", category: "crafting", toolIcon: "🪄", quickStat: "multicraft",
+        tool: { id: 259205, es: "Vara mezcladora de alquimista dorada", en: "Gilded Alchemist's Mixing Rod", random: 48 },
+        accessories: [
+          { id: 267052, es: "Overol de alquimia thalassiano", en: "Thalassian Alchemy Coveralls", slot: "Pecho", stats: { multicraft: 35 } },
+          { id: 244812, es: "Gorro mezclador de alquimista thalassiano", en: "Thalassian Alchemist's Mixcap", slot: "Cabeza", stats: { multicraft: 10 } }
+        ],
+        objectives: [
+          {
+            id: "mass", label: "Producción masiva", sub: "Pociones, frascos, ampollas y reactivos", priority: "multicraft", toolStat: "multicraft",
+            enchants: [{ when: "Producción normal", name: "Fabricación múltiple haranir" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "Tus accesorios ya suman <strong>+45 de Fabricación múltiple</strong>. La herramienta con Fabricación múltiple y el encantamiento haranir empujan la producción extra. Si usas Concentración, cambia el encantamiento a Ingenio ren'dorei."
+          },
+          {
+            id: "quality", label: "Máxima calidad con Concentración", sub: "Sube la calidad gastando Concentración", priority: "ingenio", toolStat: "ingenio",
+            enchants: [{ when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "Ingenio recupera parte de la Concentración. Los accesorios mantienen <strong>+45 de Fabricación múltiple</strong>, así que la herramienta es tu palanca principal para calidad."
+          }
+        ]
+      },
+      {
+        id: "herreria", name: "Herrería", emoji: "🔨", category: "crafting", toolIcon: "🔨", quickStat: "inventiva",
+        tool: { id: 246537, es: "Martillo de herrero forjado con sol", en: "Sunforged Blacksmith's Hammer", random: 48 },
+        accessories: [
+          { id: 244813, es: "Atavío de controlahierro thalassiano", en: "Thalassian Ironbender's Regalia", slot: "Pecho", stats: { multicraft: 10 } },
+          { id: 259230, es: "Caja de herramientas de herrero forjada con sol", en: "Sunforged Blacksmith's Toolbox", slot: "Juego de herramientas", stats: { inventiva: 13, speed: 13 } }
+        ],
+        objectives: [
+          {
+            id: "gear", label: "Equipo, armas y herramientas", sub: "Armaduras y piezas de calidad", priority: "inventiva", toolStat: "inventiva",
+            enchants: [{ when: "Sin Concentración", name: "Inventiva amani" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "La caja de herramientas ya aporta <strong>+13 Inventiva</strong>. Si no usas Concentración, Inventiva amani refuerza el ahorro; si la usas, Ingenio ren'dorei recupera parte."
+          },
+          {
+            id: "consumables", label: "Consumibles y reactivos", sub: "Aleaciones y producción masiva", priority: "multicraft", toolStat: "multicraft",
+            enchants: [{ when: "Producción normal", name: "Fabricación múltiple haranir" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "El atavío ya da <strong>+10 de Fabricación múltiple</strong>. Para lotes grandes, prioriza Multicraft en la herramienta y el encantamiento haranir."
+          }
+        ]
+      },
+      {
+        id: "encantamiento", name: "Encantamiento", emoji: "✨", category: "crafting", toolIcon: "🪄", quickStat: "inventiva",
+        tool: { id: 244177, es: "Vara de torio deslumbrante rúnica", en: "Runed Dazzling Thorium Rod", random: 48 },
+        accessories: [
+          { id: 267056, es: "Capota de encantador thalassiano", en: "Thalassian Enchanter's Bonnet", slot: "Cabeza", stats: { inventiva: 26 } },
+          { id: 246527, es: "Prisma rúnico thalassiano armonizado", en: "Attuned Thalassian Rune-Prism", slot: "Enfoque de encantamientos", stats: { inventiva: 8, speed: 18 } }
+        ],
+        objectives: [
+          {
+            id: "gear", label: "Encantamientos de equipo", sub: "Armaduras, armas y encantamientos", priority: "inventiva", toolStat: "inventiva",
+            enchants: [{ when: "Sin Concentración", name: "Inventiva amani" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "La capota y el prisma ya suman <strong>+34 de Inventiva</strong>. La herramienta define si refuerzas el ahorro o la recuperación de Concentración."
+          },
+          {
+            id: "oils", label: "Aceites y consumibles", sub: "Producción masiva", priority: "multicraft", toolStat: "multicraft",
+            enchants: [{ when: "Producción normal", name: "Fabricación múltiple haranir" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "Los accesorios mantienen su Inventiva fija; para aceites, cambia la misiva de la herramienta a <strong>Fabricación múltiple</strong>."
+          }
+        ]
+      },
+      {
+        id: "ingenieria", name: "Ingeniería", emoji: "⚙️", category: "crafting", toolIcon: "🔧", quickStat: "inventiva",
+        tool: { id: 259183, es: "Multiherramienta de turbochatarrero v9", en: "Turbo-Junker's Multitool v9", random: 48 },
+        accessories: [
+          { id: 259171, es: "Proyector de rayos montado en la cabeza", en: "Head-Mounted Beam Bummer", slot: "Cabeza", stats: { multicraft: 18 } },
+          { id: 244810, es: "Guanteletes de desguazador thalassiano", en: "Thalassian Scrapmaster's Gauntlets", slot: "Manos", stats: { inventiva: 13, speed: 13 } }
+        ],
+        objectives: [
+          {
+            id: "gear", label: "Equipo y objetos de calidad", sub: "Armas, miras y dispositivos", priority: "inventiva", toolStat: "inventiva",
+            enchants: [{ when: "Sin Concentración", name: "Inventiva amani" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "Los guanteletes ya dan <strong>+13 Inventiva</strong>. El proyector aporta +18 de Fabricación múltiple, útil si también haces componentes."
+          },
+          {
+            id: "components", label: "Componentes y reactivos", sub: "Producción masiva", priority: "multicraft", toolStat: "multicraft",
+            enchants: [{ when: "Producción normal", name: "Fabricación múltiple haranir" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "El proyector ya suma <strong>+18 de Fabricación múltiple</strong>. Para componentes, herramienta con Multicraft y encantamiento haranir es la combinación más directa."
+          }
+        ]
+      },
+      {
+        id: "inscripcion", name: "Inscripción", emoji: "🖋️", category: "crafting", toolIcon: "🖋️", quickStat: "multicraft",
+        tool: { id: 259209, es: "Pluma sin'dorei dorada", en: "Gilded Sin'dorei Quill", random: 48 },
+        accessories: [
+          { id: 246525, es: "Lente cristalino de escriba thalassiano", en: "Thalassian Scribe's Crystalline Lens", slot: "Lupa", stats: { inventiva: 10, speed: 15 } },
+          { id: 246524, es: "Escrutinadores de texto impecables", en: "Flawless Text Scrutinizers", slot: "Cabeza", stats: { multicraft: 10 } }
+        ],
+        objectives: [
+          {
+            id: "mass", label: "Cartas, contratos y misivas", sub: "Producción masiva", priority: "multicraft", toolStat: "multicraft",
+            enchants: [{ when: "Producción normal", name: "Fabricación múltiple haranir" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "Los escrutinadores ya dan <strong>+10 de Fabricación múltiple</strong>. La lente aporta +10 Inventiva y +15 Velocidad."
+          },
+          {
+            id: "milling", label: "Molienda", sub: "Milling: hierbas en pigmentos", priority: "inventiva", toolStat: "inventiva",
+            enchants: [{ when: "Sin Concentración", name: "Inventiva amani" }],
+            tip: "Fabricación múltiple no ayuda a moler. Usa <strong>Inventiva</strong> en la herramienta para ahorrar materiales; la lente ya suma +10."
+          },
+          {
+            id: "quality", label: "Calidad con Concentración", sub: "Fabricación de máxima calidad", priority: "ingenio", toolStat: "ingenio",
+            enchants: [{ when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "Ingenio recupera Concentración. Los accesorios mantienen +10 Multicraft, +10 Inventiva y +15 Velocidad."
+          }
+        ]
+      },
+      {
+        id: "joyeria", name: "Joyería", emoji: "💎", category: "crafting", toolIcon: "💎", quickStat: "multicraft",
+        tool: { id: 259181, es: "Pinzas de gigagema", en: "Giga-Gem Grippers", random: 48 },
+        accessories: [
+          { id: 246526, es: "Lupas de precisión Ojo de mago", en: "Mage-Eye Precision Loupes", slot: "Cabeza", stats: { multicraft: 10 } },
+          { id: 244814, es: "Gran cobertor de lapidario thalassiano", en: "Thalassian Gemshaper's Grand Cover", slot: "Pecho", stats: { inventiva: 10, speed: 15 } }
+        ],
+        objectives: [
+          {
+            id: "gems", label: "Gemas y reactivos", sub: "Producción masiva", priority: "multicraft", toolStat: "multicraft",
+            enchants: [{ when: "Producción normal", name: "Fabricación múltiple haranir" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "Las lupas ya dan <strong>+10 de Fabricación múltiple</strong>. Para gemas y reactivos, herramienta con Multicraft y encantamiento haranir maximizan unidades extra."
+          },
+          {
+            id: "prospecting", label: "Prospectado y trituración", sub: "Prospecting / Crushing", priority: "inventiva", toolStat: "inventiva",
+            enchants: [{ when: "Sin Concentración", name: "Inventiva amani" }],
+            tip: "Multicraft no beneficia el prospectado. Usa <strong>Inventiva</strong> en la herramienta; el gran cobertor ya aporta +10."
+          },
+          {
+            id: "quality", label: "Calidad con Concentración", sub: "Gemas de máxima calidad", priority: "ingenio", toolStat: "ingenio",
+            enchants: [{ when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "Ingenio recupera parte de la Concentración. Los accesorios mantienen +10 Multicraft, +10 Inventiva y +15 Velocidad."
+          }
+        ]
+      },
+      {
+        id: "peleteria", name: "Peletería", emoji: "🥋", category: "crafting", toolIcon: "🔪", quickStat: "inventiva",
+        tool: { id: 246536, es: "Cuchillo de peletero forjado con sol", en: "Sunforged Leatherworker's Knife", random: 48 },
+        accessories: [
+          { id: 244811, es: "Atavío de artesano de pellejos thalassiano", en: "Thalassian Hideshaper's Regalia", slot: "Pecho", stats: { multicraft: 10 } },
+          { id: 259232, es: "Juego de herramientas de peletero forjado con sol", en: "Sunforged Leatherworker's Toolset", slot: "Juego de herramientas", stats: { inventiva: 13, speed: 13 } }
+        ],
+        objectives: [
+          {
+            id: "gear", label: "Armaduras de cuero y malla", sub: "Equipo de calidad", priority: "inventiva", toolStat: "inventiva",
+            enchants: [{ when: "Sin Concentración", name: "Inventiva amani" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "El juego de herramientas ya da <strong>+13 Inventiva</strong>. Si usas Concentración, cambia el encantamiento a Ingenio ren'dorei."
+          },
+          {
+            id: "materials", label: "Materiales intermedios", sub: "Consumibles y componentes", priority: "multicraft", toolStat: "multicraft",
+            enchants: [{ when: "Producción normal", name: "Fabricación múltiple haranir" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "El atavío ya suma <strong>+10 de Fabricación múltiple</strong>. Para materiales intermedios, prioriza Multicraft en la herramienta."
+          }
+        ]
+      },
+      {
+        id: "sastreria", name: "Sastrería", emoji: "✂️", category: "crafting", toolIcon: "✂️", quickStat: "inventiva",
+        tool: { id: 259177, es: "Pincitas sin'dorei autoafilantes", en: "Self-Sharpening Sin'dorei Snippers", random: 84 },
+        accessories: [
+          { id: 267062, es: "Hilos de sastre thalassiano", en: "Thalassian Tailor's Threads", slot: "Pecho", stats: { speed: 53, multicraft: 35 } },
+          { id: 259234, es: "Conjunto de agujas forjado con sol", en: "Sunforged Needle Set", slot: "Juego de herramientas", stats: { inventiva: 13, speed: 13 } }
+        ],
+        objectives: [
+          {
+            id: "gear", label: "Armaduras y equipo", sub: "Tela y equipo de calidad", priority: "inventiva", toolStat: "inventiva",
+            enchants: [{ when: "Sin Concentración", name: "Inventiva amani" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "El conjunto de agujas ya da <strong>+13 Inventiva</strong>. Los hilos de sastre aportan +35 Multicraft y +53 Velocidad, así que la herramienta es tu palanca para Inventiva."
+          },
+          {
+            id: "materials", label: "Materiales: tejido e hilos", sub: "Arcanoweave y Spellthreads", priority: "multicraft", toolStat: "multicraft",
+            enchants: [{ when: "Producción normal", name: "Fabricación múltiple haranir" }, { when: "Con Concentración", name: "Ingenio ren'dorei" }],
+            tip: "Los hilos de sastre ya suman <strong>+35 de Fabricación múltiple</strong>. Con la herramienta en Multicraft, la producción de materiales despega."
+          },
+          {
+            id: "bags", label: "Mochilas", sub: "Equipo para almacenar", priority: "inventiva", toolStat: "inventiva",
+            enchants: [{ when: "Sin Concentración", name: "Inventiva amani" }],
+            tip: "Para mochilas, prioriza <strong>Inventiva</strong> para ahorrar materiales. La velocidad de los accesorios ayuda a fabricar lotes más rápido."
+          }
+        ]
+      },
+      {
+        id: "herboristeria", name: "Herboristería", emoji: "🌱", category: "gathering", toolIcon: "🌿", quickStat: "delicadeza",
+        tool: { id: 246533, es: "Hoz forjada con sol", en: "Sunforged Sickle", random: 48 },
+        accessories: [
+          { id: 267060, es: "Capucha de herborista thalassiano", en: "Thalassian Herbalist's Cowl", slot: "Cabeza", stats: { destreza: 44, percepcion: 44 } },
+          { id: 244807, es: "Cesta de herbolario thalassiano", en: "Thalassian Herbtender's Cradle", slot: "Espalda", stats: { delicadeza: 25 } }
+        ],
+        objectives: [
+          {
+            id: "general", label: "Farmeo general", sub: "Más hierbas por sesión", priority: "delicadeza", toolStat: "delicadeza",
+            enchants: [{ when: "Recomendado", name: "Delicadeza haranir" }],
+            tip: "La cesta ya da <strong>+25 Delicadeza</strong>. Con la herramienta en Delicadeza y el encantamiento haranir, maximizas el volumen de hierbas."
+          },
+          {
+            id: "rare", label: "Materiales raros", sub: "Buscar nodos especiales", priority: "percepcion", toolStat: "percepcion",
+            enchants: [{ when: "Recomendado", name: "Percepción amani" }],
+            tip: "La capucha ya aporta <strong>+44 Percepción</strong>. Cambia la herramienta a Percepción y usa el encantamiento amani para cazar materiales especiales."
+          },
+          {
+            id: "fast", label: "Recolección rápida", sub: "Menos tiempo por nodo", priority: "destreza", toolStat: "destreza",
+            enchants: [{ when: "Recomendado", name: "Destreza sin'dorei" }],
+            tip: "La capucha ya da <strong>+44 Destreza</strong>. Si tu prioridad es recolectar rápido, refuerza Destreza en la herramienta."
+          }
+        ]
+      },
+      {
+        id: "mineria", name: "Minería", emoji: "⛏️", category: "gathering", toolIcon: "⛏️", quickStat: "delicadeza",
+        tool: { id: 246534, es: "Piqueta forjada con sol", en: "Sunforged Pickaxe", random: 48 },
+        accessories: [
+          { id: 259175, es: "Asistente de rocas de alta resistencia", en: "Heavy-Duty Rock Assister", slot: "Espalda", stats: { delicadeza: 45 } },
+          { id: 259173, es: "Casco antirrocas", en: "Rock Bonkin' Hardhat", slot: "Cabeza", stats: { destreza: 22, percepcion: 22 } }
+        ],
+        objectives: [
+          {
+            id: "general", label: "Farmeo general", sub: "Más mineral por sesión", priority: "delicadeza", toolStat: "delicadeza",
+            enchants: [{ when: "Recomendado", name: "Delicadeza haranir" }],
+            tip: "El asistente ya da <strong>+45 Delicadeza</strong>. Con la herramienta en Delicadeza y el encantamiento haranir, maximizas el volumen de mineral."
+          },
+          {
+            id: "rare", label: "Minerales raros", sub: "Buscar vetas especiales", priority: "percepcion", toolStat: "percepcion",
+            enchants: [{ when: "Recomendado", name: "Percepción amani" }],
+            tip: "El casco ya aporta <strong>+22 Percepción</strong>. Cambia la herramienta a Percepción y usa el encantamiento amani para vetas especiales."
+          },
+          {
+            id: "fast", label: "Extracción rápida", sub: "Menos tiempo por nodo", priority: "destreza", toolStat: "destreza",
+            enchants: [{ when: "Recomendado", name: "Destreza sin'dorei" }],
+            tip: "El casco ya da <strong>+22 Destreza</strong>. Si tu prioridad es extraer rápido, refuerza Destreza en la herramienta."
+          }
+        ]
+      },
+      {
+        id: "desuello", name: "Desuello", emoji: "🔪", category: "gathering", toolIcon: "🔪", quickStat: "delicadeza",
+        tool: { id: 246535, es: "Cuchillo para desollar forjado con sol", en: "Sunforged Skinning Knife", random: 48 },
+        accessories: [
+          { id: 244808, es: "Bolsa de trabajo de buscaforesta thalassiano", en: "Thalassian Wildseeker's Workbag", slot: "Espalda", stats: { delicadeza: 25 } },
+          { id: 244809, es: "Gorro de caminata de buscaforesta thalassiano", en: "Thalassian Wildseeker's Stridercap", slot: "Cabeza", stats: { destreza: 13, percepcion: 13 } }
+        ],
+        objectives: [
+          {
+            id: "general", label: "Farmeo general", sub: "Más pieles por sesión", priority: "delicadeza", toolStat: "delicadeza",
+            enchants: [{ when: "Recomendado", name: "Delicadeza haranir" }],
+            tip: "La bolsa ya da <strong>+25 Delicadeza</strong>. Con la herramienta en Delicadeza y el encantamiento haranir, maximizas el volumen de pieles."
+          },
+          {
+            id: "rare", label: "Pieles especiales", sub: "Bestias majestuosas", priority: "percepcion", toolStat: "percepcion",
+            enchants: [{ when: "Recomendado", name: "Percepción amani" }],
+            tip: "El gorro ya aporta <strong>+13 Percepción</strong>. Cambia la herramienta a Percepción y usa el encantamiento amani para pieles especiales."
+          },
+          {
+            id: "fast", label: "Farmeo intensivo", sub: "Zonas con muchos enemigos", priority: "destreza", toolStat: "destreza",
+            enchants: [{ when: "Recomendado", name: "Destreza sin'dorei" }],
+            tip: "El gorro ya da <strong>+13 Destreza</strong>. Si tu prioridad es desollar rápido, refuerza Destreza en la herramienta."
+          }
+        ]
+      },
+      {
+        id: "cocina", name: "Cocina", emoji: "🍲", category: "secondary", toolIcon: "🥖", quickStat: "inventiva",
+        tool: { id: 259207, es: "Rodillo sin'dorei dorado", en: "Gilded Sin'dorei Rolling Pin", stats: { inventiva: 13, speed: 19 } },
+        accessories: [
+          { id: 267054, es: "Sombrero de chef thalassiano", en: "Thalassian Chef's Chapeau", slot: "Cabeza", stats: { inventiva: 35, speed: 53 } }
+        ],
+        objectives: [
+          {
+            id: "mass", label: "Producción masiva", sub: "Cocinar en grandes cantidades", priority: "multicraft", toolStat: null, priorityNote: "vía encantamiento",
+            enchants: [{ when: "Recomendado", name: "Fabricación múltiple haranir" }],
+            tip: "La herramienta de cocina no usa misiva: ya trae <strong>+13 Inventiva y +19 Velocidad</strong>. El encantamiento Fabricación múltiple haranir añade Multicraft; el sombrero suma +35 Inventiva y +53 Velocidad."
+          },
+          {
+            id: "speed", label: "Lotes rápidos", sub: "Reducir el tiempo de fabricación", priority: "speed", toolStat: null, priorityNote: "stat fijo",
+            enchants: [{ when: "Recomendado", name: "Fabricación múltiple haranir" }],
+            tip: "La velocidad ya viene en la herramienta y el sombrero: <strong>+72 en total</strong>. Mantén esos accesorios y añade el encantamiento de Multicraft si quieres unidades extra."
+          }
+        ]
+      },
+      {
+        id: "pesca", name: "Pesca", emoji: "🎣", category: "secondary", toolIcon: "🎣", quickStat: "percepcion",
+        tool: { id: 259179, es: "Caña de carreteador sin'dorei", en: "Sin'dorei Reeler's Rod", stats: { percepcion: 56 } },
+        accessories: [
+          { id: 239638, es: "Gorro de pesca de artesano elegante", en: "Elegant Artisan's Fishing Hat", slot: "Cabeza", stats: { percepcion: 1 } }
+        ],
+        objectives: [
+          {
+            id: "volume", label: "Farmeo general / volumen", sub: "Más peces por sesión", priority: "delicadeza", toolStat: null, priorityNote: "vía encantamiento",
+            enchants: [{ when: "Recomendado", name: "Delicadeza haranir" }],
+            tip: "La caña trae <strong>+56 Percepción fija</strong>; no se puede cambiar. Para orientarte a volumen, usa el encantamiento Delicadeza haranir, la única palanca de Delicadeza en este equipo."
+          },
+          {
+            id: "rare", label: "Peces especiales", sub: "Materiales raros de pesca", priority: "percepcion", toolStat: null, priorityNote: "stat fijo",
+            enchants: [{ when: "Opcional", name: "Percepción amani" }],
+            tip: "La caña ya da <strong>+56 Percepción</strong> y el gorro +1. Si buscas peces especiales, mantén Percepción y usa Percepción amani como encantamiento opcional."
+          }
+        ]
+      }
+    ];
+
+    const MASTER = [
+      { goal: "Fabricar equipo usando Concentración", missive: "inventiva", enchant: "Ingenio ren'dorei" },
+      { goal: "Fabricar equipo sin Concentración", missive: "inventiva", enchant: "Inventiva amani" },
+      { goal: "Producción masiva de consumibles", missive: "multicraft", enchant: "Fabricación múltiple haranir" },
+      { goal: "Producción masiva usando Concentración", missive: "multicraft", enchant: "Ingenio ren'dorei" },
+      { goal: "Recolección de materiales comunes", missive: "delicadeza", enchant: "Delicadeza haranir" },
+      { goal: "Buscar materiales raros", missive: "percepcion", enchant: "Percepción amani" },
+      { goal: "Recolección intensiva y rápida", missive: "destreza", enchant: "Destreza sin'dorei" }
+    ];
+
+    const SLOT_ICONS = {
+      "Cabeza": "🎩",
+      "Pecho": "🥼",
+      "Manos": "🧤",
+      "Espalda": "🎒",
+      "Lupa": "🔍",
+      "Juego de herramientas": "🧰",
+      "Enfoque de encantamientos": "🔮"
+    };
+
+    const state = { profession: "desuello", objective: "general" };
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+    function getProfession() {
+      return PROFESSIONS.find(p => p.id === state.profession) || PROFESSIONS[0];
+    }
+    function getObjective() {
+      const prof = getProfession();
+      return prof.objectives.find(o => o.id === state.objective) || prof.objectives[0];
+    }
+    function categoryLabel(id) { return CATEGORIES[id] ? CATEGORIES[id].label : id; }
+    function statChips(stats) {
+      return Object.entries(stats).map(([key, value]) => {
+        const s = STATS[key];
+        return `<span class="stat-chip" style="--stat:${s.color}">${s.icon} ${s.short || s.name} <b>+${value}</b></span>`;
+      }).join("");
+    }
+    function statText(stats) {
+      return Object.entries(stats).map(([key, value]) => `+${value} ${STATS[key].short || STATS[key].name}`).join(", ");
+    }
+    function addStats(target, stats) {
+      for (const [key, value] of Object.entries(stats)) target[key] = (target[key] || 0) + value;
+    }
+    function computeProfile(prof, obj) {
+      const profile = {};
+      prof.accessories.forEach(acc => addStats(profile, acc.stats));
+      if (prof.tool.random) {
+        const key = obj.toolStat || prof.quickStat;
+        if (key) profile[key] = (profile[key] || 0) + prof.tool.random;
+      } else if (prof.tool.stats) {
+        addStats(profile, prof.tool.stats);
+      }
+      return profile;
+    }
+    function slotIcon(slot) { return SLOT_ICONS[slot] || "🎒"; }
+    function iconUrl(icon) { return `https://wow.zamimg.com/images/wow/icons/large/${icon}.jpg`; }
+    function profIconHtml(prof, size = "md") {
+      const icon = PROFESSION_ICONS[prof.id];
+      return `<span class="prof-icon ${size}" aria-hidden="true">
+        ${icon ? `<img src="${iconUrl(icon)}" alt="" loading="lazy" decoding="async" onerror="this.remove()">` : ""}
+        <span class="fallback">${prof.emoji}</span>
+      </span>`;
+    }
+    function itemIconHtml(item, fallback) {
+      const icon = ITEM_ICONS[item.id];
+      return `<span class="gear-icon" aria-hidden="true">
+        ${icon ? `<img src="${iconUrl(icon)}" alt="" loading="lazy" decoding="async" onerror="this.remove()">` : ""}
+        <span class="fallback">${fallback}</span>
+      </span>`;
+    }
+    function wowheadLink(id, name) {
+      return `<a class="gear-link" href="https://www.wowhead.com/es-mx/item=${id}" target="_blank" rel="noopener" aria-label="Ver ${name} en Wowhead esMX">🔗</a>`;
+    }
+
+    function renderProfessionPicker() {
+      const wrap = $("#professionPicker");
+      wrap.innerHTML = Object.entries(CATEGORIES).map(([catId, cat]) => {
+        const items = PROFESSIONS.filter(p => p.category === catId);
+        return `
+          <div class="tab-group">
+            <span class="tab-label">${cat.emoji} ${cat.label}</span>
+            <div class="tabs">
+              ${items.map(p => `
+                <button class="prof-tab" type="button" data-prof="${p.id}" aria-pressed="${p.id === state.profession}">
+                  ${profIconHtml(p, "sm")}${p.name}
+                </button>`).join("")}
+            </div>
+          </div>`;
+      }).join("");
+      wrap.addEventListener("click", event => {
+        const btn = event.target.closest("[data-prof]");
+        if (btn) selectProfession(btn.dataset.prof);
+      });
+    }
+
+    function renderQuickCards() {
+      const wrap = $("#quickGrid");
+      wrap.innerHTML = PROFESSIONS.map(prof => {
+        const toolLine = prof.tool.random
+          ? `Herramienta: <strong>${STATS[prof.quickStat].name}</strong>`
+          : `Herramienta: <strong>${statText(prof.tool.stats)}</strong>`;
+        const accStats = {};
+        prof.accessories.forEach(acc => addStats(accStats, acc.stats));
+        return `
+          <button class="quick-card" type="button" data-quick="${prof.id}">
+            <span class="quick-top">
+              ${profIconHtml(prof, "md")}
+              <span class="quick-name">${prof.name}</span>
+              <span class="quick-cat">${categoryLabel(prof.category)}</span>
+            </span>
+            <span class="quick-line">${toolLine}</span>
+            <span class="quick-line">Accesorios: <strong>${statText(accStats)}</strong></span>
+            <span class="quick-go">Ver build →</span>
+          </button>`;
+      }).join("");
+      wrap.addEventListener("click", event => {
+        const btn = event.target.closest("[data-quick]");
+        if (btn) selectProfession(btn.dataset.quick, true);
+      });
+    }
+
+    function renderStatCards() {
+      $("#statGrid").innerHTML = Object.entries(STATS).map(([key, s]) => `
+        <article class="stat-card" style="--stat:${s.color}">
+          <span class="stat-icon" aria-hidden="true">${s.icon}</span>
+          <h3>${s.name}</h3>
+          <p class="stat-en">${s.en}</p>
+          <p>${s.desc}</p>
+        </article>`).join("");
+    }
+
+    function renderMasterTable() {
+      $("#masterBody").innerHTML = MASTER.map(row => {
+        const s = STATS[row.missive];
+        return `
+          <tr>
+            <td>${row.goal}</td>
+            <td><span class="stat-chip" style="--stat:${s.color}">${s.icon} ${s.name}</span></td>
+            <td>${row.enchant}</td>
+          </tr>`;
+      }).join("");
+    }
+
+    function renderGear() {
+      const prof = getProfession();
+      const obj = getObjective();
+      const profIcon = PROFESSION_ICONS[prof.id];
+      $("#profEmoji").innerHTML = `
+        ${profIcon ? `<img src="${iconUrl(profIcon)}" alt="" loading="lazy" decoding="async" onerror="this.remove()">` : ""}
+        <span class="fallback">${prof.emoji}</span>`;
+      $("#profName").textContent = prof.name;
+      $("#profCategory").textContent = categoryLabel(prof.category);
+
+      const toolStats = prof.tool.random
+        ? `<span class="stat-chip" style="--stat:${STATS[obj.toolStat].color}">${STATS[obj.toolStat].icon} ${STATS[obj.toolStat].name} <b>+${prof.tool.random}</b></span>`
+        : statChips(prof.tool.stats);
+      const toolBadge = prof.tool.random
+        ? `<span class="badge badge-gold">Personalizable</span>`
+        : `<span class="badge">Stats fijos</span>`;
+
+      const cards = [
+        `<article class="gear-card tool">
+          ${itemIconHtml(prof.tool, prof.toolIcon)}
+          <div class="gear-main">
+            <div class="gear-slot">Herramienta ${toolBadge}</div>
+            <div class="gear-name">${prof.tool.es}</div>
+            <div class="gear-en">${prof.tool.en}</div>
+            <div class="gear-stats">${toolStats}</div>
+          </div>
+          ${wowheadLink(prof.tool.id, prof.tool.es)}
+        </article>`
+      ];
+
+      prof.accessories.forEach((acc, index) => {
+        cards.push(`
+          <article class="gear-card">
+            ${itemIconHtml(acc, slotIcon(acc.slot))}
+            <div class="gear-main">
+              <div class="gear-slot">Accesorio ${index + 1} · ${acc.slot} <span class="badge">Stats fijos</span></div>
+              <div class="gear-name">${acc.es}</div>
+              <div class="gear-en">${acc.en}</div>
+              <div class="gear-stats">${statChips(acc.stats)}</div>
+            </div>
+            ${wowheadLink(acc.id, acc.es)}
+          </article>`);
+      });
+
+      $("#gearList").innerHTML = cards.join("");
+
+      const accTotals = {};
+      prof.accessories.forEach(acc => addStats(accTotals, acc.stats));
+      $("#gearSummaryStats").innerHTML = statChips(accTotals);
+    }
+
+    function renderObjectives() {
+      const prof = getProfession();
+      $("#objectiveGrid").innerHTML = prof.objectives.map(obj => `
+        <button class="objective-btn" type="button" data-obj="${obj.id}" aria-pressed="${obj.id === state.objective}">
+          <strong>${obj.label}</strong>
+          <small>${obj.sub}</small>
+        </button>`).join("");
+    }
+
+    function renderBuild() {
+      const prof = getProfession();
+      const obj = getObjective();
+      const priority = STATS[obj.priority];
+      const profile = computeProfile(prof, obj);
+      const values = Object.values(profile);
+      const max = Math.max(100, ...values);
+      const bars = Object.entries(profile)
+        .filter(([, value]) => value > 0)
+        .sort((a, b) => b[1] - a[1])
+        .map(([key, value]) => {
+          const s = STATS[key];
+          return `
+            <div class="bar-row">
+              <span class="bar-name">${s.icon} ${s.short || s.name}</span>
+              <div class="bar-track"><div class="bar-fill" style="--stat:${s.color};width:${Math.round((value / max) * 100)}%"></div></div>
+              <span class="bar-value" style="--stat:${s.color}">+${value}</span>
+            </div>`;
+        }).join("");
+
+      const toolRow = prof.tool.random
+        ? `<span class="stat-chip" style="--stat:${priority.color}">${priority.icon} Misiva: ${priority.name}</span><span class="badge">+${prof.tool.random} base</span>`
+        : `<span class="badge">Stats fijos</span>${statChips(prof.tool.stats)}<span class="muted-chip">No usa misiva</span>`;
+
+      const enchants = obj.enchants.map(enchant => `
+        <span class="enchant-option">
+          <small>${enchant.when}</small>
+          <strong>${enchant.name}</strong>
+        </span>`).join("");
+
+      const accRows = prof.accessories.map(acc => `
+        <div class="acc-line">
+          <span class="acc-name">${acc.es}</span>
+          <span>${statChips(acc.stats)}</span>
+        </div>`).join("");
+
+      const quickAnswer = prof.tool.random
+        ? `Pon <strong>${priority.name}</strong> en la herramienta y usa <strong>${obj.enchants[0].name}</strong>${obj.enchants.length > 1 ? `; con Concentración, <strong>${obj.enchants[1].name}</strong>` : ""}.`
+        : obj.id === "speed"
+          ? `La herramienta y el sombrero ya suman <strong>+72 de Velocidad</strong>. Si quieres unidades extra, usa <strong>${obj.enchants[0].name}</strong>.`
+          : obj.priorityNote === "vía encantamiento"
+            ? `La herramienta ya trae <strong>${statText(prof.tool.stats)}</strong>. Usa <strong>${obj.enchants[0].name}</strong> para priorizar <strong>${priority.name}</strong>.`
+            : `La herramienta ya trae <strong>${statText(prof.tool.stats)}</strong>. Tu prioridad es <strong>${priority.name}</strong>; el encantamiento recomendado es <strong>${obj.enchants[0].name}</strong>.`;
+
+      $("#buildContent").innerHTML = `
+        <div class="build-hero">
+          <div>
+            <p class="section-kicker">Build recomendada</p>
+            <h3>${obj.label}</h3>
+            <p>${obj.sub}</p>
+          </div>
+          <div class="priority">
+            <small>Prioridad</small>
+            <span class="stat-chip big" style="--stat:${priority.color}">${priority.icon} ${priority.name}</span>
+            ${obj.priorityNote ? `<small class="priority-note">${obj.priorityNote}</small>` : ""}
+          </div>
+        </div>
+        <div class="quick-answer"><span aria-hidden="true">⚡</span><p><strong>En una frase:</strong> ${quickAnswer}</p></div>
+        <div class="build-rows">
+          <div class="build-row">
+            <span class="row-label">Herramienta</span>
+            <div class="row-content">${toolRow}</div>
+          </div>
+          <div class="build-row">
+            <span class="row-label">Encantamiento</span>
+            <div class="row-content">${enchants}</div>
+          </div>
+          <div class="build-row">
+            <span class="row-label">Accesorios</span>
+            <div class="row-content acc-list">${accRows}</div>
+          </div>
+        </div>
+        <div class="profile">
+          <div class="profile-head">
+            <span>Perfil base del equipo</span>
+            <small>Sin encantamiento</small>
+          </div>
+          <div class="bars">${bars || `<p class="profile-empty">Sin stats base.</p>`}</div>
+        </div>
+        <div class="tip">💡 ${obj.tip}</div>
+        <div class="build-actions">
+          <button class="btn btn-gold btn-small" type="button" id="copyBuild">📋 Copiar resumen</button>
+          <span id="copyFeedback" class="copy-feedback" aria-live="polite"></span>
+        </div>`;
+
+      $("#copyBuild").addEventListener("click", copyBuild);
+    }
+
+    function updateProfessionTabs() {
+      $$(".prof-tab").forEach(btn => {
+        const active = btn.dataset.prof === state.profession;
+        btn.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    function updateObjectiveButtons() {
+      $$(".objective-btn").forEach(btn => {
+        const active = btn.dataset.obj === state.objective;
+        btn.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    function selectProfession(id, scroll = false) {
+      const prof = PROFESSIONS.find(p => p.id === id);
+      if (!prof) return;
+      state.profession = id;
+      state.objective = prof.objectives[0].id;
+      updateProfessionTabs();
+      renderGear();
+      renderObjectives();
+      renderBuild();
+      if (scroll) {
+        const advisor = $("#advisor");
+        if (advisor) advisor.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function selectObjective(id) {
+      state.objective = id;
+      updateObjectiveButtons();
+      renderGear();
+      renderBuild();
+    }
+
+    async function copyText(text) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return true;
+        }
+      } catch (error) { /* fallback abajo */ }
+      const area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.appendChild(area);
+      area.select();
+      let ok = false;
+      try { ok = document.execCommand("copy"); } catch (error) { ok = false; }
+      area.remove();
+      return ok;
+    }
+
+    function copyBuild() {
+      const prof = getProfession();
+      const obj = getObjective();
+      const priority = STATS[obj.priority];
+      const lines = [
+        `⚔️ ${prof.name} — ${obj.label} (Midnight 12.1.5)`,
+        `Prioridad: ${priority.name} (${priority.en})${obj.priorityNote ? ` — ${obj.priorityNote}` : ""}`,
+        prof.tool.random
+          ? `Herramienta: ${prof.tool.es} — Misiva: ${priority.name} (+${prof.tool.random})`
+          : `Herramienta: ${prof.tool.es} — Stats fijos: ${statText(prof.tool.stats)}`,
+        `Encantamiento: ${obj.enchants.map(e => `${e.when}: ${e.name}`).join(" | ")}`,
+        `Accesorios: ${prof.accessories.map(a => `${a.es} (${statText(a.stats)})`).join(" | ")}`,
+        `Tip: ${obj.tip.replace(/<[^>]+>/g, "")}`
+      ];
+      copyText(lines.join("\n")).then(ok => {
+        const feedback = $("#copyFeedback");
+        if (feedback) {
+          feedback.textContent = ok ? "¡Resumen copiado!" : "No se pudo copiar.";
+          window.setTimeout(() => { feedback.textContent = ""; }, 2400);
+        }
+      });
+    }
+
+    function init() {
+      renderProfessionPicker();
+      renderQuickCards();
+      renderStatCards();
+      renderMasterTable();
+      selectProfession("desuello");
+
+      $("#objectiveGrid").addEventListener("click", event => {
+        const btn = event.target.closest("[data-obj]");
+        if (btn) selectObjective(btn.dataset.obj);
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>
