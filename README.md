@@ -8,9 +8,7 @@ Página visual e interactiva para saber qué atributo poner en la herramienta, q
 2. Elige lo que quieres hacer (farmear, fabricar, subir calidad, etc.).
 3. Revisa la build recomendada y copia el resumen para compartirlo.
 
-## Enlace
-
-Una vez activado GitHub Pages:
+## Página publicada
 
 https://rodrigoangeloni.github.io/wow-midnight-bis/
 
