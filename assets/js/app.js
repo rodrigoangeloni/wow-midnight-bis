@@ -11,6 +11,8 @@
     SLOT_ICONS
   } = window.WOW_DATA;
 
+  const SPECIALIZATIONS = window.WOW_SPECS || {};
+
   // Estado y utilidades
   // La primera profesión del arreglo es la predeterminada.
   const state = { profession: PROFESSIONS[0].id, objective: PROFESSIONS[0].objectives[0].id };
@@ -36,6 +38,21 @@
   }
   function addStats(target, stats) {
     for (const [key, value] of Object.entries(stats)) target[key] = (target[key] || 0) + value;
+  }
+  function getSpec(prof) {
+    return SPECIALIZATIONS[prof.id] || null;
+  }
+  function getSpecBuildId(prof, obj) {
+    const spec = getSpec(prof);
+    if (!spec || !spec.builds || !spec.builds.length || !obj) return null;
+    return (spec.objectiveMap && spec.objectiveMap[obj.id]) || spec.builds[0].id;
+  }
+  function statTags(keys) {
+    return (keys || []).map(key => {
+      const s = STATS[key];
+      if (!s) return "";
+      return `<a class="stat-chip" href="#stat-${key}" style="--stat:${s.color}" title="Ver qué hace ${s.name}">${s.icon} ${s.name}</a>`;
+    }).join("");
   }
   function computeProfile(prof, obj) {
     const profile = {};
@@ -200,6 +217,83 @@
       </button>`).join("");
   }
 
+  function specSheetLink(spec) {
+    if (!spec || !spec.gid) return "";
+    return `<a href="${SPECIALIZATIONS.sheetUrl}#gid=${spec.gid}" target="_blank" rel="noopener">📊 Capturas en la hoja ↗</a>`;
+  }
+
+  function renderSpecBuildContent(spec, build) {
+    const steps = build.steps.map(step => `
+      <li class="spec-step">
+        <span class="spec-points">${step.pts ? `${step.pts} pts` : "Prioriza"}</span>
+        <div>
+          <strong>${step.node}</strong>
+          ${step.note ? `<small>${step.note}</small>` : ""}
+        </div>
+      </li>`).join("");
+    const stats = statTags(build.stats);
+    const notes = spec.notes && spec.notes.length
+      ? `<ul class="spec-notes">${spec.notes.map(note => `<li>${note}</li>`).join("")}</ul>`
+      : "";
+    const links = [
+      build.source ? `<a href="${build.source}" target="_blank" rel="noopener">Wow-Professions ↗</a>` : "",
+      spec.guide ? `<a href="${spec.guide}" target="_blank" rel="noopener">Wowhead ↗</a>` : "",
+      specSheetLink(spec)
+    ].filter(Boolean).join("");
+    return `
+      <div class="spec-build-head">
+        <div>
+          <span class="spec-tag">${build.tag}</span>
+          <h3>${build.label}</h3>
+          <p>${build.summary}</p>
+        </div>
+        ${stats ? `<div class="spec-stats">${stats}</div>` : ""}
+      </div>
+      <ol class="spec-steps">${steps}</ol>
+      ${build.after ? `<p class="spec-after">${build.after}</p>` : ""}
+      ${notes}
+      <div class="spec-links">${links}</div>`;
+  }
+
+  function renderSpecialization() {
+    const prof = getProfession();
+    const spec = getSpec(prof);
+    const select = $("#specProfessionSelect");
+    if (select && !select.options.length) {
+      select.innerHTML = PROFESSIONS.map(p => `<option value="${p.id}">${p.name}</option>`).join("");
+    }
+    if (select) select.value = prof.id;
+    $("#specProfName").textContent = prof.name;
+    const treeWrap = $("#specTreeList");
+    const tabs = $("#specBuildTabs");
+    const content = $("#specBuildContent");
+    const sheet = $("#specSheetLink");
+    if (!spec || !spec.builds || !spec.builds.length) {
+      treeWrap.innerHTML = `<p class="spec-empty">${spec?.emptyNote || "Esta profesión no tiene árbol de especialización."}</p>`;
+      tabs.innerHTML = "";
+      content.innerHTML = `<p class="spec-empty">Esta profesión no usa puntos de especialización.</p>`;
+      sheet.innerHTML = specSheetLink(spec);
+      return;
+    }
+    const valid = spec.builds.some(build => build.id === state.specBuild);
+    const buildId = valid ? state.specBuild : getSpecBuildId(prof, getObjective());
+    state.specBuild = buildId;
+    const build = spec.builds.find(build => build.id === buildId) || spec.builds[0];
+    treeWrap.innerHTML = spec.trees.map(tree => `
+      <article class="spec-tree">
+        <span class="spec-tree-focus">${tree.focus}</span>
+        <h3>${tree.name}</h3>
+        <p>${tree.desc}</p>
+      </article>`).join("");
+    tabs.innerHTML = spec.builds.map(build => `
+      <button class="spec-build-tab" type="button" data-spec-build="${build.id}" aria-pressed="${build.id === state.specBuild}">
+        <strong>${build.label}</strong>
+        <small>${build.tag}</small>
+      </button>`).join("");
+    content.innerHTML = renderSpecBuildContent(spec, build);
+    sheet.innerHTML = specSheetLink(spec);
+  }
+
   function renderBuild() {
     const prof = getProfession();
     const obj = getObjective();
@@ -236,6 +330,19 @@
         <span>${statChips(acc.stats)}</span>
       </div>`).join("");
 
+    const spec = SPECIALIZATIONS[prof.id];
+    const specBuildId = getSpecBuildId(prof, obj);
+    const specBuild = spec?.builds?.find(build => build.id === specBuildId);
+    const specTeaser = specBuild ? `
+      <div class="spec-teaser">
+        <div>
+          <span class="section-kicker">Especialización</span>
+          <strong>${specBuild.label}</strong>
+          <small>${specBuild.tag}</small>
+        </div>
+        <a class="spec-jump" href="#especializacion" data-spec-build="${specBuild.id}">Ver cómo gastar los puntos →</a>
+      </div>` : "";
+
     const quickAnswer = prof.tool.random
       ? `Pon <strong>${priority.name}</strong> en la herramienta y usa <strong>${obj.enchants[0].name}</strong>${obj.enchants.length > 1 ? `; con Concentración, <strong>${obj.enchants[1].name}</strong>` : ""}.`
       : obj.id === "speed"
@@ -258,6 +365,7 @@
         </div>
       </div>
       <div class="quick-answer"><span aria-hidden="true">⚡</span><p><strong>En una frase:</strong> ${quickAnswer}</p></div>
+      ${specTeaser}
       <div class="build-rows">
         <div class="build-row">
           <span class="row-label">Herramienta</span>
@@ -308,10 +416,12 @@
     if (!prof) return;
     state.profession = id;
     state.objective = prof.objectives[0].id;
+    state.specBuild = getSpecBuildId(prof, prof.objectives[0]);
     updateProfessionTabs();
     renderGear();
     renderObjectives();
     renderBuild();
+    renderSpecialization();
     if (scroll) {
       const advisor = $("#advisor");
       if (advisor) advisor.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -319,10 +429,14 @@
   }
 
   function selectObjective(id) {
+    const prof = getProfession();
+    const obj = prof.objectives.find(objective => objective.id === id) || prof.objectives[0];
     state.objective = id;
+    state.specBuild = getSpecBuildId(prof, obj);
     updateObjectiveButtons();
     renderGear();
     renderBuild();
+    renderSpecialization();
   }
 
   async function copyText(text) {
@@ -349,6 +463,8 @@
     const prof = getProfession();
     const obj = getObjective();
     const priority = STATS[obj.priority];
+    const spec = SPECIALIZATIONS[prof.id];
+    const specBuild = spec?.builds?.find(build => build.id === getSpecBuildId(prof, obj));
     const lines = [
       `⚔️ ${prof.name} — ${obj.label} (Midnight 12.1.5)`,
       `Prioridad: ${priority.name} (${priority.en})${obj.priorityNote ? ` — ${obj.priorityNote}` : ""}`,
@@ -357,8 +473,9 @@
         : `Herramienta: ${prof.tool.es} — Stats fijos: ${statText(prof.tool.stats)}`,
       `Encantamiento: ${obj.enchants.map(e => `${e.when}: ${e.name}`).join(" | ")}`,
       `Accesorios: ${prof.accessories.map(a => `${a.es} (${statText(a.stats)})`).join(" | ")}`,
+      specBuild ? `Especialización: ${specBuild.label} (${specBuild.tag})` : "",
       `Tip: ${obj.tip.replace(/<[^>]+>/g, "")}`
-    ];
+    ].filter(Boolean);
     copyText(lines.join("\n")).then(ok => {
       const feedback = $("#copyFeedback");
       if (feedback) {
@@ -379,6 +496,24 @@
     $("#objectiveGrid").addEventListener("click", event => {
       const btn = event.target.closest("[data-obj]");
       if (btn) selectObjective(btn.dataset.obj);
+    });
+
+    $("#specProfessionSelect").addEventListener("change", event => {
+      selectProfession(event.target.value);
+    });
+
+    $("#specBuildTabs").addEventListener("click", event => {
+      const btn = event.target.closest("[data-spec-build]");
+      if (!btn) return;
+      state.specBuild = btn.dataset.specBuild;
+      renderSpecialization();
+    });
+
+    $("#buildContent").addEventListener("click", event => {
+      const jump = event.target.closest(".spec-jump");
+      if (!jump) return;
+      state.specBuild = jump.dataset.specBuild;
+      renderSpecialization();
     });
   }
 

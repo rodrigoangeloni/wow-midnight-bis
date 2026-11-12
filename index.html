@@ -7,12 +7,12 @@
   <meta name="theme-color" content="#07090d">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <title>Midnight 12.1.5 BiS · Asesor de profesiones</title>
-  <meta name="description" content="Guía visual de WoW: Midnight 12.1.5. Elige tu profesión y tu objetivo para saber qué atributo poner en la herramienta, qué encantamiento usar y qué aportan tus accesorios.">
+  <meta name="description" content="Guía visual de WoW: Midnight 12.1.5. Elige tu profesión y tu objetivo para saber qué atributo poner en la herramienta, qué encantamiento usar, qué aportan tus accesorios y cómo gastar tus Puntos de Conocimiento.">
   <meta name="author" content="Rodrigo Angeloni">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Midnight 12.1.5 BiS">
   <meta property="og:title" content="Midnight 12.1.5 · BiS de profesiones">
-  <meta property="og:description" content="Elige tu profesión y tu objetivo: qué atributo poner en la herramienta, qué encantamiento usar y qué aportan tus accesorios.">
+  <meta property="og:description" content="Elige tu profesión y tu objetivo: qué atributo poner en la herramienta, qué encantamiento usar, qué aportan tus accesorios y cómo gastar tus puntos de especialización.">
   <meta property="og:url" content="https://rodrigoangeloni.github.io/wow-midnight-bis/">
   <meta property="og:image" content="https://rodrigoangeloni.github.io/wow-midnight-bis/assets/img/og-image.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -21,7 +21,7 @@
   <meta property="og:image:alt" content="BiS de profesiones de WoW: Midnight 12.1.5">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Midnight 12.1.5 · BiS de profesiones">
-  <meta name="twitter:description" content="Elige tu profesión y tu objetivo: qué atributo poner en la herramienta, qué encantamiento usar y qué aportan tus accesorios.">
+  <meta name="twitter:description" content="Elige tu profesión y tu objetivo: qué atributo poner en la herramienta, qué encantamiento usar, qué aportan tus accesorios y cómo gastar tus puntos de especialización.">
   <meta name="twitter:image" content="https://rodrigoangeloni.github.io/wow-midnight-bis/assets/img/og-image.jpg">
   <meta name="twitter:image:alt" content="BiS de profesiones de WoW: Midnight 12.1.5">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +41,7 @@
     </a>
     <nav class="topnav" aria-label="Navegación principal">
       <a href="#advisor">Asesor</a>
+      <a href="#especializacion">Especialización</a>
       <a href="#vista-rapida">Profesiones</a>
       <a href="#atributos">Atributos</a>
       <a href="#maestra">Tabla maestra</a>
@@ -143,10 +144,52 @@
       </div>
     </section>
 
+    <!-- Especialización -->
+    <section class="section" id="especializacion">
+      <div class="section-head">
+        <p class="section-kicker">02 · Especialización</p>
+        <h2>Dónde gastar tus Puntos de Conocimiento</h2>
+        <p>Cada profesión tiene su propio árbol. Elige una build según lo que quieras hacer: craftear equipo, vender consumibles, farmear materiales o montar un ejército de alters.</p>
+      </div>
+      <div class="spec-callout">
+        <span aria-hidden="true">🌳</span>
+        <p>Los árboles se desbloquean al llegar a <strong>25 de habilidad</strong>. Puedes completar todas las ramas con el tiempo, pero el orden importa al principio. <strong>Cocina y Pesca no tienen árbol de especialización.</strong></p>
+      </div>
+      <div class="spec-toolbar">
+        <label class="spec-select-label" for="specProfessionSelect">Profesión</label>
+        <select id="specProfessionSelect" class="spec-select"></select>
+        <span id="specSheetLink" class="spec-sheet-link"></span>
+      </div>
+      <div class="spec-layout">
+        <aside class="panel spec-trees-panel" aria-live="polite">
+          <div class="panel-head">
+            <div>
+              <p class="section-kicker">Ramas</p>
+              <h3>Árbol de <span id="specProfName">Sastrería</span></h3>
+            </div>
+            <span class="badge badge-gold">Knowledge</span>
+          </div>
+          <div id="specTreeList" class="spec-tree-list"></div>
+        </aside>
+        <div class="panel spec-build-panel" aria-live="polite">
+          <div class="panel-head">
+            <div>
+              <p class="section-kicker">Build recomendada</p>
+              <h3>Cómo gastar los puntos</h3>
+            </div>
+            <span class="badge">Prioridad</span>
+          </div>
+          <div id="specBuildTabs" class="spec-build-tabs" role="group" aria-label="Elegir build de especialización"></div>
+          <div id="specBuildContent" class="spec-build-content"></div>
+        </div>
+      </div>
+      <p class="spec-disclaimer">Los nombres de los talentos se mantienen en inglés para que coincidan con las capturas y las guías. Esta sección resume las builds; las capturas exactas de cada árbol están en la hoja del canal. Verifica siempre el parche actual.</p>
+    </section>
+
     <!-- Vista rápida de profesiones -->
     <section class="section" id="vista-rapida">
       <div class="section-head">
-        <p class="section-kicker">02 · Profesiones de Midnight 12.1.5</p>
+        <p class="section-kicker">03 · Profesiones de Midnight 12.1.5</p>
         <h2>Las 13 profesiones de un vistazo</h2>
         <p>Solo Midnight 12.1.5: sin expansiones anteriores ni recetas viejas. Mira qué stat va en la herramienta y qué suma el par de accesorios recomendado.</p>
       </div>
@@ -156,7 +199,7 @@
     <!-- Atributos -->
     <section class="section" id="atributos">
       <div class="section-head">
-        <p class="section-kicker">03 · Los siete atributos</p>
+        <p class="section-kicker">04 · Los siete atributos</p>
         <h2>Qué hace cada stat</h2>
         <p>Los nombres están en español de México (esMX), con su equivalente en inglés para que los encuentres en Wowhead o en cualquier guía.</p>
       </div>
@@ -169,7 +212,7 @@
     <!-- Tabla maestra -->
     <section class="section" id="maestra">
       <div class="section-head">
-        <p class="section-kicker">04 · Tabla maestra</p>
+        <p class="section-kicker">05 · Tabla maestra</p>
         <h2>Objetivo → misiva → encantamiento</h2>
         <p>La combinación rápida para cuando ya sabes qué vas a fabricar o recolectar y solo necesitas confirmar los dos stats clave.</p>
       </div>
@@ -199,6 +242,7 @@
       <span>👨‍💻 Creado por <a href="https://github.com/rodrigoangeloni" target="_blank" rel="noopener">Rodrigo Angeloni</a></span>
       <span>📊 Datos: <a href="https://www.wowhead.com/mx" target="_blank" rel="noopener">Wowhead esMX</a></span>
       <span>🔗 Fuentes: <a href="https://www.icy-veins.com/wow/professions" target="_blank" rel="noopener">Icy Veins</a> y <a href="https://www.wow-professions.com/midnight/" target="_blank" rel="noopener">Wow-Professions</a></span>
+      <span>🌳 Especializaciones: <a href="https://docs.google.com/spreadsheets/d/1kKJyJ_sHOh2pIMTDjI2c1wIKFeRj2f_S/edit" target="_blank" rel="noopener">hoja del canal</a></span>
       <span>💻 <a href="https://github.com/rodrigoangeloni/wow-midnight-bis" target="_blank" rel="noopener">Código en GitHub</a></span>
     </p>
   </footer>
@@ -206,6 +250,7 @@
   <noscript>Activa JavaScript para usar el asesor interactivo de profesiones.</noscript>
 
   <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/specializations.js" defer></script>
   <script src="assets/js/app.js" defer></script>
 </body>
 </html>

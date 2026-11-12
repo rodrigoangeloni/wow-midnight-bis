@@ -33,6 +33,7 @@ Sitio estático de una sola página pensado para resolver una duda concreta: **q
 | 🎯 | **Asesor por objetivo** — cambia la misiva, el encantamiento y el perfil de stats. |
 | 🔗 | **Enlaces a Wowhead esMX** — cada herramienta y accesorio abre su ficha. |
 | 🖼️ | **Iconos con respaldo** — carga iconos de Wowhead y usa emojis si fallan. |
+| 🌳 | **Especialización** — ramas y orden de Puntos de Conocimiento para 11 profesiones. |
 | 📱 | **Diseño responsive** — una sola página, sin frameworks ni build. |
 
 ## ▶️ Cómo usarla
@@ -58,7 +59,7 @@ El sitio se publica con GitHub Pages desde la rama `main`; el contenido se sirve
 ## 🛠️ Tecnologías
 
 - HTML5 semántico y CSS3 en `assets/css/styles.css`.
-- JavaScript vanilla sin build: `assets/js/data.js` (datos) y `assets/js/app.js` (lógica).
+- JavaScript vanilla sin build: `assets/js/data.js` (datos de equipo), `assets/js/specializations.js` (árboles y builds) y `assets/js/app.js` (lógica).
 - Scripts clásicos con `defer`, no módulos ES: la página funciona abriendo `index.html` directamente.
 - Fuentes de Google Fonts e iconos del CDN de Wowhead, con respaldo en emojis.
 
@@ -72,6 +73,7 @@ El sitio se publica con GitHub Pages desde la rama `main`; el contenido se sirve
 │   │   └── styles.css                   # Estilos
 │   ├── js/
 │   │   ├── data.js                      # Datos de stats, profesiones y objetos
+│   │   ├── specializations.js           # Ramas y builds de especialización
 │   │   └── app.js                       # Render e interacción
 │   └── img/
 │       ├── favicon.svg                  # Icono del sitio
@@ -90,6 +92,7 @@ El sitio se publica con GitHub Pages desde la rama `main`; el contenido se sirve
 - **Creado y mantenido por** [Rodrigo Angeloni](https://github.com/rodrigoangeloni).
 - **Datos y nombres verificados en** [Wowhead esMX](https://www.wowhead.com/mx).
 - **Fuentes de referencia:** [Icy Veins](https://www.icy-veins.com/wow/professions), [Wowhead](https://www.wowhead.com/guide/midnight/professions) y [Wow-Professions](https://www.wow-professions.com/midnight/).
+- **Especializaciones:** builds contrastadas con Wowhead/Wow-Professions y la [hoja de especializaciones del canal](https://docs.google.com/spreadsheets/d/1kKJyJ_sHOh2pIMTDjI2c1wIKFeRj2f_S/edit), que conserva las capturas de asignación de puntos.
 - **Hecho para la hermandad**, con cariño por las profesiones de WoW.
 
 ## ⚠️ Aviso
