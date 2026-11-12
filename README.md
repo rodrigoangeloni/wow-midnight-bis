@@ -12,6 +12,10 @@ Página visual e interactiva para saber qué atributo poner en la herramienta, q
 
 https://rodrigoangeloni.github.io/wow-midnight-bis/
 
+## Imagen para compartir
+
+`og-image.jpg` (1200×630) es la imagen que se muestra al compartir el enlace por WhatsApp, Discord, Twitter/X y otras redes. El diseño fuente está en `design/og-image.html`.
+
 ## Notas
 
 - Nombres de objetos verificados en Wowhead esMX.
