@@ -270,7 +270,7 @@ En recolección, las estadísticas principales son **Delicadeza**, **Percepción
 
 - [Icy Veins – Profesiones de World of Warcraft](https://www.icy-veins.com/wow/professions)
 - [Wowhead – Guía de profesiones de Midnight](https://www.wowhead.com/guide/midnight/professions)
-- [Wowhead esMX – Base de datos en español de México](https://www.wowhead.com/es-mx)
+- [Wowhead esMX – Base de datos en español de México](https://www.wowhead.com/mx)
 - [Wow-Professions – Guías de Midnight](https://www.wow-professions.com/midnight/)
 
 > 🌐 **Nombres verificados:** los nombres en español de esta guía corresponden al cliente **esMX** y se comprobaron en Wowhead esMX. Si juegas en otro idioma, usa la columna en inglés para localizar cada objeto.
