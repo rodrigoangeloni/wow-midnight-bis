@@ -80,6 +80,7 @@ El sitio se publica con GitHub Pages desde la rama `main`; el contenido se sirve
 │       ├── favicon.svg                  # Icono del sitio
 │       ├── midnight-logo.png            # Logo oficial (respaldo)
 │       ├── midnight-logo.webp           # Logo oficial para el hero
+│       ├── spec-icons/                  # Iconos de nodos de especialización (Wowhead)
 │       └── og-image.jpg                 # Imagen para compartir (1200×630)
 ├── docs/
 │   └── guia-bis-profesiones-midnight.md # Guía de referencia en Markdown
@@ -93,7 +94,7 @@ El sitio se publica con GitHub Pages desde la rama `main`; el contenido se sirve
 ## 👨‍💻 Créditos
 
 - **Creado y mantenido por** [Rodrigo Angeloni](https://github.com/rodrigoangeloni).
-- **Datos y nombres verificados en** [Wowhead esMX](https://www.wowhead.com/mx).
+- **Datos, nombres e iconos de especialización verificados en** [Wowhead esMX](https://www.wowhead.com/mx).
 - **Fuentes de referencia:** [Icy Veins](https://www.icy-veins.com/wow/professions), [Wowhead](https://www.wowhead.com/guide/midnight/professions) y [Wow-Professions](https://www.wow-professions.com/midnight/).
 - **Especializaciones:** builds contrastadas con Wowhead/Wow-Professions y la [hoja de especializaciones del canal](https://docs.google.com/spreadsheets/d/1kKJyJ_sHOh2pIMTDjI2c1wIKFeRj2f_S/edit), que conserva las capturas de asignación de puntos.
 - **Hecho para la hermandad**, con cariño por las profesiones de WoW.

@@ -1001,6 +1001,36 @@ tbody tr:hover td { background: rgba(123, 140, 255, .025); }
   border-bottom: 1px solid rgba(255, 255, 255, .06);
 }
 .spec-step:last-child { border-bottom: 0; }
+.spec-step-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+.spec-node-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  overflow: hidden;
+  border: 1px solid rgba(123, 140, 255, .38);
+  border-radius: 9px;
+  background: radial-gradient(circle at 30% 20%, rgba(123, 140, 255, .16), rgba(0, 0, 0, .32));
+  box-shadow: 0 0 0 3px rgba(7, 6, 24, .4), inset 0 0 12px rgba(0, 0, 0, .5);
+  color: var(--accent-2);
+  font-size: .8rem;
+}
+.spec-node-icon img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.spec-node-icon .fallback { line-height: 1; }
+.spec-step-text { min-width: 0; }
 .spec-points {
   align-self: start;
   padding: 3px 7px;
@@ -1250,6 +1280,8 @@ noscript {
   .spec-build-head { flex-direction: column; }
   .spec-stats { justify-content: flex-start; max-width: none; }
   .spec-step { grid-template-columns: 58px minmax(0, 1fr); }
+  .spec-step-body { gap: 8px; }
+  .spec-node-icon { width: 30px; height: 30px; border-radius: 8px; }
   .spec-steps::before { left: 29px; }
   .table-wrap { overflow: visible; border: 0; background: transparent; }
   table { min-width: 0; border-collapse: separate; border-spacing: 0 10px; }

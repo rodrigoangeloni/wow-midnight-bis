@@ -226,9 +226,15 @@
     const steps = build.steps.map(step => `
       <li class="spec-step">
         <span class="spec-points">${step.pts ? `${step.pts} pts` : "Prioriza"}</span>
-        <div>
-          <strong>${step.node}</strong>
-          ${step.note ? `<small>${step.note}</small>` : ""}
+        <div class="spec-step-body">
+          <span class="spec-node-icon" aria-hidden="true">
+            ${step.icon ? `<img src="assets/img/spec-icons/${step.icon}.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()">` : ""}
+            <span class="fallback">✦</span>
+          </span>
+          <div class="spec-step-text">
+            <strong>${step.node}</strong>
+            ${step.note ? `<small>${step.note}</small>` : ""}
+          </div>
         </div>
       </li>`).join("");
     const stats = statTags(build.stats);
