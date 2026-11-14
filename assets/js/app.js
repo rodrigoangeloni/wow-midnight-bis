@@ -389,7 +389,7 @@
       </div>
       <div class="tip">💡 ${obj.tip}</div>
       <div class="build-actions">
-        <button class="btn btn-gold btn-small" type="button" id="copyBuild">📋 Copiar resumen</button>
+        <button class="btn btn-primary btn-small" type="button" id="copyBuild">📋 Copiar resumen</button>
         <span id="copyFeedback" class="copy-feedback" aria-live="polite"></span>
       </div>`;
 
