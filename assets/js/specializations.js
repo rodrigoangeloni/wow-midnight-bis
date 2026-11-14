@@ -2,87 +2,87 @@
 
 window.WOW_SPECS = {
   sheetUrl: "https://docs.google.com/spreadsheets/d/1kKJyJ_sHOh2pIMTDjI2c1wIKFeRj2f_S/edit",
-  note: "Los nombres de los árboles se mantienen en inglés para que coincidan con las capturas y las guías. Cocina y Pesca no tienen árbol de especialización en Midnight.",
+  note: "Los nombres de los árboles y nodos están en español de México (esMX), verificados en Wowhead. Cocina y Pesca no tienen árbol de especialización en Midnight.",
 
   alquimia: {
     gid: "100445853",
     objectiveMap: { mass: "flasks", quality: "flasks" },
     trees: [
-      { name: "Potion Prowess", focus: "Pociones", desc: "Pociones Void y Light; desbloquea el caldero de pociones con 30 puntos." },
-      { name: "Fluent in Flasks", focus: "Frascos y phials", desc: "Frascos, phials y duración pasiva; caldero de frascos con 30 puntos." },
-      { name: "Transmutation Authority", focus: "Transmutaciones", desc: "Motes, conversiones de materiales, Wondrous Synergist y Alchemist Stone." },
-      { name: "Alchemical Mastery", focus: "Stats de crafteo", desc: "Mejora Multicraft, Resourcefulness e Ingenuity para toda la profesión." }
+      { name: "Destreza en pociones", focus: "Pociones", desc: "Pociones del Vacío y de la Luz; desbloquea el caldero de pociones con 30 puntos." },
+      { name: "Dominio de frascos", focus: "Frascos y ampollas", desc: "Frascos, ampollas y duración pasiva; caldero de frascos con 30 puntos." },
+      { name: "Autoridad en transmutaciones", focus: "Transmutaciones", desc: "Motas, conversiones de materiales, Sinergista maravilloso y Piedra de alquimista." },
+      { name: "Maestría alquímica", focus: "Atributos de fabricación", desc: "Mejora Fabricación múltiple, Inventiva e Ingenio para toda la profesión." }
     ],
     builds: [
       {
-        id: "flasks", label: "Vender frascos", tag: "Auction House",
-        summary: "La línea de mayor demanda para raid y M+. Empieza por Multicraft y añade Resourcefulness para mejorar el margen.",
+        id: "flasks", label: "Vender frascos", tag: "Casa de subastas",
+        summary: "La línea de mayor demanda para banda y M+. Empieza por Fabricación múltiple y añade Inventiva para mejorar el margen.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 10, node: "Fluent in Flasks (raíz)", note: "Desbloquea la rama de frascos." },
-          { pts: 10, node: "Sin'dorei Specialist", note: "" },
-          { pts: 20, node: "Flask Abundance", note: "Máximo Multicraft para frascos." },
-          { pts: 10, node: "Alchemical Mastery (raíz)", note: "" },
-          { pts: 20, node: "Recycle", note: "Resourcefulness para gastar menos materiales." },
-          { pts: 20, node: "Fluent in Flasks (30 total)", note: "Desbloquea el caldero de frascos Sin'dorei." },
-          { pts: 20, node: "Sin'dorei Specialist", note: "Completa la rama." },
-          { pts: 20, node: "Alchemical Mastery", note: "Completa los stats." }
+          { pts: 10, node: "Dominio de frascos (raíz)", note: "Desbloquea la rama de frascos." },
+          { pts: 10, node: "Especialista sin'dorei", note: "" },
+          { pts: 20, node: "Abundancia de frascos", note: "Máxima Fabricación múltiple para frascos." },
+          { pts: 10, node: "Maestría alquímica (raíz)", note: "" },
+          { pts: 20, node: "Reciclar", note: "Inventiva para gastar menos materiales." },
+          { pts: 20, node: "Dominio de frascos (30 total)", note: "Desbloquea el caldero de frascos sin'dorei." },
+          { pts: 20, node: "Especialista sin'dorei", note: "Completa la rama." },
+          { pts: 20, node: "Maestría alquímica", note: "Completa los atributos." }
         ],
-        after: "Si juegas raid o M+, empieza con 15 puntos en Fluent in Flasks para la duración y después sigue esta build.",
+        after: "Si juegas banda o M+, empieza con 15 puntos en Dominio de frascos para la duración y después sigue esta configuración.",
         source: "https://www.wow-professions.com/midnight/alchemy-specialization-guide-and-builds"
       },
       {
-        id: "phials", label: "Vender phials", tag: "Auction House",
-        summary: "Mercado más pequeño que los frascos, pero con menos competencia. La ruta es casi idéntica, cambiando Sin'dorei Specialist por Haranir Secrets.",
+        id: "phials", label: "Vender ampollas", tag: "Casa de subastas",
+        summary: "Mercado más pequeño que los frascos, pero con menos competencia. La ruta es casi idéntica, cambiando Especialista sin'dorei por Secretos haranir.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 10, node: "Fluent in Flasks (raíz)", note: "" },
-          { pts: 10, node: "Haranir Secrets", note: "" },
-          { pts: 20, node: "Phial Abundance", note: "Máximo Multicraft para phials." },
-          { pts: 10, node: "Alchemical Mastery (raíz)", note: "" },
-          { pts: 20, node: "Recycle", note: "Resourcefulness." },
-          { pts: 20, node: "Fluent in Flasks (30 total)", note: "Desbloquea el caldero." },
-          { pts: 20, node: "Haranir Secrets", note: "Completa la rama." },
-          { pts: 20, node: "Alchemical Mastery", note: "Completa los stats." }
+          { pts: 10, node: "Dominio de frascos (raíz)", note: "" },
+          { pts: 10, node: "Secretos haranir", note: "" },
+          { pts: 20, node: "Abundancia de ampollas", note: "Máxima Fabricación múltiple para ampollas." },
+          { pts: 10, node: "Maestría alquímica (raíz)", note: "" },
+          { pts: 20, node: "Reciclar", note: "Inventiva." },
+          { pts: 20, node: "Dominio de frascos (30 total)", note: "Desbloquea el caldero." },
+          { pts: 20, node: "Secretos haranir", note: "Completa la rama." },
+          { pts: 20, node: "Maestría alquímica", note: "Completa los atributos." }
         ],
-        after: "Si el mercado de phials está flojo, cambia a frascos o pociones; la estructura de puntos es la misma.",
+        after: "Si el mercado de ampollas está flojo, cambia a frascos o pociones; la estructura de puntos es la misma.",
         source: "https://www.wow-professions.com/midnight/alchemy-specialization-guide-and-builds"
       },
       {
-        id: "potions", label: "Vender pociones", tag: "Auction House",
-        summary: "Elige Void o Light y maxa Multicraft antes de buscar calidad Oro. Buena demanda, pero más competencia que frascos.",
+        id: "potions", label: "Vender pociones", tag: "Casa de subastas",
+        summary: "Elige Vacío o Luz y maximiza Fabricación múltiple antes de buscar calidad Oro. Buena demanda, pero más competencia que frascos.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 10, node: "Potion Prowess (raíz)", note: "Abre las sub-ramas Void y Light." },
-          { pts: 10, node: "Path of Void o Path of Light", note: "Elige una sola rama." },
-          { pts: 20, node: "Prolific Potioneer (Void o Light)", note: "Máximo Multicraft." },
-          { pts: 10, node: "Alchemical Mastery (raíz)", note: "" },
-          { pts: 20, node: "Reuse", note: "Resourcefulness para pociones." },
-          { pts: 30, node: "Potion Prowess (total)", note: "Desbloquea el caldero Voidlight." },
-          { pts: 30, node: "Path of Void o Light", note: "Completa la rama elegida." },
-          { pts: 30, node: "Alchemical Mastery", note: "Completa los stats." }
+          { pts: 10, node: "Destreza en pociones (raíz)", note: "Abre las sub-ramas Vacío y Luz." },
+          { pts: 10, node: "Camino del Vacío o Camino de la luz", note: "Elige una sola rama." },
+          { pts: 20, node: "Pocionista prolífico (Vacío o Luz)", note: "Máxima Fabricación múltiple." },
+          { pts: 10, node: "Maestría alquímica (raíz)", note: "" },
+          { pts: 20, node: "Reutilizar", note: "Inventiva para pociones." },
+          { pts: 30, node: "Destreza en pociones (total)", note: "Desbloquea el caldero Vacioluz." },
+          { pts: 30, node: "Camino del Vacío o Luz", note: "Completa la rama elegida." },
+          { pts: 30, node: "Maestría alquímica", note: "Completa los atributos." }
         ],
-        after: "Para una segunda línea de producto, replica la build en la otra rama (Void/Light) o cambia a frascos.",
+        after: "Para una segunda línea de producto, replica la configuración en la otra rama (Vacío/Luz) o cambia a frascos.",
         source: "https://www.wow-professions.com/midnight/alchemy-specialization-guide-and-builds"
       },
       {
-        id: "transmutes", label: "Transmutaciones y diarias", tag: "Daily CDs",
-        summary: "La build de oro pasivo: reduce el cooldown de Wondrous Synergist y luego añade Resourcefulness.",
+        id: "transmutes", label: "Transmutaciones y diarias", tag: "Reutilización diaria",
+        summary: "La configuración de oro pasivo: reduce la reutilización de Sinergista maravilloso y luego añade Inventiva.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 10, node: "Transmutation Authority (raíz)", note: "Desbloquea Metamorphic Mastery y Synthesis Synergy." },
-          { pts: 20, node: "Metamorphic Mastery", note: "Multicraft para transmutaciones de motes." },
-          { pts: 20, node: "Synthesis Synergy", note: "Baja el cooldown de Wondrous Synergist de ~18 h a ~9 h." },
-          { pts: 10, node: "Alchemical Mastery (raíz)", note: "" },
-          { pts: 20, node: "Reduce", note: "Resourcefulness para todas las transmutaciones." }
+          { pts: 10, node: "Autoridad en transmutaciones (raíz)", note: "Desbloquea Maestría metamórfica y Sinergia sintetizadora." },
+          { pts: 20, node: "Maestría metamórfica", note: "Fabricación múltiple para transmutaciones de motas." },
+          { pts: 20, node: "Sinergia sintetizadora", note: "Reduce la reutilización de Sinergista maravilloso de ~18 h a ~9 h." },
+          { pts: 10, node: "Maestría alquímica (raíz)", note: "" },
+          { pts: 20, node: "Reducción", note: "Inventiva para todas las transmutaciones." }
         ],
-        after: "Si buscas calidad Oro, añade 20 puntos a la raíz de Transmutation Authority y maximiza Alchemical Mastery. Las transmutaciones de materiales no pueden Multicraft.",
+        after: "Si buscas calidad Oro, añade 20 puntos a la raíz de Autoridad en transmutaciones y maximiza Maestría alquímica. Las transmutaciones de materiales no pueden usar Fabricación múltiple.",
         source: "https://www.wow-professions.com/midnight/alchemy-specialization-guide-and-builds"
       }
     ],
     notes: [
-      "Regla rápida: si la receta puede Multicraft, usa Multicraft; si no, usa Resourcefulness.",
-      "Las transmutaciones de materiales no se benefician de Multicraft; las de motes y Wondrous Synergist sí."
+      "Regla rápida: si la receta puede usar Fabricación múltiple, usa Fabricación múltiple; si no, usa Inventiva.",
+      "Las transmutaciones de materiales no se benefician de Fabricación múltiple; las de motas y Sinergista maravilloso sí."
     ],
     guide: "https://www.wowhead.com/guide/midnight/professions/alchemy-specializations"
   },
@@ -91,52 +91,52 @@ window.WOW_SPECS = {
     gid: "1370887411",
     objectiveMap: { gear: "standard", consumables: "auction" },
     trees: [
-      { name: "Craftsmithing", focus: "Herramientas de profesión", desc: "Herramientas para otros crafteadores y Tool Stones que dan stats temporales." },
-      { name: "The Old Ways", focus: "Stats y aleaciones", desc: "Multicraft, Resourcefulness e Ingenuity para toda la profesión; rama de aleaciones." },
-      { name: "Armorsmithing", focus: "Armaduras de placas", desc: "Las 9 piezas de armadura: cabeza, pecho, piernas, hombros, manos, cintura, muñecas, pies y escudos." },
-      { name: "Weaponsmithing", focus: "Armas", desc: "Espadas, hachas, mazas, dagas, armas de asta y guadañas; incluye Weaponstones." }
+      { name: "Proveedor de oficios", focus: "Herramientas de profesión", desc: "Herramientas para otros fabricantes y Piedras de herramientas que dan atributos temporales." },
+      { name: "Las antiguas tradiciones", focus: "Atributos y aleaciones", desc: "Fabricación múltiple, Inventiva e Ingenio para toda la profesión; rama de aleaciones." },
+      { name: "Forja de armaduras", focus: "Armaduras de placas", desc: "Las 9 piezas de armadura: cabeza, pecho, piernas, hombros, manos, cintura, muñecas, pies y escudos." },
+      { name: "Forja de armas", focus: "Armas", desc: "Espadas, hachas, mazas, dagas, armas de asta y guadañas; incluye Piedras de armas." }
     ],
     builds: [
       {
         id: "standard", label: "Equipo propio", tag: "Armadura o armas",
-        summary: "La opción más segura si quieres ser autosuficiente y craftear tu equipo de temporada.",
+        summary: "La opción más segura si quieres ser autosuficiente y fabricar tu equipo de temporada.",
         stats: ["inventiva", "multicraft", "ingenio"],
         steps: [
-          { pts: 30, node: "Armorsmithing o Weaponsmithing (raíz)", note: "Elige armadura o armas antes de invertir." },
-          { pts: 30, node: "Sub-rama del slot elegido", note: "Armadura: Waist/Wrists/Hands, Head/Shoulder/Feet o Chest/Legs/Shield. Armas: Hafted o Blades." },
-          { pts: 20, node: "Nodo del ítem concreto", note: "Maxa un solo slot antes de abrir otro." }
+          { pts: 30, node: "Forja de armaduras o Forja de armas (raíz)", note: "Elige armadura o armas antes de invertir." },
+          { pts: 30, node: "Sub-rama de la ranura elegida", note: "Armadura: cintura/muñecas/manos, cabeza/hombros/pies o pecho/piernas/escudo. Armas: con empuñadura u hojas." },
+          { pts: 20, node: "Nodo del ítem concreto", note: "Maximiza una sola ranura antes de abrir otra ranura." }
         ],
-        after: "Después maxa los otros slots de la misma rama o pasa a la otra especialidad. No repartas puntos entre todas las ramas al inicio.",
+        after: "Después maximiza las otras ranuras de la misma rama o pasa a la otra especialidad. No repartas puntos entre todas las ramas al inicio.",
         source: "https://www.wow-professions.com/midnight/blacksmithing-specialization-guide-and-builds"
       },
       {
-        id: "orders", label: "Pedidos de fabricación", tag: "Trade Chat",
-        summary: "Para llenar pedidos de armadura o armas. Necesitas especializarte en un slot para llegar a rango máximo sin Concentration.",
+        id: "orders", label: "Pedidos de fabricación", tag: "Chat de comercio",
+        summary: "Para llenar pedidos de armadura o armas. Necesitas especializarte en una ranura para llegar a rango máximo sin Concentración.",
         stats: ["inventiva", "ingenio"],
         steps: [
-          { pts: 30, node: "Raíz de Armorsmithing o Weaponsmithing", note: "" },
-          { pts: 30, node: "Sub-rama del slot", note: "Ej.: Sculpted Armor, Large Plate Armor, Hafted o Blades." },
-          { pts: 20, node: "Nodo del ítem concreto", note: "Ej.: Helm, Greataxe, Wrist." }
+          { pts: 30, node: "Raíz de Forja de armaduras o Forja de armas", note: "" },
+          { pts: 30, node: "Sub-rama de la ranura", note: "Ej.: Armaduras esculpidas, Armaduras de placas grandes, Armas con empuñadura o Hojas." },
+          { pts: 20, node: "Nodo del ítem concreto", note: "Ej.: yelmo, hacha grande, muñeca." }
         ],
-        after: "Si el volumen de pedidos es bajo, invierte en Resourceful Smith (The Old Ways) para recuperar materiales. La alternativa de herramientas de profesión es 30 en Craftsmithing + 25 en Trade Tools/Trade Accessories.",
+        after: "Si el volumen de pedidos es bajo, invierte en Herrero ingenioso (Las antiguas tradiciones) para recuperar materiales. La alternativa de herramientas de profesión es 30 en Proveedor de oficios + 25 en Herramientas del oficio/Accesorios del oficio.",
         source: "https://www.wow-professions.com/midnight/blacksmithing-specialization-guide-and-builds"
       },
       {
-        id: "auction", label: "Aleaciones y consumibles", tag: "Auction House",
+        id: "auction", label: "Aleaciones y consumibles", tag: "Casa de subastas",
         summary: "Producción masiva de aleaciones para vender. Es la rama más líquida y constante de Herrería.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 40, node: "The Old Ways (raíz)", note: "Maximiza la raíz de stats." },
-          { pts: 20, node: "Prolific Worker", note: "Multicraft para aleaciones." },
-          { pts: 20, node: "Resourceful Smith", note: "Resourcefulness si vendes con margen; elige calidad Oro si ya tienes herramientas azules y skill 100." }
+          { pts: 40, node: "Las antiguas tradiciones (raíz)", note: "Maximiza la raíz de atributos." },
+          { pts: 20, node: "Trabajador prolífico", note: "Fabricación múltiple para aleaciones." },
+          { pts: 20, node: "Herrero ingenioso", note: "Inventiva si vendes con margen; elige calidad Oro si ya tienes herramientas azules y habilidad 100." }
         ],
-        after: "Para Tool Stones: 30 en Craftsmithing + 25 en Tool Stones. Para Weaponstones: 30 en Weaponsmithing + 25 en Weaponstones.",
+        after: "Para Piedras de herramientas: 30 en Proveedor de oficios + 25 en Piedras de herramientas. Para Piedras de armas: 30 en Forja de armas + 25 en Piedras de armas.",
         source: "https://www.wow-professions.com/midnight/blacksmithing-specialization-guide-and-builds"
       }
     ],
     notes: [
-      "Para armadura, prioriza los slots que no compiten con set: muñecas, cintura y botas.",
-      "Las armas suelen dar una mejora mayor, pero la armadura ofrece más opciones de slots."
+      "Para armadura, prioriza las ranuras que no compiten con conjunto: muñecas, cintura y botas.",
+      "Las armas suelen dar una mejora mayor, pero la armadura ofrece más opciones de ranuras."
     ],
     guide: "https://www.wowhead.com/guide/midnight/professions/blacksmithing-specializations"
   },
@@ -145,62 +145,62 @@ window.WOW_SPECS = {
     gid: "1264885717",
     objectiveMap: { gear: "selling", oils: "oils" },
     trees: [
-      { name: "Elevating Equipment", focus: "Encantamientos de equipo", desc: "Encantamientos de armas, anillos, pecho, botas, etc., organizados por estilo thalassiano, amani y haranir." },
-      { name: "Transitories, Tonics, and Tools", focus: "Aceites y herramientas", desc: "Aceites de maná, varitas de combate, varitas de encantador e ilusiones temporales." },
-      { name: "Disenchanting Delegate", focus: "Desencantar", desc: "Mejores materiales al desencantar objetos verdes, azules y épicos." },
-      { name: "Spellbound Shatterer", focus: "Stats de crafteo", desc: "Multicraft, Ingenuity y Resourcefulness para encantamientos; reduce el coste de Concentration." }
+      { name: "Equipo elevado", focus: "Encantamientos de equipo", desc: "Encantamientos de armas, anillos, pecho, botas, etc., organizados por estilo thalassiano, amani y haranir." },
+      { name: "Transitorios, tónicos y herramientas", focus: "Aceites y herramientas", desc: "Aceites de maná, varitas de combate, varitas de encantador e ilusiones temporales." },
+      { name: "Delegado de desencantamiento", focus: "Desencantar", desc: "Mejores materiales al desencantar objetos verdes, azules y épicos." },
+      { name: "Destructor de magia", focus: "Atributos de fabricación", desc: "Fabricación múltiple, Ingenio y Inventiva para encantamientos; reduce el coste de Concentración." }
     ],
     builds: [
       {
-        id: "concentration", label: "Concentración / pocos crafts", tag: "Poco tiempo",
-        summary: "Para quien no quiere cuidar la subasta: acumula Concentration, craftea un encantamiento de calidad y vuelve en unos días.",
+        id: "concentration", label: "Concentración / pocas fabricaciones", tag: "Poco tiempo",
+        summary: "Para quien no quiere cuidar la subasta: acumula Concentración, fabrica un encantamiento de calidad y vuelve en unos días.",
         stats: ["ingenio", "inventiva"],
         steps: [
-          { pts: 20, node: "Spellbound Shatterer (raíz)", note: "Los bonus de Concentration se maximizan con 20." },
-          { pts: 30, node: "Infinite Ingenuity", note: "Más procs de Ingenuity para reducir el coste." },
-          { pts: 20, node: "Sub-rama de encantamiento elegida", note: "Elige Weapon/Ring/Chest o Helm/Shoulder/Boots." }
+          { pts: 20, node: "Destructor de magia (raíz)", note: "Las bonificaciones de Concentración se maximizan con 20." },
+          { pts: 30, node: "Ingenio infinito", note: "Más activaciones de Ingenio para reducir el coste." },
+          { pts: 20, node: "Sub-rama de encantamiento elegida", note: "Elige Arma/Anillo/Pecho o Yelmo/Hombros/Botas." }
         ],
-        after: "Las recetas de vendedor y subasta no requieren puntos. Usa Concentration para calidad Oro y no malgastes en ramas que no vendas.",
+        after: "Las recetas de vendedor y subasta no requieren puntos. Usa Concentración para calidad Oro y no malgastes en ramas que no vendas.",
         source: "https://www.wow-professions.com/midnight/enchanting-specialization-guide-and-builds"
       },
       {
-        id: "selling", label: "Vender encantamientos", tag: "Auction House",
+        id: "selling", label: "Vender encantamientos", tag: "Casa de subastas",
         summary: "Producción masiva de una categoría de encantamientos. Elige primero la categoría con más demanda de tu reino.",
         stats: ["inventiva", "ingenio"],
         steps: [
-          { pts: 30, node: "Elevating Equipment (raíz)", note: "" },
-          { pts: 20, node: "Sub-rama elegida", note: "Thalassian, Amani o Haranir." },
-          { pts: 20, node: "Spellbound Shatterer (raíz)", note: "Resourcefulness si vendes en plata; usa Shatter Essence antes de craftear." }
+          { pts: 30, node: "Equipo elevado (raíz)", note: "" },
+          { pts: 20, node: "Sub-rama elegida", note: "Thalassiano, amani o haranir." },
+          { pts: 20, node: "Destructor de magia (raíz)", note: "Inventiva si vendes en plata; usa Fragmentar esencias antes de fabricar." }
         ],
-        after: "Para calidad Oro necesitas completar la sub-rama, 3 piezas de equipo azul y skill 100. Los encantamientos no se benefician de Multicraft.",
+        after: "Para calidad Oro necesitas completar la sub-rama, 3 piezas de equipo azul y habilidad 100. Los encantamientos no se benefician de Fabricación múltiple.",
         source: "https://www.wow-professions.com/midnight/enchanting-specialization-guide-and-builds"
       },
       {
-        id: "oils", label: "Aceites y consumibles", tag: "Consumables",
-        summary: "Para vender aceites de maná y consumibles. La guía no trae una build cerrada; prioriza la rama de aceites y los stats que la hoja recomienda.",
+        id: "oils", label: "Aceites y consumibles", tag: "Consumibles",
+        summary: "Para vender aceites de maná y consumibles. La guía no trae una configuración cerrada; prioriza la rama de aceites y los atributos que la hoja recomienda.",
         stats: ["multicraft", "ingenio"],
         steps: [
-          { pts: null, node: "Transitories, Tonics, and Tools", note: "Sube la rama de aceites/mana oils y las recetas de consumibles." },
-          { pts: 20, node: "Spellbound Shatterer (raíz)", note: "Stats de crafteo para todas las recetas." },
-          { pts: null, node: "Multicraft e Ingenuity", note: "La hoja del canal recomienda estos stats para que los aceites sean rentables." }
+          { pts: null, node: "Transitorios, tónicos y herramientas", note: "Sube la rama de aceites de maná y las recetas de consumibles." },
+          { pts: 20, node: "Destructor de magia (raíz)", note: "Atributos de fabricación para todas las recetas." },
+          { pts: null, node: "Fabricación múltiple e Ingenio", note: "La hoja del canal recomienda estos atributos para que los aceites sean rentables." }
         ],
-        after: "Para aceites, revisa también la sub-rama de Transitories/Tonics/Tools en las capturas de la hoja; la guía de Wow-Professions no separa una build de aceites.",
+        after: "Para aceites, revisa también la sub-rama de Transitorios, tónicos y herramientas en las capturas de la hoja; la guía de Wow-Professions no separa una configuración de aceites.",
         source: "https://www.wow-professions.com/midnight/enchanting-specialization-guide-and-builds"
       },
       {
         id: "disenchant", label: "Desencantar", tag: "Materiales",
-        summary: "Build para vender materiales de desencantado. No depende de stats de crafteo: solo de skill y de la sub-rama correcta.",
+        summary: "Configuración para vender materiales de desencantado. No depende de atributos de fabricación: solo de habilidad y de la sub-rama correcta.",
         stats: [],
         steps: [
-          { pts: 30, node: "Disenchanting Delegate (raíz)", note: "Abre las tres sub-ramas." },
-          { pts: 30, node: "Dust Deliverer, Shard Supplier o Crystal Collector", note: "Elige según el tipo de objeto que vayas a desencantar." }
+          { pts: 30, node: "Delegado de desencantamiento (raíz)", note: "Abre las tres sub-ramas." },
+          { pts: 30, node: "Repartidor de polvo, Proveedor de fragmentos o Recolector de cristales", note: "Elige según el tipo de objeto que vayas a desencantar." }
         ],
-        after: "Con 60 puntos ya produces; luego abre las otras dos sub-ramas. Los stats de crafteo no afectan al desencantado.",
+        after: "Con 60 puntos ya produces; luego abre las otras dos sub-ramas. Los atributos de fabricación no afectan al desencantado.",
         source: "https://www.wow-professions.com/midnight/enchanting-specialization-guide-and-builds"
       }
     ],
     notes: [
-      "Los encantamientos no se benefician de Multicraft.",
+      "Los encantamientos no se benefician de Fabricación múltiple.",
       "Para desencantar no necesitas herramienta épica: una varita rara + accesorios raros suele bastar."
     ],
     guide: "https://www.wowhead.com/guide/midnight/professions/enchanting-specializations"
@@ -210,55 +210,55 @@ window.WOW_SPECS = {
     gid: "64568744",
     objectiveMap: { gear: "prof-gear", components: "recycling" },
     trees: [
-      { name: "Market Mobility", focus: "Herramientas y accesorios", desc: "Herramientas de Ingeniería, Sastrería, Joyería, Pesca y Minería." },
-      { name: "Combat Analytics", focus: "Equipo de combate", desc: "Gafas, brazales, botas y armas de fuego." },
-      { name: "Recycling", focus: "Reciclaje y skill", desc: "Mejora el reciclaje y da Resourcefulness, Multicraft e Ingenuity a toda la profesión." },
-      { name: "Bits and Bots", focus: "Reactivos y bots", desc: "Bots, aparatos y reactivos; añade procs extra al craftear o reciclar." }
+      { name: "Movilidad de mercado", focus: "Herramientas y accesorios", desc: "Herramientas de Ingeniería, Sastrería, Joyería, Pesca y Minería." },
+      { name: "Análisis de combate", focus: "Equipo de combate", desc: "Gafas, brazales, botas y armas de fuego." },
+      { name: "Reciclaje", focus: "Reciclaje y habilidad", desc: "Mejora el reciclaje y da Inventiva, Fabricación múltiple e Ingenio a toda la profesión." },
+      { name: "Piezas y robots", focus: "Reactivos y bots", desc: "Robots, aparatos y reactivos; añade activaciones extra al fabricar o reciclar." }
     ],
     builds: [
       {
-        id: "prof-gear", label: "Herramientas y accesorios", tag: "Selling Tools",
-        summary: "Para craftear equipo de profesión al máximo. La demanda es alta al inicio de expansión y cae después.",
+        id: "prof-gear", label: "Herramientas y accesorios", tag: "Venta de herramientas",
+        summary: "Para fabricar equipo de profesión al máximo. La demanda es alta al inicio de expansión y cae después.",
         stats: ["inventiva", "multicraft"],
         steps: [
-          { pts: 10, node: "Mandatory Tools o Finishing Touches", note: "Elige primero la rama que quieras vender." },
-          { pts: 25, node: "Market Mobility (raíz)", note: "Skill para todo el equipo de profesión." },
-          { pts: 30, node: "Recycling", note: "Gran bonus de skill para todas las recetas." },
-          { pts: 30, node: "Sub-rama elegida", note: "Calidad Oro sin Concentration con skill 100 y equipo azul." }
+          { pts: 10, node: "Herramientas obligatorias o Últimos retoques", note: "Elige primero la rama que quieras vender." },
+          { pts: 25, node: "Movilidad de mercado (raíz)", note: "Habilidad para todo el equipo de profesión." },
+          { pts: 30, node: "Reciclaje", note: "Gran bonificación de habilidad para todas las recetas." },
+          { pts: 30, node: "Sub-rama elegida", note: "Calidad Oro sin Concentración con habilidad 100 y equipo azul." }
         ],
-        after: "Opcional: 30 en Resourcefulness si haces pedidos y quieres recuperar materiales. Si no haces pedidos, puedes saltarlo y usar Concentration.",
+        after: "Opcional: 30 en Inventiva si haces pedidos y quieres recuperar materiales. Si no haces pedidos, puedes saltarlo y usar Concentración.",
         source: "https://www.wow-professions.com/midnight/engineering-specialization-guide-and-builds"
       },
       {
-        id: "combat", label: "Equipo de combate", tag: "Epic Gear",
+        id: "combat", label: "Equipo de combate", tag: "Equipo épico",
         summary: "Para gafas, brazales, botas y armas de fuego. Buena demanda al inicio de temporada.",
         stats: ["inventiva", "multicraft"],
         steps: [
-          { pts: 25, node: "Combat Analytics (raíz)", note: "Abre las cuatro sub-ramas." },
-          { pts: 35, node: "Slot elegido", note: "Maxa un solo slot antes de abrir otro." },
-          { pts: 30, node: "Recycling", note: "Skill para llegar a calidad Oro sin Concentration." }
+          { pts: 25, node: "Análisis de combate (raíz)", note: "Abre las cuatro sub-ramas." },
+          { pts: 35, node: "Ranura elegida", note: "Maximiza una sola ranura antes de abrir otra ranura." },
+          { pts: 30, node: "Reciclaje", note: "Habilidad para llegar a calidad Oro sin Concentración." }
         ],
-        after: "Opcional: 30 en Resourcefulness. Luego abre los otros slots; cada uno necesita su propia sub-rama.",
+        after: "Opcional: 30 en Inventiva. Luego abre las otras ranuras; cada una necesita su propia sub-rama.",
         source: "https://www.wow-professions.com/midnight/engineering-specialization-guide-and-builds"
       },
       {
-        id: "recycling", label: "Reciclaje y reactivos", tag: "Mass Production",
-        summary: "Para vender reactivos de calidad Oro reciclando. Es la build más rentable si el mercado de materiales está caro.",
+        id: "recycling", label: "Reciclaje y reactivos", tag: "Producción masiva",
+        summary: "Para vender reactivos de calidad Oro reciclando. Es la configuración más rentable si el mercado de materiales está caro.",
         stats: ["inventiva", "multicraft"],
         steps: [
-          { pts: 30, node: "Recycling", note: "Empieza por la raíz de reciclaje." },
-          { pts: 10, node: "Bits and Bots", note: "Desbloquea la rama de reactivos." },
-          { pts: 20, node: "Resourcefulness", note: "Ahorra materiales al reciclar." },
-          { pts: 20, node: "Bits and Bots", note: "Más procs." },
-          { pts: 30, node: "Bits", note: "Soul Sprocket de calidad Oro." },
-          { pts: 30, node: "Bots", note: "Emergency Soul Link de calidad Oro si el mercado lo justifica." }
+          { pts: 30, node: "Reciclaje", note: "Empieza por la raíz de reciclaje." },
+          { pts: 10, node: "Piezas y robots", note: "Desbloquea la rama de reactivos." },
+          { pts: 20, node: "Inventiva", note: "Ahorra materiales al reciclar." },
+          { pts: 20, node: "Piezas y robots", note: "Más activaciones." },
+          { pts: 30, node: "Pedazos", note: "Componente de alma de calidad Oro." },
+          { pts: 30, node: "Robots", note: "Enlace de alma de emergencia de calidad Oro si el mercado lo justifica." }
         ],
-        after: "Si solo reciclas, con Resourcefulness tienes suficiente. Si también crafteas reactivos, añade Multicraft.",
+        after: "Si solo reciclas, con Inventiva tienes suficiente. Si también fabricas reactivos, añade Fabricación múltiple.",
         source: "https://www.wow-professions.com/midnight/engineering-specialization-guide-and-builds"
       }
     ],
     notes: [
-      "Recycling es la rama con más skill para toda la profesión; casi todas las builds pasan por 30 puntos ahí.",
+      "Reciclaje es la rama con más habilidad para toda la profesión; casi todas las configuraciones pasan por 30 puntos ahí.",
       "El equipo de profesión se vende muy bien al inicio, pero la demanda cae rápido."
     ],
     guide: "https://www.wowhead.com/guide/midnight/professions/engineering-specializations"
@@ -268,72 +268,72 @@ window.WOW_SPECS = {
     gid: "2145631150",
     objectiveMap: { mass: "consumables", milling: "reagents", quality: "consumables" },
     trees: [
-      { name: "Blueprints", focus: "Armas y herramientas", desc: "Bastones, armas de dos manos, arcos y herramientas de Cocina/Alquimia/Inscripción." },
-      { name: "Calm Hands", focus: "Stats de crafteo", desc: "Multicraft, Resourcefulness e Ingenuity; enseña el tratado semanal y da un punto extra." },
-      { name: "Perfected Products", focus: "Molienda y pergaminos", desc: "Mejora molienda, tintas, cifrados, misivas, contratos y runas vantus." },
-      { name: "Darkmoon Curiosity", focus: "Cartas del Faire", desc: "Cartas y trinkets de las cuatro suites, además de sigilos." }
+      { name: "Planos", focus: "Armas y herramientas", desc: "Bastones, armas de dos manos, arcos y herramientas de Cocina/Alquimia/Inscripción." },
+      { name: "Manos relajadas", focus: "Atributos de fabricación", desc: "Fabricación múltiple, Inventiva e Ingenio; enseña el tratado semanal y da un punto extra." },
+      { name: "Productos perfeccionados", focus: "Molienda y pergaminos", desc: "Mejora molienda, tintas, cifrados, misivas, contratos y runas vantus." },
+      { name: "Curiosidad Luna Negra", focus: "Cartas de la Luna Negra", desc: "Cartas y abalorios de las cuatro familias, además de sigilos." }
     ],
     builds: [
       {
-        id: "weapons", label: "Armas y herramientas", tag: "Crafting Orders",
-        summary: "Para craftear armas épicas o herramientas de profesión. Las herramientas se venden muy bien al inicio; las armas tienen demanda más estable.",
+        id: "weapons", label: "Armas y herramientas", tag: "Pedidos de fabricación",
+        summary: "Para fabricar armas épicas o herramientas de profesión. Las herramientas se venden muy bien al inicio; las armas tienen demanda más estable.",
         stats: ["inventiva", "multicraft"],
         steps: [
-          { pts: 15, node: "Blueprints → Field Research → sub-rama de arma", note: "Bows: Archery; casters: Staff Carving; off-hands: Illumination." },
-          { pts: 30, node: "Field Research", note: "Skill para todas las armas." },
-          { pts: 30, node: "Blueprints (raíz)", note: "" },
+          { pts: 15, node: "Planos → Investigación de campo → sub-rama de arma", note: "Elige la sub-rama de arcos, bastones o manos secundarias." },
+          { pts: 30, node: "Investigación de campo", note: "Habilidad para todas las armas." },
+          { pts: 30, node: "Planos (raíz)", note: "" },
           { pts: 30, node: "Sub-rama de arma elegida", note: "Calidad Oro con materiales Oro y 3 herramientas raras." }
         ],
-        after: "Para herramientas de profesión: 30 en Market Research (desbloquea las tres), 30 en Blueprints y 30 en la sub-rama de la herramienta.",
+        after: "Para herramientas de profesión: 30 en Investigación de mercado (desbloquea las tres), 30 en Planos y 30 en la sub-rama de la herramienta.",
         source: "https://www.wow-professions.com/midnight/inscription-specialization-guide-and-builds"
       },
       {
-        id: "consumables", label: "Misivas y contratos", tag: "Auction House",
+        id: "consumables", label: "Misivas y contratos", tag: "Casa de subastas",
         summary: "Producción masiva de misivas, contratos y runas vantus. Las misivas son el mercado más seguro y de mayor volumen.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 10, node: "Calm Hands (raíz)", note: "Multicraft y Resourcefulness para todo." },
-          { pts: 20, node: "Dextrous Diligence", note: "Multicraft." },
-          { pts: 20, node: "Keen Eye", note: "Resourcefulness." },
-          { pts: 30, node: "Perfected Products → Parchment → sub-rama elegida", note: "Perfect Missives, Perfect Contracts o Perfect Vantus Runes." },
-          { pts: 30, node: "Parchment", note: "" },
-          { pts: 30, node: "Perfected Products (raíz)", note: "Cadena completa para calidad Oro." }
+          { pts: 10, node: "Manos relajadas (raíz)", note: "Fabricación múltiple y Inventiva para todo." },
+          { pts: 20, node: "Diligencia diestra", note: "Fabricación múltiple." },
+          { pts: 20, node: "Ojo agudo", note: "Inventiva." },
+          { pts: 30, node: "Productos perfeccionados → Papiro → sub-rama elegida", note: "Misivas perfectas, Contratos perfectos o Runas vantus perfectas." },
+          { pts: 30, node: "Papiro", note: "" },
+          { pts: 30, node: "Productos perfeccionados (raíz)", note: "Cadena completa para calidad Oro." }
         ],
-        after: "Si prefieres calidad Oro primero, invierte el orden: sub-rama 30 → Parchment 30 → raíz 30, y luego los stats.",
+        after: "Si prefieres calidad Oro primero, invierte el orden: sub-rama 30 → Papiro 30 → raíz 30, y luego los atributos.",
         source: "https://www.wow-professions.com/midnight/inscription-specialization-guide-and-builds"
       },
       {
-        id: "reagents", label: "Molienda, tintas y cifrados", tag: "Reagents",
+        id: "reagents", label: "Molienda, tintas y cifrados", tag: "Reactivos",
         summary: "Para vender tintas, cifrados y reactivos. La molienda va primero porque los pigmentos Oro son la base de las tintas Oro.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 10, node: "Calm Hands (raíz)", note: "" },
-          { pts: 20, node: "Dextrous Diligence", note: "Multicraft." },
-          { pts: 20, node: "Keen Eye", note: "Resourcefulness." },
-          { pts: 30, node: "Perfect Milling", note: "Pigmentos de calidad Oro." },
-          { pts: 30, node: "Processing", note: "" },
-          { pts: 30, node: "Perfected Products (raíz)", note: "" },
-          { pts: 30, node: "Perfect Inks", note: "Tintas para todas las recetas." },
-          { pts: 30, node: "Perfect Ciphers", note: "Opcional; el mercado de cifrados es más pequeño." }
+          { pts: 10, node: "Manos relajadas (raíz)", note: "" },
+          { pts: 20, node: "Diligencia diestra", note: "Fabricación múltiple." },
+          { pts: 20, node: "Ojo agudo", note: "Inventiva." },
+          { pts: 30, node: "Molienda perfecta", note: "Pigmentos de calidad Oro." },
+          { pts: 30, node: "Procesamiento", note: "" },
+          { pts: 30, node: "Productos perfeccionados (raíz)", note: "" },
+          { pts: 30, node: "Tintas perfectas", note: "Tintas para todas las recetas." },
+          { pts: 30, node: "Claves perfectas", note: "Opcional; el mercado de cifrados es más pequeño." }
         ],
-        after: "Puedes combinar esta build con la de misivas/contratos cuando termines la cadena de molienda.",
+        after: "Puedes combinar esta configuración con la de misivas/contratos cuando termines la cadena de molienda.",
         source: "https://www.wow-professions.com/midnight/inscription-specialization-guide-and-builds"
       },
       {
-        id: "darkmoon", label: "Cartas del Faire", tag: "Darkmoon",
-        summary: "Especialización de cartas y trinkets. Espera datos de mercado antes de invertir fuerte: depende de qué suite sea BiS.",
+        id: "darkmoon", label: "Cartas de la Luna Negra", tag: "Luna Negra",
+        summary: "Especialización de cartas y abalorios. Espera datos de mercado antes de invertir fuerte: depende de qué familia sea la mejor.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 20, node: "Darkmoon Curiosity (raíz)", note: "Skill para todas las cartas." },
-          { pts: 20, node: "Suite elegida (Rot, Blood, Hunt o Void)", note: "Aprendes a inscribir y transcribir." },
-          { pts: 20, node: "Darkmoon Dominion o Darkmoon Sigil", note: "Trinket o embellishment; elige según demanda." }
+          { pts: 20, node: "Curiosidad Luna Negra (raíz)", note: "Habilidad para todas las cartas." },
+          { pts: 20, node: "Familia elegida (Podredumbre, Sangre, Caza o Vacío)", note: "Aprendes a inscribir y transcribir." },
+          { pts: 20, node: "Dominio de la Luna Negra o Sigilo de la Luna Negra", note: "Abalorio o embellecimiento; elige según demanda." }
         ],
-        after: "60 puntos para calidad Oro. Después puedes abrir otra suite, el otro nodo o Calm Hands.",
+        after: "60 puntos para calidad Oro. Después puedes abrir otra familia, el otro nodo o Manos relajadas.",
         source: "https://www.wow-professions.com/midnight/inscription-specialization-guide-and-builds"
       }
     ],
     notes: [
-      "Los contratos están limitados a uno por warband y semana; las misivas tienen mucho más volumen.",
+      "Los contratos están limitados a uno por banda de guerra y semana; las misivas tienen mucho más volumen.",
       "Las runas vantus solo tienen demanda cuando abre la banda."
     ],
     guide: "https://www.wowhead.com/guide/midnight/professions/inscription-specializations"
@@ -343,70 +343,70 @@ window.WOW_SPECS = {
     gid: "1417343130",
     objectiveMap: { gems: "gems", prospecting: "prospecting", quality: "gems" },
     trees: [
-      { name: "Thoughtful Throughput", focus: "Stats de crafteo", desc: "Multicraft, Resourcefulness e Ingenuity para todas las recetas de Joyería." },
-      { name: "Glamorous Gems", focus: "Gemas", desc: "Corte de los cuatro colores; sub-ramas para gemas Flawless y prismas." },
-      { name: "Alluring Accessories", focus: "Anillos y collares", desc: "Anillos, collares y accesorios de profesión para JC, Encantamiento e Inscripción." },
-      { name: "Proficient Processor", focus: "Prospectar y triturar", desc: "Reactivos comerciables, prospectado de mena y trituración de gemas." }
+      { name: "Producción consciente", focus: "Atributos de fabricación", desc: "Fabricación múltiple, Inventiva e Ingenio para todas las recetas de Joyería." },
+      { name: "Gemas glamorosas", focus: "Gemas", desc: "Corte de los cuatro colores; sub-ramas para gemas impecables y prismas." },
+      { name: "Accesorios atractivos", focus: "Anillos y collares", desc: "Anillos, collares y accesorios de profesión para Joyería, Encantamiento e Inscripción." },
+      { name: "Procesador proficiente", focus: "Prospectar y triturar", desc: "Reactivos comerciables, prospectado de mena y trituración de gemas." }
     ],
     builds: [
       {
-        id: "gems", label: "Gemas", tag: "Auction House",
-        summary: "Vende gemas por color. Elige primero el color que cubra más demanda según las guías BiS de clase.",
+        id: "gems", label: "Gemas", tag: "Casa de subastas",
+        summary: "Vende gemas por color. Elige primero el color que cubra más demanda según las guías de equipo óptimo por clase.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 5, node: "Thoughtful Throughput → Outrageous Output", note: "Desbloquea Multicraft." },
-          { pts: 30, node: "Outrageous Output", note: "Máximo Multicraft." },
+          { pts: 5, node: "Producción consciente → Producción descabellada", note: "Desbloquea Fabricación múltiple." },
+          { pts: 30, node: "Producción descabellada", note: "Máxima Fabricación múltiple." },
           { pts: 25, node: "Sub-rama del color elegido", note: "Desbloquea las tres recetas de gema." },
-          { pts: 30, node: "Glamorous Gems (raíz)", note: "" },
-          { pts: 15, node: "Gema elegida", note: "Calidad Oro sin Concentration." }
+          { pts: 30, node: "Gemas glamorosas (raíz)", note: "" },
+          { pts: 15, node: "Gema elegida", note: "Calidad Oro sin Concentración." }
         ],
-        after: "Si prefieres Resourcefulness primero: 10 en Thoughtful Throughput y 30 en Skilled Savings, luego la sub-rama del color.",
+        after: "Si prefieres Inventiva primero: 10 en Producción consciente y 30 en Ahorros prácticos, luego la sub-rama del color.",
         source: "https://www.wow-professions.com/midnight/jewelcrafting-specialization-guide-and-builds"
       },
       {
-        id: "jewelry", label: "Anillos y collares", tag: "Crafting Orders",
+        id: "jewelry", label: "Anillos y collares", tag: "Pedidos de fabricación",
         summary: "Para anillos, collares y accesorios de profesión. Anillos y collares son la apuesta más segura.",
         stats: ["inventiva"],
         steps: [
-          { pts: 30, node: "Alluring Accessories (raíz)", note: "" },
-          { pts: 40, node: "Sub-rama elegida", note: "Rings, Necklaces o Profession Accessories." },
-          { pts: 30, node: "Skilled Savings", note: "Resourcefulness; las joyas no pueden Multicraft." }
+          { pts: 30, node: "Accesorios atractivos (raíz)", note: "" },
+          { pts: 40, node: "Sub-rama elegida", note: "Anillos, Collares o Accesorios de profesión." },
+          { pts: 30, node: "Ahorros prácticos", note: "Inventiva; las joyas no pueden usar Fabricación múltiple." }
         ],
-        after: "Si quieres una segunda categoría, añade 40 puntos a otra sub-rama. La raíz ya está maxada.",
+        after: "Si quieres una segunda categoría, añade 40 puntos a otra sub-rama. La raíz ya está maximizada.",
         source: "https://www.wow-professions.com/midnight/jewelcrafting-specialization-guide-and-builds"
       },
       {
-        id: "reagents", label: "Reactivos", tag: "Auction House",
-        summary: "Para vender viales, lentes y reactivos. Multicraft para volumen; Resourcefulness para margen.",
+        id: "reagents", label: "Reactivos", tag: "Casa de subastas",
+        summary: "Para vender viales, lentes y reactivos. Fabricación múltiple para volumen; Inventiva para margen.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 5, node: "Thoughtful Throughput → Outrageous Output", note: "" },
-          { pts: 30, node: "Outrageous Output", note: "Máximo Multicraft." },
-          { pts: 10, node: "Thoughtful Throughput", note: "" },
-          { pts: 30, node: "Skilled Savings", note: "Resourcefulness." }
+          { pts: 5, node: "Producción consciente → Producción descabellada", note: "" },
+          { pts: 30, node: "Producción descabellada", note: "Máxima Fabricación múltiple." },
+          { pts: 10, node: "Producción consciente", note: "" },
+          { pts: 30, node: "Ahorros prácticos", note: "Inventiva." }
         ],
-        after: "Para calidad Oro: 15 en Proficient Processor, 30 en Material Manufacturer y 30 en Basic Reagents u Optional Reagents.",
+        after: "Para calidad Oro: 15 en Procesador proficiente, 30 en Manufacturero de materiales y 30 en Reactivos básicos u opcionales.",
         source: "https://www.wow-professions.com/midnight/jewelcrafting-specialization-guide-and-builds"
       },
       {
-        id: "prospecting", label: "Prospectar y triturar", tag: "Processing",
-        summary: "Para vender gemas y Gemdust. Prospectar mena y triturar gemas alimenta a todos los joyeros.",
+        id: "prospecting", label: "Prospectar y triturar", tag: "Procesamiento",
+        summary: "Para vender gemas y polvo de gemas. Prospectar mena y triturar gemas alimenta a todos los joyeros.",
         stats: ["inventiva"],
         steps: [
-          { pts: 10, node: "Proficient Processor", note: "" },
-          { pts: 30, node: "Prospecting Pro", note: "El último punto da gemas extra." },
-          { pts: 1, node: "Cada tipo de mena", note: "Deja Dazzling Thorium para más adelante." },
-          { pts: 5, node: "Thoughtful Throughput", note: "" },
-          { pts: 30, node: "Skilled Savings", note: "Resourcefulness." },
-          { pts: 20, node: "Proficient Processor", note: "Calidad Oro al prospectar." }
+          { pts: 10, node: "Procesador proficiente", note: "" },
+          { pts: 30, node: "Profesional de la prospección", note: "El último punto da gemas extra." },
+          { pts: 1, node: "Cada tipo de mena", note: "Deja torio deslumbrante para más adelante." },
+          { pts: 5, node: "Producción consciente", note: "" },
+          { pts: 30, node: "Ahorros prácticos", note: "Inventiva." },
+          { pts: 20, node: "Procesador proficiente", note: "Calidad Oro al prospectar." }
         ],
-        after: "Para triturar: 10 en Proficient Processor, 40 en Crushing Connoisseur y 20 más en Proficient Processor.",
+        after: "Para triturar: 10 en Procesador proficiente, 40 en Conocedor de triturado y 20 más en Procesador proficiente.",
         source: "https://www.wow-professions.com/midnight/jewelcrafting-specialization-guide-and-builds"
       }
     ],
     notes: [
-      "Las joyas no se benefician de Multicraft; para anillos y collares, Resourcefulness es la stat clave.",
-      "Para gemas y reactivos, Multicraft suele ser mejor."
+      "Las joyas no se benefician de Fabricación múltiple; para anillos y collares, Inventiva es el atributo clave.",
+      "Para gemas y reactivos, Fabricación múltiple suele ser mejor."
     ],
     guide: "https://www.wowhead.com/guide/midnight/professions/jewelcrafting-specializations"
   },
@@ -415,54 +415,54 @@ window.WOW_SPECS = {
     gid: "70446512",
     objectiveMap: { gear: "standard", materials: "auction" },
     trees: [
-      { name: "Learned Leatherworker", focus: "Stats de crafteo", desc: "Multicraft, Resourcefulness e Ingenuity para toda la profesión." },
-      { name: "Lasting Leather", focus: "Armadura de cuero", desc: "Recetas de cuero para las 8 piezas; desbloquea el set épico Silvermoon Agent." },
-      { name: "Safeguarding Scales", focus: "Armadura de malla", desc: "Recetas de malla para las 8 piezas; desbloquea el set épico Farstrider." },
-      { name: "Flawless Fortes", focus: "Consumibles y herramientas", desc: "Armor Kits, herramientas de profesión, accesorios y reactivos opcionales." }
+      { name: "Maestría en peletería", focus: "Atributos de fabricación", desc: "Fabricación múltiple, Inventiva e Ingenio para toda la profesión." },
+      { name: "Cuero duradero", focus: "Armadura de cuero", desc: "Recetas de cuero para las 8 piezas; desbloquea el conjunto épico de Lunargenta." },
+      { name: "Escamas protectoras", focus: "Armadura de malla", desc: "Recetas de malla para las 8 piezas; desbloquea el conjunto épico de malla." },
+      { name: "Fortaleza perfecta", focus: "Consumibles y herramientas", desc: "Conjuntos de armadura, herramientas de profesión, accesorios y reactivos opcionales." }
     ],
     builds: [
       {
-        id: "standard", label: "Equipo de cuero o malla", tag: "Armor",
-        summary: "La build más segura para ser autosuficiente con una armadura. Lasting Leather y Safeguarding Scales tienen la misma estructura.",
+        id: "standard", label: "Equipo de cuero o malla", tag: "Armadura",
+        summary: "La configuración más segura para ser autosuficiente con una armadura. Cuero duradero y Escamas protectoras tienen la misma estructura.",
         stats: ["inventiva", "multicraft", "ingenio"],
         steps: [
-          { pts: 30, node: "Raíz de Lasting Leather o Safeguarding Scales", note: "Elige cuero o malla." },
-          { pts: 30, node: "Lado izquierdo o derecho", note: "Izquierda: Head/Chest/Shoulder/Wrist. Derecha: Legs/Hands/Waist/Feet." },
+          { pts: 30, node: "Raíz de Cuero duradero o Escamas protectoras", note: "Elige cuero o malla." },
+          { pts: 30, node: "Lado izquierdo o derecho", note: "Izquierda: cabeza/pecho/hombros/muñecas. Derecha: piernas/manos/cintura/pies." },
           { pts: 30, node: "El otro lado", note: "Desbloquea las 4 recetas restantes." }
         ],
-        after: "Después puedes abrir la otra armadura (cuero ↔ malla) o invertir en Learned Leatherworker para stats.",
+        after: "Después puedes abrir la otra armadura (cuero ↔ malla) o invertir en Maestría en peletería para atributos.",
         source: "https://www.wow-professions.com/midnight/leatherworking-specialization-guide-and-builds"
       },
       {
-        id: "orders", label: "Pedidos de fabricación", tag: "Trade Chat",
-        summary: "Para llenar pedidos de un slot concreto. Necesitas unos 60 puntos para abrir la armadura y 20 por slot.",
+        id: "orders", label: "Pedidos de fabricación", tag: "Chat de comercio",
+        summary: "Para llenar pedidos de una ranura concreta. Necesitas unos 60 puntos para abrir la armadura y 20 por ranura.",
         stats: ["inventiva", "ingenio"],
         steps: [
           { pts: 30, node: "Raíz de la armadura", note: "" },
-          { pts: 30, node: "Sub-rama del slot", note: "Elige el lado que contiene el slot que quieres." },
-          { pts: 20, node: "Nodo del slot concreto", note: "Ej.: Wrist, Helm, Chest." }
+          { pts: 30, node: "Sub-rama de la ranura", note: "Elige el lado que contiene la ranura que quieres." },
+          { pts: 20, node: "Nodo de la ranura concreta", note: "Ej.: Muñeca, Yelmo, Pecho." }
         ],
-        after: "Alternativa de equipo de profesión: 30 en la raíz de Flawless Fortes + 30 en el siguiente nodo; cubre todas las herramientas.",
+        after: "Alternativa de equipo de profesión: 30 en la raíz de Fortaleza perfecta + 30 en el siguiente nodo; cubre todas las herramientas.",
         source: "https://www.wow-professions.com/midnight/leatherworking-specialization-guide-and-builds"
       },
       {
-        id: "auction", label: "Consumibles y reactivos", tag: "Auction House",
-        summary: "Para vender Armor Kits, reactivos y materiales intermedios en masa.",
+        id: "auction", label: "Consumibles y reactivos", tag: "Casa de subastas",
+        summary: "Para vender conjuntos de armadura, reactivos y materiales intermedios en masa.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 10, node: "Flawless Fortes → Commanding Commodities → Crucial Consumables", note: "Desbloquea Armor Kits y tambores." },
-          { pts: 5, node: "Learned Leatherworker (raíz)", note: "" },
-          { pts: 30, node: "Mastering Multicraft", note: "Multicraft para consumibles." },
-          { pts: 10, node: "Learned Leatherworker", note: "Desbloquea la segunda sub-rama." },
-          { pts: 30, node: "Waning Waste", note: "Resourcefulness." }
+          { pts: 10, node: "Fortaleza perfecta → Acopio apacible → Consumibles cruciales", note: "Desbloquea conjuntos de armadura y tambores." },
+          { pts: 5, node: "Maestría en peletería (raíz)", note: "" },
+          { pts: 30, node: "Dominio de fabricación múltiple", note: "Fabricación múltiple para consumibles." },
+          { pts: 10, node: "Maestría en peletería", note: "Desbloquea la segunda sub-rama." },
+          { pts: 30, node: "Desperdicios reducidos", note: "Inventiva." }
         ],
-        after: "Para Brimming Basics (reactivos) u Overwhelming Optionals, cambia la sub-rama de Flawless Fortes y vuelve a llenar la cadena.",
+        after: "Para Básicos rebosantes (reactivos) u Opcionales abrumadores, cambia la sub-rama de Fortaleza perfecta y vuelve a llenar la cadena.",
         source: "https://www.wow-professions.com/midnight/leatherworking-specialization-guide-and-builds"
       }
     ],
     notes: [
       "Las dos ramas de armadura son idénticas en estructura; elige según el tipo de equipo que uses o pidan.",
-      "Profession Equipment es una inversión única de ~60 puntos para todas las herramientas."
+      "El equipo de profesión es una inversión única de ~60 puntos para todas las herramientas."
     ],
     guide: "https://www.wowhead.com/guide/midnight/professions/leatherworking-specializations"
   },
@@ -471,69 +471,69 @@ window.WOW_SPECS = {
     gid: "19777938",
     objectiveMap: { gear: "armor", materials: "bolt", bags: "standard" },
     trees: [
-      { name: "Sin'dorei Finery", focus: "Armaduras de tela", desc: "Recetas de armadura para los 9 slots; los nodos por slot desbloquean las recetas épicas." },
-      { name: "Nimble Needlework", focus: "Bolts y embellishments", desc: "Cooldowns diarios de Arcanoweave y Sunfire Silk, y equipo con embellishments." },
-      { name: "Fabric Specialist", focus: "Farmear tela", desc: "Aumenta la cantidad y calidad de tela en Harandar/Voidstorm y Eversong/Zul'Aman." },
-      { name: "Fiber Arts", focus: "Stats y skill", desc: "Skill, Multicraft, Resourcefulness y reducción de Concentration para toda la profesión." }
+      { name: "Galas sin'dorei", focus: "Armaduras de tela", desc: "Recetas de armadura para las 9 ranuras; los nodos por ranura desbloquean las recetas épicas." },
+      { name: "Costura veloz", focus: "Madejas y embellecimientos", desc: "Reutilización diaria de tejido arcano y seda de fuego solar, y equipo con embellecimientos." },
+      { name: "Especialista en telas", focus: "Recolectar tela", desc: "Aumenta la cantidad y calidad de tela en Harandar/Tormenta del Vacío y Canción Eterna/Zul'Aman." },
+      { name: "Arte de las fibras", focus: "Atributos y habilidad", desc: "Habilidad, Fabricación múltiple, Inventiva y reducción de Concentración para toda la profesión." }
     ],
     builds: [
       {
-        id: "armor", label: "Armaduras y pedidos", tag: "Crafting Orders",
-        summary: "Para craftear equipo de tela y llenar pedidos. Maxa un slot antes de abrir otro y añade Fiber Arts para skill global.",
+        id: "armor", label: "Armaduras y pedidos", tag: "Pedidos de fabricación",
+        summary: "Para fabricar equipo de tela y llenar pedidos. Maximiza una ranura antes de abrir otra y añade Arte de las fibras para habilidad global.",
         stats: ["multicraft", "inventiva", "ingenio"],
         steps: [
-          { pts: 5, node: "Sin'dorei Finery (raíz)", note: "Desbloquea una sub-rama." },
-          { pts: 10, node: "Sub-rama del slot elegido", note: "Desbloquea la primera receta del slot." },
-          { pts: 30, node: "Sub-rama del medio", note: "Skill y stats para el slot." },
-          { pts: 30, node: "Sin'dorei Finery (raíz)", note: "" },
-          { pts: 30, node: "Fiber Arts (raíz)", note: "Skill para todas las recetas; hazlo antes de maximizar slots." }
+          { pts: 5, node: "Galas sin'dorei (raíz)", note: "Desbloquea una sub-rama." },
+          { pts: 10, node: "Sub-rama de la ranura elegida", note: "Desbloquea la primera receta de la ranura." },
+          { pts: 30, node: "Sub-rama del medio", note: "Habilidad y atributos para la ranura." },
+          { pts: 30, node: "Galas sin'dorei (raíz)", note: "" },
+          { pts: 30, node: "Arte de las fibras (raíz)", note: "Habilidad para todas las recetas; hazlo antes de maximizar ranuras." }
         ],
-        after: "Luego 30 en cada una de las otras dos sub-ramas para abrir todos los slots. Para calidad Oro sin Concentration necesitarás muchos puntos ocultos en Fiber Arts/Fabric Specialist.",
+        after: "Luego 30 en cada una de las otras dos sub-ramas para abrir todas las ranuras. Para calidad Oro sin Concentración necesitarás muchos puntos ocultos en Arte de las fibras/Especialista en telas.",
         source: "https://www.wow-professions.com/midnight/tailoring-specialization-guide-and-builds"
       },
       {
-        id: "bolt", label: "Bolts y embellishments", tag: "Daily CDs",
-        summary: "Para producir Arcanoweave/Sunfire Silk y equipo con embellishments. Ideal para un ejército de alters o venta constante.",
+        id: "bolt", label: "Madejas y embellecimientos", tag: "Reutilización diaria",
+        summary: "Para producir tejido arcano/seda de fuego solar y equipo con embellecimientos. Ideal para un ejército de personajes o venta constante.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 20, node: "Nimble Needlework (raíz)", note: "Desbloquea ambos cooldowns de bolt." },
-          { pts: 15, node: "Segundo nodo de la rama elegida", note: "Arcanoweave o Sunfire Silk; desbloquea la última sub-rama." },
-          { pts: 20, node: "Última sub-rama", note: "Reduce el cooldown de ~17 h a ~8 h 30 min." },
-          { pts: 30, node: "Creative Efficiency (Fiber Arts)", note: "Multicraft para todos los crafteos." },
-          { pts: 10, node: "Fiber Arts (raíz)", note: "" },
-          { pts: 30, node: "Textile Utilization", note: "Resourcefulness." }
+          { pts: 20, node: "Costura veloz (raíz)", note: "Desbloquea ambas reutilizaciones de madejas." },
+          { pts: 15, node: "Segundo nodo de la rama elegida", note: "Tejido arcano o seda de fuego solar; desbloquea la última sub-rama." },
+          { pts: 20, node: "Última sub-rama", note: "Reduce la reutilización de ~17 h a ~8 h 30 min." },
+          { pts: 30, node: "Eficiencia creativa (Arte de las fibras)", note: "Fabricación múltiple para todas las fabricaciones." },
+          { pts: 10, node: "Arte de las fibras (raíz)", note: "" },
+          { pts: 30, node: "Aprovechamiento textil", note: "Inventiva." }
         ],
-        after: "Añade 15 en Fabric Specialist y 25 en la sub-rama derecha para Multicraft oculto; ayuda a llegar a bolts de calidad Oro sin Concentration.",
+        after: "Añade 15 en Especialista en telas y 25 en la sub-rama derecha para Fabricación múltiple oculta; ayuda a llegar a madejas de calidad Oro sin Concentración.",
         source: "https://www.wow-professions.com/midnight/tailoring-specialization-guide-and-builds"
       },
       {
-        id: "farming", label: "Farmear tela", tag: "Open World",
-        summary: "Para quien pasa mucho tiempo en mundo abierto, mazmorras o delves. Aumenta la tela y su calidad.",
+        id: "farming", label: "Recolectar tela", tag: "Mundo abierto",
+        summary: "Para quien pasa mucho tiempo en mundo abierto, mazmorras o excursiones. Aumenta la tela y su calidad.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 30, node: "Fabric Specialist (raíz)", note: "Abre las dos sub-ramas de zonas." },
-          { pts: 20, node: "Nimble Needlework (raíz)", note: "Los mobs empiezan a soltar Arcanoweave y Sunfire Silk." },
-          { pts: 25, node: "Otherworldly Cloth o Eastern Kingdoms Cloth", note: "Harandar/Voidstorm o Eversong/Zul'Aman." }
+          { pts: 30, node: "Especialista en telas (raíz)", note: "Abre las dos sub-ramas de zonas." },
+          { pts: 20, node: "Costura veloz (raíz)", note: "Los enemigos empiezan a soltar tejido arcano y seda de fuego solar." },
+          { pts: 25, node: "Telas exóticas o Tela de los Reinos del Este", note: "Harandar/Tormenta del Vacío o Canción Eterna/Zul'Aman." }
         ],
-        after: "Solo el último punto (25) da el aumento de calidad; mientras llenas la sub-rama no esperes más gotas. Los mobs de Mythic+ no sueltan tela.",
+        after: "Solo el último punto (25) da el aumento de calidad; mientras llenas la sub-rama no esperes más gotas. Los enemigos de M+ no sueltan tela.",
         source: "https://www.wow-professions.com/midnight/tailoring-specialization-guide-and-builds"
       },
       {
-        id: "standard", label: "Build estándar / diarias", tag: "All-Rounder",
-        summary: "Build versátil para empezar: cooldowns diarios y equipo con embellishments, sin comprometerte con una sola rama.",
+        id: "standard", label: "Configuración estándar / diarias", tag: "Versátil",
+        summary: "Configuración versátil para empezar: reutilizaciones diarias y equipo con embellecimientos, sin comprometerte con una sola rama.",
         stats: ["multicraft", "inventiva"],
         steps: [
-          { pts: 20, node: "Nimble Needlework (raíz)", note: "Desbloquea los dos cooldowns." },
-          { pts: 15, node: "Segundo nodo de la rama elegida", note: "Arcanoweave o Sunfire Silk." },
-          { pts: 20, node: "Última sub-rama", note: "Cooldown reducido y receta de brazales épicos." }
+          { pts: 20, node: "Costura veloz (raíz)", note: "Desbloquea las dos reutilizaciones." },
+          { pts: 15, node: "Segundo nodo de la rama elegida", note: "Tejido arcano o seda de fuego solar." },
+          { pts: 20, node: "Última sub-rama", note: "Reutilización reducida y receta de brazales épicos." }
         ],
-        after: "Después elige Bolt Crafting para stats, Farming para tela o Armor para pedidos. Para mochilas no hay rama específica; la build estándar y Fiber Arts son suficientes.",
+        after: "Después elige Fabricación de madejas para atributos, Recolectar tela o Armadura para pedidos. Para mochilas no hay rama específica; la configuración estándar y Arte de las fibras son suficientes.",
         source: "https://www.wow-professions.com/midnight/tailoring-specialization-guide-and-builds"
       }
     ],
     notes: [
-      "Sastrería necesita muchos más puntos que otras profesiones para alcanzar calidad Oro sin Concentration.",
-      "Las bolsas no se benefician de Multicraft ni Ingenuity; no gastes puntos específicos en ellas."
+      "Sastrería necesita muchos más puntos que otras profesiones para alcanzar calidad Oro sin Concentración.",
+      "Las bolsas no se benefician de Fabricación múltiple ni Ingenio; no gastes puntos específicos en ellas."
     ],
     guide: "https://www.wowhead.com/guide/midnight/professions/tailoring-specializations"
   },
@@ -542,51 +542,51 @@ window.WOW_SPECS = {
     gid: "2028290667",
     objectiveMap: { general: "druid", rare: "druid", fast: "druid" },
     trees: [
-      { name: "Bountiful Harvests", focus: "Rendimiento", desc: "Aumenta el mínimo y máximo de hierbas; sub-ramas por tipo de hierba y Nocturnal Lotus." },
-      { name: "Botany", focus: "Recolección montada", desc: "40 puntos permiten recolectar montado; mejora Deftness, Perception y Finesse." },
-      { name: "Midnight Overload", focus: "Sobrecarga y motes", desc: "Especialización en nodos infundidos y en el farmeo de motes." }
+      { name: "Cosechas abundantes", focus: "Rendimiento", desc: "Aumenta el mínimo y máximo de hierbas; sub-ramas por tipo de hierba y Loto nocturno." },
+      { name: "Botánica", focus: "Recolección montada", desc: "40 puntos permiten recolectar montado; mejora Destreza, Percepción y Delicadeza." },
+      { name: "Sobrecarga de Midnight", focus: "Sobrecarga y motas", desc: "Especialización en nodos infundidos y en el recolección de motas." }
     ],
     builds: [
       {
-        id: "druid", label: "Con druida / farmeo general", tag: "Druid",
-        summary: "Si usas druida ya puedes recolectar montado; invierte directo en rendimiento y luego en las hierbas que farmees.",
+        id: "druid", label: "Con druida / recolección general", tag: "Druida",
+        summary: "Si usas druida ya puedes recolectar montado; invierte directo en rendimiento y luego en las hierbas que recolectes.",
         stats: ["destreza", "percepcion", "delicadeza"],
         steps: [
-          { pts: 40, node: "Bountiful Harvests (raíz)", note: "+1 mínimo y máximo de hierbas, y skill para todas." },
-          { pts: 30, node: "Sub-rama de la hierba principal", note: "Bloom Bringer, Thorn Thresher, Root Rummager, Silver Searcher o Lily Looter." }
+          { pts: 40, node: "Cosechas abundantes (raíz)", note: "+1 mínimo y máximo de hierbas, y habilidad para todas." },
+          { pts: 30, node: "Sub-rama de la hierba principal", note: "Protoflorador, Trituraespinas, Hurgarraíces, Procurador de plata o Montero de lirios." }
         ],
-        after: "Si buscas Nocturnal Lotus, maxa la sub-rama de la hierba que farmees: el último punto aumenta la probabilidad de encontrarlo.",
+        after: "Si buscas Loto nocturno, maximiza la sub-rama de la hierba que recolectes: el último punto aumenta la probabilidad de encontrarlo.",
         source: "https://www.wow-professions.com/midnight/herbalism-specialization-guide-and-builds"
       },
       {
-        id: "non-druid", label: "Sin druida / montado", tag: "Mounted",
+        id: "non-druid", label: "Sin druida / montado", tag: "Montado",
         summary: "Para cualquier clase que no sea druida: primero desbloquea la recolección montada y luego el rendimiento.",
         stats: ["destreza", "percepcion", "delicadeza"],
         steps: [
-          { pts: 40, node: "Botany (raíz)", note: "Recolectar montado; también da Deftness, Perception y Finesse." },
-          { pts: 40, node: "Bountiful Harvests (raíz)", note: "Rendimiento y skill." },
-          { pts: 30, node: "Sub-rama de la hierba principal", note: "Elige según lo que farmees." }
+          { pts: 40, node: "Botánica (raíz)", note: "Recolectar montado; también da Destreza, Percepción y Delicadeza." },
+          { pts: 40, node: "Cosechas abundantes (raíz)", note: "Rendimiento y habilidad." },
+          { pts: 30, node: "Sub-rama de la hierba principal", note: "Elige según lo que recolectes." }
         ],
-        after: "No sientas que gastas puntos de más en Botany: también necesitas sus stats y la comodidad de recolectar montado.",
+        after: "No sientas que gastas puntos de más en Botánica: también necesitas sus atributos y la comodidad de recolectar montado.",
         source: "https://www.wow-professions.com/midnight/herbalism-specialization-guide-and-builds"
       },
       {
-        id: "overload", label: "Sobrecarga y motes", tag: "Infused",
-        summary: "Para farmear motes y aprovechar los nodos infundidos. Abre las sub-ramas aunque no las maxes de inmediato.",
+        id: "overload", label: "Sobrecarga y motas", tag: "Infundido",
+        summary: "Para recolectar motas y aprovechar los nodos infundidos. Abre las sub-ramas aunque no las maximices de inmediato.",
         stats: ["destreza", "percepcion"],
         steps: [
-          { pts: 40, node: "Botany (raíz)", note: "Solo si no eres druida; te permite recolectar montado." },
-          { pts: 40, node: "Midnight Overload (raíz)", note: "Mejora la sobrecarga de nodos infundidos." },
-          { pts: 20, node: "Sub-ramas Lightfused, Wild, Primal y Voidbound", note: "Abrirlas reduce desventajas y mejora los motes." }
+          { pts: 40, node: "Botánica (raíz)", note: "Solo si no eres druida; te permite recolectar montado." },
+          { pts: 40, node: "Sobrecarga de Midnight (raíz)", note: "Mejora la sobrecarga de nodos infundidos." },
+          { pts: 20, node: "Sub-ramas Fundiluz, Salvaje, Primigenio y Unido al Vacío", note: "Abrirlas reduce desventajas y mejora las motas." }
         ],
-        after: "La hoja del canal prioriza Destreza para farmeo masivo; Percepción es la segunda y Delicadeza se usa menos porque los materiales comunes valen poco.",
+        after: "La hoja del canal prioriza Destreza para recolección masiva; Percepción es la segunda y Delicadeza se usa menos porque los materiales comunes valen poco.",
         source: "https://www.wow-professions.com/midnight/herbalism-specialization-guide-and-builds"
       }
     ],
     notes: [
       "Druida es la mejor opción para recolectar: recoge montado por defecto y usa vuelo instantáneo.",
-      "La hoja del canal recomienda Destreza como stat principal; Percepción para materiales raros.",
-      "El aguardiente de la luna negra es un consumible clave según la hoja."
+      "La hoja del canal recomienda Destreza como atributo principal; Percepción para materiales raros.",
+      "El Aguardiente de la Luna Negra es un consumible clave según la hoja."
     ],
     guide: "https://www.wowhead.com/guide/midnight/professions/herbalism-overview-trainer-locations-treasures-tools"
   },
@@ -595,52 +595,52 @@ window.WOW_SPECS = {
     gid: "1060061825",
     objectiveMap: { general: "general", rare: "general", fast: "general" },
     trees: [
-      { name: "Meticulous Mining", focus: "Recolección montada", desc: "40 puntos permiten minar montado y mejoran Finesse, Deftness, Perception y Skill." },
-      { name: "Plentiful Ores", focus: "Rendimiento y skill", desc: "Skill para todas las menas; sub-ramas por tipo de mena y Dazzling Thorium." },
-      { name: "Over-LODED", focus: "Sobrecarga y motes", desc: "Especialización en nodos infundidos y en el farmeo de motes." }
+      { name: "Minería meticulosa", focus: "Recolección montada", desc: "40 puntos permiten minar montado y mejoran Delicadeza, Destreza, Percepción y Habilidad." },
+      { name: "Menas abundantes", focus: "Rendimiento y habilidad", desc: "Habilidad para todas las menas; sub-ramas por tipo de mena y torio deslumbrante." },
+      { name: "Megafilón", focus: "Sobrecarga y motas", desc: "Especialización en nodos infundidos y en el recolección de motas." }
     ],
     builds: [
       {
-        id: "general", label: "Farmeo general", tag: "Mounted",
-        summary: "La build base para cualquier minero: montado primero, skill después y sub-ramas de las menas más abundantes.",
+        id: "general", label: "Recolección general", tag: "Montado",
+        summary: "La configuración base para cualquier minero: montado primero, habilidad después y sub-ramas de las menas más abundantes.",
         stats: ["destreza", "percepcion", "delicadeza"],
         steps: [
-          { pts: 40, node: "Meticulous Mining (raíz)", note: "Minar montado; funciona incluso sin druida." },
-          { pts: 50, node: "Plentiful Ores (raíz)", note: "+20 skill para todas las menas." },
-          { pts: 40, node: "Brilliant Silver y Refulgent Copper", note: "Prioriza estas sub-ramas; Umbral Tin al final." }
+          { pts: 40, node: "Minería meticulosa (raíz)", note: "Minar montado; funciona incluso sin druida." },
+          { pts: 50, node: "Menas abundantes (raíz)", note: "+20 habilidad para todas las menas." },
+          { pts: 40, node: "Plata brillante y Cobre refulgente", note: "Prioriza estas sub-ramas; Estaño umbrío al final." }
         ],
-        after: "Las tres menas aparecen en todas las zonas; no necesitas cambiar de build por zona.",
+        after: "Las tres menas aparecen en todas las zonas; no necesitas cambiar de configuración por zona.",
         source: "https://www.wow-professions.com/midnight/mining-specialization-guide-and-builds"
       },
       {
-        id: "rich", label: "Depósitos ricos y vetas", tag: "Rich Deposits",
-        summary: "Para maximizar el rendimiento de depósitos ricos. Rich Deposits es más útil que Seams porque hay muchas menos vetas.",
+        id: "rich", label: "Depósitos abundantes y vetas", tag: "Depósitos abundantes",
+        summary: "Para maximizar el rendimiento de depósitos ricos. Los depósitos abundantes son más útiles que las vetas porque hay muchas menos.",
         stats: ["destreza", "percepcion", "delicadeza"],
         steps: [
-          { pts: 40, node: "Meticulous Mining (raíz)", note: "" },
-          { pts: 50, node: "Plentiful Ores (raíz)", note: "" },
-          { pts: 35, node: "Rich Deposits", note: "Skill, Finesse, Deftness y Perception para depósitos ricos." }
+          { pts: 40, node: "Minería meticulosa (raíz)", note: "" },
+          { pts: 50, node: "Menas abundantes (raíz)", note: "" },
+          { pts: 35, node: "Depósitos abundantes", note: "Habilidad, Delicadeza, Destreza y Percepción para depósitos abundantes." }
         ],
-        after: "Seams déjalo para el final: hay pocas vetas y el beneficio es menor.",
+        after: "Las vetas déjalas para el final: hay pocas y el beneficio es menor.",
         source: "https://www.wow-professions.com/midnight/mining-specialization-guide-and-builds"
       },
       {
-        id: "overload", label: "Sobrecarga y motes", tag: "Infused",
-        summary: "Para farmear motes y aprovechar los nodos infundidos. Abre las sub-ramas para reducir riesgos.",
+        id: "overload", label: "Sobrecarga y motas", tag: "Infundido",
+        summary: "Para recolectar motas y aprovechar los nodos infundidos. Abre las sub-ramas para reducir riesgos.",
         stats: ["destreza", "percepcion"],
         steps: [
-          { pts: 40, node: "Meticulous Mining (raíz)", note: "" },
-          { pts: 50, node: "Plentiful Ores (raíz)", note: "" },
-          { pts: 20, node: "Over-LODED (raíz)", note: "Mejora la sobrecarga." },
-          { pts: 20, node: "Lightfused, Wild, Primal y Voidbound", note: "Abre las sub-ramas; luego maxa la que corresponda a tu farmeo." }
+          { pts: 40, node: "Minería meticulosa (raíz)", note: "" },
+          { pts: 50, node: "Menas abundantes (raíz)", note: "" },
+          { pts: 20, node: "Megafilón (raíz)", note: "Mejora la sobrecarga." },
+          { pts: 20, node: "Fundiluz, Salvaje, Primigenio y Unido al Vacío", note: "Abre las sub-ramas; luego maximiza la que corresponda a tu recolección." }
         ],
-        after: "La hoja prioriza Destreza; Percepción ayuda con Dazzling Thorium y materiales raros.",
+        after: "La hoja prioriza Destreza; Percepción ayuda con torio deslumbrante y materiales raros.",
         source: "https://www.wow-professions.com/midnight/mining-specialization-guide-and-builds"
       }
     ],
     notes: [
-      "No hay diferencia de menas por zona: Brilliant Silver, Refulgent Copper y Umbral Tin aparecen en todas.",
-      "La hoja del canal prioriza Destreza; Percepción para Dazzling Thorium y raros."
+      "No hay diferencia de menas por zona: Plata brillante, Cobre refulgente y Estaño umbrío aparecen en todas.",
+      "La hoja del canal prioriza Destreza; Percepción para torio deslumbrante y raros."
     ],
     guide: "https://www.wowhead.com/guide/midnight/professions/mining-overview-trainer-locations-ores-tools"
   },
@@ -649,52 +649,52 @@ window.WOW_SPECS = {
     gid: "391408451",
     objectiveMap: { general: "general", rare: "rares", fast: "general" },
     trees: [
-      { name: "Thorough Tanning", focus: "Base y Sharpen Your Knife", desc: "Árbol base: garantiza una piel o escama con Sharpen Your Knife y da cargas extra." },
-      { name: "Gainful Gathering", focus: "Materiales específicos", desc: "Carne, materiales por especie, Percepción y difusores para motes." },
-      { name: "Talented Tracker", focus: "Bestias majestuosas", desc: "Lures, bestias Renown y materiales Majestic; la rama de farmeo de raros." }
+      { name: "Curtido completo", focus: "Base y Afilar tu cuchillo", desc: "Árbol base: garantiza una piel o escama con Afilar tu cuchillo y da cargas extra." },
+      { name: "Recolección lucrativa", focus: "Materiales específicos", desc: "Carne, materiales por especie, Percepción y difusores para motas." },
+      { name: "Rastreador talentoso", focus: "Bestias majestuosas", desc: "Señuelos, bestias de renombre y materiales majestuosos; la rama de recolección de raros." }
     ],
     builds: [
       {
-        id: "general", label: "Farmeo general", tag: "Skinning",
-        summary: "La base para cualquier desuellador: Sharpen Your Knife con 3 cargas, skill y Percepción para materiales raros.",
+        id: "general", label: "Recolección general", tag: "Desuello",
+        summary: "La base para cualquier desuellador: Afilar tu cuchillo con 3 cargas, habilidad y Percepción para materiales raros.",
         stats: ["percepcion", "destreza", "delicadeza"],
         steps: [
-          { pts: 40, node: "Thorough Tanning (raíz)", note: "Sharpen Your Knife y tercera carga a 40." },
-          { pts: 20, node: "Lasting Leather o Superb Scales", note: "Elige cuero o escamas según lo que necesites." },
-          { pts: 40, node: "Sub-rama elegida", note: "Skill y Percepción para ese tipo de bestia." },
-          { pts: 35, node: "Gainful Gathering (raíz) → Trophy Taker", note: "Percepción para materiales raros; no pases de 35 en Gainful." }
+          { pts: 40, node: "Curtido completo (raíz)", note: "Afilar tu cuchillo y tercera carga a 40." },
+          { pts: 20, node: "Cuero duradero o Escamas magníficas", note: "Elige cuero o escamas según lo que necesites." },
+          { pts: 40, node: "Sub-rama elegida", note: "Habilidad y Percepción para ese tipo de bestia." },
+          { pts: 35, node: "Recolección lucrativa (raíz) → Ganador de trofeos", note: "Percepción para materiales raros; no pases de 35 en Recolección lucrativa." }
         ],
-        after: "No inviertas más de 35 en Gainful Gathering: Radiant Stomach no compensa. Luego puedes abrir Talented Tracker.",
+        after: "No inviertas más de 35 en Recolección lucrativa: Estómago radiante no compensa. Luego puedes abrir Rastreador talentoso.",
         source: "https://www.wowhead.com/guide/midnight/professions/skinning-overview-trainer-locations-hides-tracking-tools"
       },
       {
-        id: "rares", label: "Pieles raras / majestuosas", tag: "Renowned Beasts",
-        summary: "Para cazar bestias majestuosas y farmear Majestic Claw/Hide/Fin. Necesitas lures y Percepción.",
+        id: "rares", label: "Pieles raras / majestuosas", tag: "Bestias de renombre",
+        summary: "Para cazar bestias majestuosas y recolectar materiales majestuosos (garras, pelajes y aletas). Necesitas señuelos y Percepción.",
         stats: ["percepcion", "destreza"],
         steps: [
-          { pts: 40, node: "Thorough Tanning (raíz)", note: "" },
-          { pts: 40, node: "Talented Tracker (raíz)", note: "Aprende lures y desbloquea Grand Beast Lure." },
-          { pts: 20, node: "Majestic Materials o Component Collector", note: "Majestic Materials para raros; Component Collector para volumen de cuero/escamas." }
+          { pts: 40, node: "Curtido completo (raíz)", note: "" },
+          { pts: 40, node: "Rastreador talentoso (raíz)", note: "Aprende señuelos y desbloquea Señuelo de bestia majestuosa." },
+          { pts: 20, node: "Materiales majestuosos o Recolector de componentes", note: "Materiales majestuosos para raros; Recolector de componentes para volumen de cuero/escamas." }
         ],
-        after: "Usa las lures en las zonas correctas y con Sixth Sense activo. Percepción alta para materiales majestuosos.",
+        after: "Usa los señuelos en las zonas correctas y con Sexto sentido activo. Percepción alta para materiales majestuosos.",
         source: "https://www.wowhead.com/guide/midnight/professions/skinning-overview-trainer-locations-hides-tracking-tools"
       },
       {
-        id: "alt-army", label: "Varios personajes", tag: "Alt Army",
-        summary: "Build mínima para varios alters: Sharpen Your Knife, skill y Percepción. No necesitas más puntos para que sea rentable.",
+        id: "alt-army", label: "Varios personajes", tag: "Varios personajes",
+        summary: "Configuración mínima para varios personajes: Afilar tu cuchillo, habilidad y Percepción. No necesitas más puntos para que sea rentable.",
         stats: ["percepcion", "destreza", "delicadeza"],
         steps: [
-          { pts: 40, node: "Thorough Tanning (raíz)", note: "" },
-          { pts: 40, node: "Lasting Leather o Superb Scales", note: "" },
-          { pts: 35, node: "Gainful Gathering (raíz)", note: "Corta en 35." }
+          { pts: 40, node: "Curtido completo (raíz)", note: "" },
+          { pts: 40, node: "Cuero duradero o Escamas magníficas", note: "" },
+          { pts: 35, node: "Recolección lucrativa (raíz)", note: "Detente en 35." }
         ],
-        after: "Con esto basta para varios alters; los stats del equipo importan menos que la cantidad de personajes.",
+        after: "Con esto basta para varios personajes; los atributos del equipo importan menos que la cantidad de personajes.",
         source: "https://www.wowhead.com/guide/midnight/professions/skinning-overview-trainer-locations-hides-tracking-tools"
       }
     ],
     notes: [
-      "Wowhead prioriza Percepción por las bestias de alto valor; la hoja del canal prioriza Destreza para farmeo masivo.",
-      "Sharpen Your Knife garantiza una piel o escama en el siguiente desuello; usa las cargas en bestias raras."
+      "Wowhead prioriza Percepción por las bestias de alto valor; la hoja del canal prioriza Destreza para recolección masiva.",
+      "Afilar tu cuchillo garantiza una piel o escama en el siguiente desuello; usa las cargas en bestias raras."
     ],
     guide: "https://www.wowhead.com/guide/midnight/professions/skinning-overview-trainer-locations-hides-tracking-tools"
   },
@@ -703,7 +703,7 @@ window.WOW_SPECS = {
     gid: "559133695",
     trees: [],
     builds: [],
-    emptyNote: "Cocina no tiene árbol de especialización en Midnight. Su progresión depende de recetas, skill y conocimiento, no de puntos de especialización.",
+    emptyNote: "Cocina no tiene árbol de especialización en Midnight. Su progresión depende de recetas, habilidad y conocimiento, no de puntos de especialización.",
     notes: ["Revisa la pestaña de Cocina y Pesca de la hoja para recetas y notas."],
     guide: "https://www.wowhead.com/guide/midnight/professions"
   },
@@ -712,7 +712,7 @@ window.WOW_SPECS = {
     gid: "559133695",
     trees: [],
     builds: [],
-    emptyNote: "Pesca no tiene árbol de especialización en Midnight. Su progresión depende de skill, recetas y conocimiento, no de puntos de especialización.",
+    emptyNote: "Pesca no tiene árbol de especialización en Midnight. Su progresión depende de habilidad, recetas y conocimiento, no de puntos de especialización.",
     notes: ["Revisa la pestaña de Cocina y Pesca de la hoja para recetas y notas."],
     guide: "https://www.wowhead.com/guide/midnight/professions"
   }
