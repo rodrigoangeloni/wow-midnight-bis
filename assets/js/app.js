@@ -116,7 +116,7 @@
       const accStats = {};
       prof.accessories.forEach(acc => addStats(accStats, acc.stats));
       return `
-        <button class="quick-card" type="button" data-quick="${prof.id}">
+        <button class="quick-card" type="button" data-quick="${prof.id}" data-cat="${prof.category}">
           <span class="quick-top">
             ${profIconHtml(prof, "md")}
             <span class="quick-name">${prof.name}</span>
@@ -148,9 +148,9 @@
       const s = STATS[row.missive];
       return `
         <tr>
-          <td>${row.goal}</td>
-          <td><a class="stat-chip" href="#stat-${row.missive}" style="--stat:${s.color}" title="Ver qué hace ${s.name}">${s.icon} ${s.name}</a></td>
-          <td>${row.enchant}</td>
+          <td data-label="Objetivo">${row.goal}</td>
+          <td data-label="Misiva de herramienta"><a class="stat-chip" href="#stat-${row.missive}" style="--stat:${s.color}" title="Ver qué hace ${s.name}">${s.icon} ${s.name}</a></td>
+          <td data-label="Encantamiento sugerido">${row.enchant}</td>
         </tr>`;
     }).join("");
   }
@@ -390,10 +390,12 @@
       <div class="tip">💡 ${obj.tip}</div>
       <div class="build-actions">
         <button class="btn btn-primary btn-small" type="button" id="copyBuild">📋 Copiar resumen</button>
+        <button class="btn btn-ghost btn-small" type="button" id="copyLink">🔗 Copiar enlace</button>
         <span id="copyFeedback" class="copy-feedback" aria-live="polite"></span>
       </div>`;
 
     $("#copyBuild").addEventListener("click", copyBuild);
+    $("#copyLink").addEventListener("click", copyLink);
   }
 
   function updateProfessionTabs() {
@@ -410,18 +412,49 @@
     });
   }
 
+  function updateUrl() {
+    try {
+      const url = new URL(window.location.href);
+      url.search = "";
+      url.searchParams.set("p", state.profession);
+      url.searchParams.set("o", state.objective);
+      window.history.replaceState(null, "", url.toString());
+    } catch (error) { /* file:// o navegador sin history */ }
+  }
+
+  function announceSelection() {
+    const status = $("#selectionStatus");
+    if (!status) return;
+    const prof = getProfession();
+    const obj = getObjective();
+    const spec = getSpec(prof);
+    const build = spec?.builds?.find(b => b.id === state.specBuild);
+    status.textContent = `${prof.name}: ${obj.label}${build ? `. Especialización: ${build.label}` : ""}.`;
+  }
+
+  function readStateFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const prof = PROFESSIONS.find(p => p.id === params.get("p"));
+    if (!prof) return null;
+    const obj = prof.objectives.find(o => o.id === params.get("o"));
+    return { profession: prof.id, objective: obj ? obj.id : prof.objectives[0].id };
+  }
+
   // Interacción
-  function selectProfession(id, scroll = false) {
+  function selectProfession(id, scroll = false, objectiveId = null) {
     const prof = PROFESSIONS.find(p => p.id === id);
     if (!prof) return;
-    state.profession = id;
-    state.objective = prof.objectives[0].id;
-    state.specBuild = getSpecBuildId(prof, prof.objectives[0]);
+    const objective = prof.objectives.find(o => o.id === objectiveId) || prof.objectives[0];
+    state.profession = prof.id;
+    state.objective = objective.id;
+    state.specBuild = getSpecBuildId(prof, objective);
     updateProfessionTabs();
     renderGear();
     renderObjectives();
     renderBuild();
     renderSpecialization();
+    updateUrl();
+    announceSelection();
     if (scroll) {
       const advisor = $("#advisor");
       if (advisor) advisor.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -431,12 +464,14 @@
   function selectObjective(id) {
     const prof = getProfession();
     const obj = prof.objectives.find(objective => objective.id === id) || prof.objectives[0];
-    state.objective = id;
+    state.objective = obj.id;
     state.specBuild = getSpecBuildId(prof, obj);
     updateObjectiveButtons();
     renderGear();
     renderBuild();
     renderSpecialization();
+    updateUrl();
+    announceSelection();
   }
 
   async function copyText(text) {
@@ -466,7 +501,7 @@
     const spec = SPECIALIZATIONS[prof.id];
     const specBuild = spec?.builds?.find(build => build.id === getSpecBuildId(prof, obj));
     const lines = [
-      `⚔️ ${prof.name} — ${obj.label} (Midnight 12.1.5)`,
+      `🌙 ${prof.name} — ${obj.label} (Midnight 12.1.5)`,
       `Prioridad: ${priority.name} (${priority.en})${obj.priorityNote ? ` — ${obj.priorityNote}` : ""}`,
       prof.tool.random
         ? `Herramienta: ${prof.tool.es} — Misiva: ${priority.name} (+${prof.tool.random})`
@@ -485,13 +520,27 @@
     });
   }
 
+  function copyLink() {
+    updateUrl();
+    const url = new URL(window.location.href);
+    url.hash = "";
+    copyText(url.toString()).then(ok => {
+      const feedback = $("#copyFeedback");
+      if (feedback) {
+        feedback.textContent = ok ? "¡Enlace copiado!" : "No se pudo copiar.";
+        window.setTimeout(() => { feedback.textContent = ""; }, 2400);
+      }
+    });
+  }
+
   // Inicio
   function init() {
     renderProfessionPicker();
     renderQuickCards();
     renderStatCards();
     renderMasterTable();
-    selectProfession(state.profession);
+    const initial = readStateFromUrl();
+    selectProfession(initial?.profession || state.profession, false, initial?.objective || null);
 
     $("#objectiveGrid").addEventListener("click", event => {
       const btn = event.target.closest("[data-obj]");
@@ -507,6 +556,7 @@
       if (!btn) return;
       state.specBuild = btn.dataset.specBuild;
       renderSpecialization();
+      announceSelection();
     });
 
     $("#buildContent").addEventListener("click", event => {
@@ -514,6 +564,7 @@
       if (!jump) return;
       state.specBuild = jump.dataset.specBuild;
       renderSpecialization();
+      announceSelection();
     });
   }
 

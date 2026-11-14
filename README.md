@@ -1,10 +1,10 @@
-# ⚔️ WoW Midnight 12.1.5 · BiS de profesiones
+# 🌙 WoW Midnight 12.1.5 · BiS de profesiones
 
 **Guía visual e interactiva para elegir la build de profesión correcta en World of Warcraft: Midnight 12.1.5.** Elige una profesión y un objetivo para saber qué atributo poner en la herramienta, qué encantamiento usar y qué aportan los accesorios.
 
 <p align="center">
-  <a href="https://rodrigoangeloni.github.io/wow-midnight-bis/"><img src="https://img.shields.io/badge/Sitio_publicado-GitHub_Pages-d4af37?style=for-the-badge&logo=githubpages&logoColor=white" alt="Sitio publicado en GitHub Pages"></a>
-  <img src="https://img.shields.io/badge/WoW-Midnight_12.1.5-b79bff?style=for-the-badge&logo=worldofwarcraft&logoColor=white" alt="World of Warcraft: Midnight 12.1.5">
+  <a href="https://rodrigoangeloni.github.io/wow-midnight-bis/"><img src="https://img.shields.io/badge/Sitio_publicado-GitHub_Pages-7b8cff?style=for-the-badge&logo=githubpages&logoColor=white" alt="Sitio publicado en GitHub Pages"></a>
+  <img src="https://img.shields.io/badge/WoW-Midnight_12.1.5-4655bb?style=for-the-badge&logo=worldofwarcraft&logoColor=white" alt="World of Warcraft: Midnight 12.1.5">
   <img src="https://img.shields.io/badge/Stack-HTML_%2B_CSS_%2B_JS-f0c75e?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5, CSS3 y JavaScript vanilla">
 </p>
 
@@ -34,13 +34,14 @@ Sitio estático de una sola página pensado para resolver una duda concreta: **q
 | 🔗 | **Enlaces a Wowhead esMX** — cada herramienta y accesorio abre su ficha. |
 | 🖼️ | **Iconos con respaldo** — carga iconos de Wowhead y usa emojis si fallan. |
 | 🌳 | **Especialización** — ramas y orden de Puntos de Conocimiento para 11 profesiones. |
+| 📋 | **Resumen y enlace** — copia la build o compártela con una URL que conserva profesión y objetivo. |
 | 📱 | **Diseño responsive** — una sola página, sin frameworks ni build. |
 
 ## ▶️ Cómo usarla
 
 1. Elige una profesión.
 2. Elige lo que quieres hacer (farmear, fabricar, subir calidad, etc.).
-3. Revisa la build recomendada y copia el resumen para compartirlo.
+3. Revisa la build recomendada y copia el resumen o el enlace para compartirla.
 
 También puedes abrir directamente `index.html` en el navegador: no hace falta servidor ni instalar dependencias. Los scripts son clásicos y se cargan con `defer`, así que la página funciona incluso desde `file://`.
 
@@ -77,6 +78,8 @@ El sitio se publica con GitHub Pages desde la rama `main`; el contenido se sirve
 │   │   └── app.js                       # Render e interacción
 │   └── img/
 │       ├── favicon.svg                  # Icono del sitio
+│       ├── midnight-logo.png            # Logo oficial (respaldo)
+│       ├── midnight-logo.webp           # Logo oficial para el hero
 │       └── og-image.jpg                 # Imagen para compartir (1200×630)
 ├── docs/
 │   └── guia-bis-profesiones-midnight.md # Guía de referencia en Markdown
@@ -98,3 +101,5 @@ El sitio se publica con GitHub Pages desde la rama `main`; el contenido se sirve
 ## ⚠️ Aviso
 
 Guía de referencia, no sustituye la comprobación en el juego. Los valores pueden variar según la calidad y el nivel de objeto; verifica siempre antes de comprar o fabricar.
+
+Guía no oficial de fans. World of Warcraft: Midnight y todas las marcas asociadas son propiedad de Blizzard Entertainment. Esta página no está afiliada ni respaldada por Blizzard. El logo oficial se usa sin modificar.

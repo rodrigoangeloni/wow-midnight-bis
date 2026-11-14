@@ -8,43 +8,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700;800&family=Cinzel:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #07090d;
-      --gold: #d4af37;
-      --gold-2: #f4dc8a;
-      --gold-3: #8a6a1f;
-      --text: #ece6d6;
-      --muted: #aaa294;
-      --muted-2: #777165;
-      --line: rgba(212, 175, 55, .24);
+      --bg: #04030f;
+      --bg-2: #0a0820;
+      --accent: #7b8cff;
+      --accent-2: #b9c6ff;
+      --frost: #eef1ff;
+      --muted: #a9b0d0;
+      --muted-2: #858db0;
+      --sunwell: #d8b45a;
+      --sunwell-2: #f0d792;
+      --line: rgba(123, 140, 255, .26);
       --font-display: "Cinzel", "Palatino Linotype", Georgia, serif;
       --font-body: "Alegreya Sans", "Segoe UI", sans-serif;
     }
     * { box-sizing: border-box; }
     html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
     body {
-      color: var(--text);
+      position: relative;
+      color: var(--frost);
       font-family: var(--font-body);
       background:
-        radial-gradient(900px 520px at 4% -14%, rgba(212, 175, 55, .18), transparent 62%),
-        radial-gradient(850px 520px at 106% 6%, rgba(110, 70, 200, .18), transparent 62%),
-        radial-gradient(700px 420px at 50% 120%, rgba(212, 175, 55, .06), transparent 65%),
-        linear-gradient(155deg, #07090d 0%, #0b0f16 50%, #07090d 100%);
-      position: relative;
+        radial-gradient(900px 560px at 6% -14%, rgba(70, 85, 187, .32), transparent 62%),
+        radial-gradient(820px 560px at 104% 4%, rgba(14, 2, 113, .42), transparent 64%),
+        radial-gradient(700px 420px at 52% 120%, rgba(216, 180, 90, .06), transparent 68%),
+        linear-gradient(155deg, #04030f 0%, #0a0820 50%, #04030f 100%);
     }
     body::before {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: .35;
-      background-image: radial-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px);
-      background-size: 3px 3px;
-      mix-blend-mode: overlay;
+      opacity: .6;
       pointer-events: none;
+      background-image:
+        radial-gradient(1px 1px at 22px 34px, rgba(238, 241, 255, .6) 50%, transparent 51%),
+        radial-gradient(1px 1px at 132px 78px, rgba(185, 198, 255, .5) 50%, transparent 51%),
+        radial-gradient(1.2px 1.2px at 206px 142px, rgba(238, 241, 255, .55) 50%, transparent 51%),
+        radial-gradient(1px 1px at 74px 196px, rgba(123, 140, 255, .5) 50%, transparent 51%),
+        radial-gradient(1px 1px at 182px 232px, rgba(238, 241, 255, .4) 50%, transparent 51%),
+        radial-gradient(1.4px 1.4px at 24px 118px, rgba(216, 180, 90, .4) 50%, transparent 51%);
+      background-size: 260px 260px;
     }
     .frame {
       position: absolute;
       inset: 22px;
-      border: 1px solid rgba(212, 175, 55, .22);
+      border: 1px solid rgba(159, 176, 255, .22);
       pointer-events: none;
     }
     .frame::before,
@@ -53,7 +60,7 @@
       position: absolute;
       width: 86px;
       height: 86px;
-      border-color: rgba(212, 175, 55, .55);
+      border-color: rgba(195, 210, 239, .55);
     }
     .frame::before {
       top: -1px; left: -1px;
@@ -70,7 +77,7 @@
       position: absolute;
       width: 86px;
       height: 86px;
-      border-color: rgba(212, 175, 55, .32);
+      border-color: rgba(123, 140, 255, .4);
       pointer-events: none;
     }
     .corner-tr {
@@ -83,70 +90,69 @@
       border-bottom: 1px solid;
       border-left: 1px solid;
     }
-
     .card {
       position: relative;
       z-index: 2;
       width: 100%;
       height: 100%;
-      padding: 54px 56px;
+      padding: 52px 56px;
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 24px;
     }
     .copy { flex: 1; min-width: 0; }
     .eyebrow {
-      margin-bottom: 16px;
-      color: var(--gold);
-      font-size: 15px;
+      margin-bottom: 15px;
+      color: var(--accent);
+      font-size: 14px;
       font-weight: 800;
       letter-spacing: .22em;
       text-transform: uppercase;
     }
-    .badges { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 24px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 22px; }
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 7px;
       padding: 7px 13px;
-      border: 1px solid rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .13);
       border-radius: 999px;
       color: var(--muted);
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: .16em;
+      letter-spacing: .15em;
       text-transform: uppercase;
     }
     .badge.gold {
-      border-color: rgba(212, 175, 55, .48);
-      background: rgba(212, 175, 55, .09);
-      color: var(--gold-2);
+      border-color: rgba(216, 180, 90, .48);
+      background: rgba(216, 180, 90, .09);
+      color: var(--sunwell-2);
     }
     h1 {
-      margin: 0 0 18px;
+      margin: 0 0 15px;
       font-family: var(--font-display);
-      font-size: 88px;
-      line-height: .94;
+      font-size: 82px;
+      line-height: .95;
       letter-spacing: -.02em;
-      color: var(--gold-2);
-      background: linear-gradient(180deg, #fff6cf 0%, #e7c766 46%, #9a7626 100%);
+      color: var(--frost);
+      background: linear-gradient(180deg, #f8faff 0%, #dfe6ff 46%, #8ca0d5 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 50px rgba(212, 175, 55, .12);
+      text-shadow: 0 0 50px rgba(123, 140, 255, .12);
     }
     h1 span { display: block; }
     .sub {
-      max-width: 610px;
-      margin: 0 0 22px;
+      max-width: 620px;
+      margin: 0 0 20px;
       color: var(--muted);
-      font-size: 23px;
+      font-size: 21px;
       line-height: 1.42;
     }
-    .sub strong { color: var(--text); font-weight: 600; }
-    .icon-block { margin-bottom: 22px; }
+    .sub strong { color: var(--frost); font-weight: 600; }
+    .icon-block { margin-bottom: 20px; }
     .icon-label {
-      margin-bottom: 9px;
+      margin-bottom: 8px;
       color: var(--muted-2);
       font-size: 11px;
       font-weight: 800;
@@ -155,21 +161,21 @@
     }
     .icons { display: flex; flex-wrap: wrap; gap: 7px; }
     .icon {
-      width: 41px;
-      height: 41px;
+      width: 38px;
+      height: 38px;
       overflow: hidden;
-      border: 1px solid rgba(212, 175, 55, .5);
+      border: 1px solid rgba(159, 176, 255, .48);
       border-radius: 50%;
-      background: #0b0e14;
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, .06);
+      background: #0a0820;
+      box-shadow: 0 0 0 3px rgba(123, 140, 255, .06);
     }
     .icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .url {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      color: var(--gold-2);
-      font-size: 17px;
+      color: var(--accent-2);
+      font-size: 16px;
       font-weight: 700;
       letter-spacing: .02em;
     }
@@ -177,105 +183,64 @@
       content: "";
       width: 34px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold));
+      background: linear-gradient(90deg, transparent, var(--accent));
     }
-
-    .crest-wrap {
-      flex: 0 0 390px;
+    .art {
+      position: relative;
+      flex: 0 0 430px;
+      height: 470px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
     }
-    .crest {
-      position: relative;
-      width: 390px;
-      height: 390px;
-      display: grid;
-      place-items: center;
-    }
-    .crest::before {
-      content: "";
-      position: absolute;
-      inset: 8%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212, 175, 55, .16), transparent 62%);
-      filter: blur(18px);
-    }
     .orbit {
       position: absolute;
-      inset: -3%;
+      width: 440px;
+      height: 440px;
       border-radius: 50%;
-      opacity: .85;
+      opacity: .55;
       background: repeating-conic-gradient(from 0deg,
-        rgba(212, 175, 55, .4) 0deg 2.2deg,
-        transparent 2.2deg 30deg);
-      -webkit-mask: radial-gradient(circle, transparent 64%, #000 65%);
-      mask: radial-gradient(circle, transparent 64%, #000 65%);
+        rgba(159, 176, 255, .3) 0deg 1.6deg,
+        transparent 1.6deg 26deg);
+      -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%);
+      mask: radial-gradient(circle, transparent 62%, #000 63%);
     }
-    .ring {
+    .logo-glow {
       position: absolute;
-      inset: 0;
-      border: 1px solid rgba(212, 175, 55, .4);
+      width: 380px;
+      height: 320px;
       border-radius: 50%;
-      box-shadow: inset 0 0 70px rgba(212, 175, 55, .06), 0 20px 70px rgba(0, 0, 0, .5);
+      background: radial-gradient(circle, rgba(123, 140, 255, .34), transparent 62%);
+      filter: blur(26px);
     }
-    .ring::before {
-      content: "";
-      position: absolute;
-      inset: 8%;
-      border: 1px dashed rgba(212, 175, 55, .28);
-      border-radius: 50%;
-    }
-    .ring::after {
-      content: "";
-      position: absolute;
-      inset: 19%;
-      border: 1px solid rgba(212, 175, 55, .4);
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 50% 30%, rgba(212, 175, 55, .2), transparent 52%),
-        radial-gradient(circle, #141923, #080a0e 72%);
-      box-shadow: inset 0 0 50px rgba(212, 175, 55, .08);
-    }
-    .core {
+    .logo {
       position: relative;
       z-index: 2;
-      text-align: center;
-    }
-    .bis {
-      font-family: var(--font-display);
-      font-size: 128px;
-      line-height: .9;
-      letter-spacing: .04em;
-      color: var(--gold-2);
-      text-shadow: 0 0 40px rgba(212, 175, 55, .35), 0 2px 0 rgba(0, 0, 0, .55);
+      width: 420px;
+      height: auto;
+      mix-blend-mode: screen;
+      filter: drop-shadow(0 26px 50px rgba(0, 0, 0, .45));
     }
     .patch {
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 14px;
+      position: relative;
+      z-index: 2;
+      margin-top: 8px;
+      padding: 7px 14px;
+      border: 1px solid rgba(216, 180, 90, .4);
+      border-radius: 999px;
+      background: rgba(216, 180, 90, .08);
+      color: var(--sunwell-2);
+      font-size: 12px;
       font-weight: 800;
-      letter-spacing: .34em;
+      letter-spacing: .2em;
       text-transform: uppercase;
     }
-    .rune {
-      position: absolute;
-      z-index: 3;
-      color: var(--gold);
-      opacity: .7;
-      font-size: 18px;
-      text-shadow: 0 0 14px rgba(212, 175, 55, .5);
-    }
-    .r1 { top: 1%; left: 50%; transform: translateX(-50%); }
-    .r2 { right: 1%; top: 50%; transform: translateY(-50%); }
-    .r3 { bottom: 1%; left: 50%; transform: translateX(-50%); }
-    .r4 { left: 1%; top: 50%; transform: translateY(-50%); }
-
     .bottom-glow {
       position: absolute;
       left: 0; right: 0; bottom: 0;
       height: 160px;
-      background: linear-gradient(0deg, rgba(212, 175, 55, .05), transparent);
+      background: linear-gradient(0deg, rgba(123, 140, 255, .06), transparent);
       pointer-events: none;
     }
   </style>
@@ -316,19 +281,11 @@
       <div class="url">rodrigoangeloni.github.io/wow-midnight-bis</div>
     </section>
 
-    <section class="crest-wrap">
-      <div class="crest">
-        <div class="orbit"></div>
-        <div class="ring"></div>
-        <div class="core">
-          <div class="bis">BiS</div>
-          <div class="patch">12.1.5</div>
-        </div>
-        <span class="rune r1">✦</span>
-        <span class="rune r2">✧</span>
-        <span class="rune r3">⟡</span>
-        <span class="rune r4">✶</span>
-      </div>
+    <section class="art">
+      <div class="orbit"></div>
+      <div class="logo-glow"></div>
+      <img class="logo" src="../assets/img/midnight-logo.webp" alt="World of Warcraft: Midnight" width="480" height="400">
+      <div class="patch">Parche 12.1.5</div>
     </section>
   </main>
 </body>

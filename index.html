@@ -10,7 +10,9 @@
   <title>Midnight 12.1.5 BiS · Asesor de profesiones</title>
   <meta name="description" content="Guía visual de WoW: Midnight 12.1.5. Elige tu profesión y tu objetivo para saber qué atributo poner en la herramienta, qué encantamiento usar, qué aportan tus accesorios y cómo gastar tus Puntos de Conocimiento.">
   <meta name="author" content="Rodrigo Angeloni">
+  <link rel="canonical" href="https://rodrigoangeloni.github.io/wow-midnight-bis/">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
   <meta property="og:site_name" content="Midnight 12.1.5 BiS">
   <meta property="og:title" content="Midnight 12.1.5 · BiS de profesiones">
   <meta property="og:description" content="Elige tu profesión y tu objetivo: qué atributo poner en la herramienta, qué encantamiento usar, qué aportan tus accesorios y cómo gastar tus puntos de especialización.">
@@ -28,12 +30,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700;800&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=voidlight-3">
+  <link rel="stylesheet" href="assets/css/styles.css?v=voidlight-5">
 </head>
 <body>
   <!-- Barra superior -->
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="Ir al inicio">
+    <a class="brand" href="#top">
       <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
         <defs>
           <linearGradient id="brand-sigil-grad" x1="0" y1="0" x2="1" y2="1">
@@ -53,6 +55,13 @@
       </span>
     </a>
     <nav class="topnav" aria-label="Navegación principal">
+      <a href="#advisor">Asesor</a>
+      <a href="#especializacion">Especialización</a>
+      <a href="#vista-rapida">Profesiones</a>
+      <a href="#atributos">Atributos</a>
+      <a href="#maestra">Tabla maestra</a>
+    </nav>
+    <nav class="section-jump" aria-label="Navegación rápida">
       <a href="#advisor">Asesor</a>
       <a href="#especializacion">Especialización</a>
       <a href="#vista-rapida">Profesiones</a>
@@ -116,6 +125,7 @@
       </div>
 
       <div id="professionPicker" class="profession-picker" role="group" aria-label="Elegir profesión"></div>
+      <p id="selectionStatus" class="sr-only" aria-live="polite"></p>
 
       <div class="legend">
         <span><span class="badge badge-gold">Personalizable</span> La herramienta acepta misiva.</span>
@@ -124,7 +134,7 @@
       </div>
 
       <div class="advisor-grid">
-        <aside class="panel gear-panel" aria-live="polite">
+        <aside class="panel gear-panel">
           <div class="panel-head">
             <div class="prof-title">
               <span class="prof-icon lg" id="profEmoji" aria-hidden="true">⚗️</span>
@@ -143,7 +153,7 @@
           <p class="micro-note">🛠️ Solo la herramienta se personaliza con misiva. Los accesorios no cambian sus stats: si quieres otro atributo, cambia de accesorio, no de misiva.</p>
         </aside>
 
-        <div class="panel build-panel" aria-live="polite">
+        <div class="panel build-panel">
           <div class="panel-head">
             <div>
               <p class="section-kicker">Tu objetivo</p>
@@ -174,7 +184,7 @@
         <span id="specSheetLink" class="spec-sheet-link"></span>
       </div>
       <div class="spec-layout">
-        <aside class="panel spec-trees-panel" aria-live="polite">
+        <aside class="panel spec-trees-panel">
           <div class="panel-head">
             <div>
               <p class="section-kicker">Ramas</p>
@@ -184,7 +194,7 @@
           </div>
           <div id="specTreeList" class="spec-tree-list"></div>
         </aside>
-        <div class="panel spec-build-panel" aria-live="polite">
+        <div class="panel spec-build-panel">
           <div class="panel-head">
             <div>
               <p class="section-kicker">Build recomendada</p>
@@ -231,11 +241,12 @@
       </div>
       <div class="table-wrap">
         <table>
+          <caption class="sr-only">Objetivo, misiva de herramienta y encantamiento sugerido para cada tipo de build.</caption>
           <thead>
             <tr>
-              <th>Objetivo</th>
-              <th>Misiva de herramienta</th>
-              <th>Encantamiento sugerido</th>
+              <th scope="col">Objetivo</th>
+              <th scope="col">Misiva de herramienta</th>
+              <th scope="col">Encantamiento sugerido</th>
             </tr>
           </thead>
           <tbody id="masterBody"></tbody>
@@ -265,6 +276,6 @@
 
   <script src="assets/js/data.js" defer></script>
   <script src="assets/js/specializations.js" defer></script>
-  <script src="assets/js/app.js?v=voidlight-2" defer></script>
+  <script src="assets/js/app.js?v=voidlight-5" defer></script>
 </body>
 </html>
