@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://rodrigoangeloni.github.io/wow-midnight-bis/">
-    <img src="assets/img/og-image.jpg" alt="Vista previa de la guía BiS de profesiones de Midnight 12.1.5" width="640">
+    <img src="assets/img/og-image-v2.jpg" alt="Vista previa de la guía BiS de profesiones de Midnight 12.1.5" width="640">
   </a>
 </p>
 
@@ -55,7 +55,9 @@ El sitio se publica con GitHub Pages desde la rama `main`; el contenido se sirve
 
 ## 🖼️ Imagen para compartir
 
-`assets/img/og-image.jpg` (1200×630) es la imagen que se muestra al compartir el enlace por WhatsApp, Discord, Twitter/X y otras redes. El diseño fuente está en `design/og-image.html`; renderízalo a 1200×630 y guárdalo como `assets/img/og-image.jpg`.
+`assets/img/og-image-v2.jpg` (1200×630) es la imagen que se muestra al compartir el enlace por WhatsApp, Discord, Twitter/X y otras redes. El diseño fuente está en `design/og-image.html`; renderízalo a 1200×630 y guárdalo como `assets/img/og-image-v2.jpg`.
+
+Las redes guardan la vista previa en caché por URL. Cuando cambie el diseño, sube el número del archivo (`og-image-v3.jpg`, etc.) y actualiza las etiquetas `og:image` y `twitter:image` en `index.html`: al ser una URL nueva, los rastreadores vuelven a descargar la imagen en el siguiente scrape. También puedes forzar la actualización en [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) (sirve para WhatsApp) o compartiendo el enlace con un parámetro extra, por ejemplo `?v=2`.
 
 ## 🛠️ Tecnologías
 
@@ -81,7 +83,7 @@ El sitio se publica con GitHub Pages desde la rama `main`; el contenido se sirve
 │       ├── midnight-logo.png            # Logo oficial (respaldo)
 │       ├── midnight-logo.webp           # Logo oficial para el hero
 │       ├── spec-icons/                  # Iconos de nodos de especialización (Wowhead)
-│       └── og-image.jpg                 # Imagen para compartir (1200×630)
+│       └── og-image-v2.jpg              # Imagen para compartir (1200×630)
 ├── docs/
 │   └── guia-bis-profesiones-midnight.md # Guía de referencia en Markdown
 ├── design/
